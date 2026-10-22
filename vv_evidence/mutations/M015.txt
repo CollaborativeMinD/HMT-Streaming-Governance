@@ -20,4 +20,4 @@ E             + verified
 vv_crossjoin_pytest.py:20: AssertionError
 =========================== short test summary info ============================
 FAILED vv_crossjoin_pytest.py::test_refute_finding[C022] - AssertionError: C0...
-1 failed in 0.06s
+1 failed in 0.05s

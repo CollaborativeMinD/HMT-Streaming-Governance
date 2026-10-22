@@ -1,6 +1,6 @@
 {
   "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
-  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
   "source_seal": "5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f",
   "packages": {
     "pytest": "9.1.1",
@@ -23,7 +23,7 @@
   "commands": {
     "unit": {
       "command": [
-        "/home/agent/.cache/uv/environments-v2/run-vv-854bb0212b9cb2f6/bin/python",
+        "/home/agent/.cache/uv/environments-v2/run-vv-2577c91ec4513084/bin/python",
         "-m",
         "coverage",
         "run",
@@ -43,47 +43,47 @@
         "test_vv_semantics.py",
         "--junitxml=vv_evidence/unit_results.xml"
       ],
-      "elapsed_seconds": 2.339378720998866,
+      "elapsed_seconds": 2.413324493999994,
       "exit_code": 0
     },
     "coverage": {
       "command": [
-        "/home/agent/.cache/uv/environments-v2/run-vv-854bb0212b9cb2f6/bin/python",
+        "/home/agent/.cache/uv/environments-v2/run-vv-2577c91ec4513084/bin/python",
         "-m",
         "coverage",
         "json",
         "-o",
         "vv_evidence/coverage.json"
       ],
-      "elapsed_seconds": 0.11403304200030107,
+      "elapsed_seconds": 0.14498993800003745,
       "exit_code": 0
     },
     "crossjoin_pytest": {
       "command": [
-        "/home/agent/.cache/uv/environments-v2/run-vv-854bb0212b9cb2f6/bin/python",
+        "/home/agent/.cache/uv/environments-v2/run-vv-2577c91ec4513084/bin/python",
         "-m",
         "pytest",
         "-q",
         "vv_crossjoin_pytest.py",
         "--junitxml=vv_evidence/crossjoin_pytest_results.xml"
       ],
-      "elapsed_seconds": 2.278907027999594,
+      "elapsed_seconds": 2.2301752660000034,
       "exit_code": 0
     },
     "crossjoin_unittest": {
       "command": [
-        "/home/agent/.cache/uv/environments-v2/run-vv-854bb0212b9cb2f6/bin/python",
+        "/home/agent/.cache/uv/environments-v2/run-vv-2577c91ec4513084/bin/python",
         "vv_crossjoin_unittest.py"
       ],
-      "elapsed_seconds": 4.645672894001109,
+      "elapsed_seconds": 4.16467879999999,
       "exit_code": 0
     },
     "mutation": {
       "command": [
-        "/home/agent/.cache/uv/environments-v2/run-vv-854bb0212b9cb2f6/bin/python",
+        "/home/agent/.cache/uv/environments-v2/run-vv-2577c91ec4513084/bin/python",
         "vv_mutation.py"
       ],
-      "elapsed_seconds": 12.613508237000133,
+      "elapsed_seconds": 12.815731733000007,
       "exit_code": 0
     }
   },

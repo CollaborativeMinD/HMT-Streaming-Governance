@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.043" timestamp="2026-10-16T06:47:15.200836+00:00" hostname="08f763cb05c0"><testcase classname="test_governance.LedgerTests" name="test_metadata_rewrite_blocked_with_identical_payload" time="0.005"><failure message="AssertionError: Tool ran">self = &lt;test_governance.LedgerTests testMethod=test_metadata_rewrite_blocked_with_identical_payload&gt;
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.042" timestamp="2026-10-22T01:32:37.510938+00:00" hostname="2dd7d8cfea16"><testcase classname="test_governance.LedgerTests" name="test_metadata_rewrite_blocked_with_identical_payload" time="0.005"><failure message="AssertionError: Tool ran">self = &lt;test_governance.LedgerTests testMethod=test_metadata_rewrite_blocked_with_identical_payload&gt;
 
     async def test_metadata_rewrite_blocked_with_identical_payload(self):
         envelope = await AgentGateway(self.engine, "s", "sender").wrap_output("safe", "receiver")

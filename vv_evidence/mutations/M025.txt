@@ -18,4 +18,4 @@ E           + rejected
 test_governance.py:133: AssertionError
 =========================== short test summary info ============================
 FAILED test_governance.py::LedgerTests::test_payload_assertion_and_malformed
-1 failed in 0.05s
+1 failed in 0.04s

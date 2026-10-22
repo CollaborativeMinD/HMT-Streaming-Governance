@@ -36,4 +36,4 @@ E       + ['safe']
 test_uplift.py:72: AssertionError
 =========================== short test summary info ============================
 FAILED test_uplift.py::UpliftTests::test_mutating_handoff_during_verification_cannot_swap_tool_payload
-1 failed in 0.05s
+1 failed in 0.06s

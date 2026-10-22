@@ -1,0 +1,165 @@
+name: Qualification and delivery
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: governance-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ !startsWith(github.ref, 'refs/tags/') }}
+jobs:
+  verification:
+    name: V&V / Python ${{ matrix.python }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.11', '3.12', '3.13']
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@94527f2e458b27549849d47d273a16bec83a01e9 # v7
+        with:
+          version: '0.12.23'
+          python-version: ${{ matrix.python }}
+      - name: Complete locked campaign (unit, API, E2E, mutation, SQL and resource gates)
+        run: uv run --locked --python '${{ matrix.python }}' run_vv.py
+      - name: Verify source/evidence bindings and delivery guard negatives
+        run: |
+          python ci/verify_evidence.py
+          python -m unittest ci.test_delivery -v
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: qualification-python-${{ matrix.python }}
+          path: |
+            vv_evidence/
+            VV_report.md
+            .ci-output/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 30
+  tooling:
+    name: Model, notebook and supply chain
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@94527f2e458b27549849d47d273a16bec83a01e9 # v7
+        with:
+          version: '0.12.23'
+          python-version: '3.13'
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: mkdir -p .ci-output && npm ci --ignore-scripts
+      - name: Strict SysML and notebook execution/export
+        run: |
+          npm run check:model
+          uvx marimo@0.25.1 check governance_lab.py
+          uvx marimo@0.25.1 export html governance_lab.py --no-include-code -o .ci-output/governance_lab.html
+          python -m ci.verify_notebook_export .ci-output/governance_lab.html > .ci-output/notebook-export.json
+          uv run --locked sql_dataframes.py > .ci-output/dataframes.txt
+      - name: Hash-pinned MCP dependency vulnerability scan
+        run: |
+          uv export --locked --script governance_mcp.py -o .ci-output/requirements.txt
+          uvx --from pip-audit==2.10.1 pip-audit --disable-pip --require-hashes -r .ci-output/requirements.txt -f json -o .ci-output/dependency-audit.json
+      - name: Check workflow syntax and current-tree secrets with pinned executables
+        run: |
+          curl --fail --location https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_linux_amd64.tar.gz -o /tmp/actionlint.tar.gz
+          echo '8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8  /tmp/actionlint.tar.gz' | sha256sum --check
+          tar -xzf /tmp/actionlint.tar.gz -C /tmp actionlint
+          /tmp/actionlint
+          curl --fail --location https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz -o /tmp/gitleaks.tar.gz
+          echo '551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb  /tmp/gitleaks.tar.gz' | sha256sum --check
+          tar -xzf /tmp/gitleaks.tar.gz -C /tmp gitleaks
+          /tmp/gitleaks dir --redact=100 --no-banner --max-archive-depth=2 --report-format json --report-path .ci-output/secrets.json .
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: tooling-evidence
+          path: .ci-output/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 30
+  admission:
+    name: Admission
+    if: always()
+    needs: [verification, tooling]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    steps:
+      - name: Require every declared lane (failure, cancellation or skip blocks delivery)
+        env:
+          NEEDS: ${{ toJSON(needs) }}
+        run: echo "$NEEDS" | jq -e 'length == 2 and all(.[]; .result == "success")'
+  package:
+    name: Verified archive and clean replay
+    needs: admission
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@94527f2e458b27549849d47d273a16bec83a01e9 # v7
+        with:
+          version: '0.12.23'
+          python-version: '3.12'
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: qualification-python-3.12
+          path: .
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: tooling-evidence
+          path: .ci-output/tooling
+      - name: Package tested source and evidence; replay the extracted archive
+        run: |
+          python -m ci.package_release
+          python -m ci.smoke_release
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: verified-delivery
+          include-hidden-files: true
+          path: |
+            dist/
+            .ci-output/package-smoke.*
+          if-no-files-found: error
+          retention-days: 30
+  delivery:
+    name: Tagged GitHub Release
+    needs: package
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: verified-delivery
+          include-hidden-files: true
+          path: delivered
+      - name: Publish exact verified bytes; service activation stays operator owned
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          mapfile -t archives < <(find delivered -name '*.zip' -type f)
+          test "${#archives[@]}" -eq 1
+          archive="${archives[0]}"
+          checksum="$archive.sha256"
+          (cd "$(dirname "$archive")" && sha256sum --check "$(basename "$checksum")")
+          gh release create "$RELEASE_TAG" "$archive" "$checksum" --repo "$SOURCE_REPO" --verify-tag --title "Streaming Governance $RELEASE_TAG" --notes 'In-memory reference release. Includes source-bound finite-catalog V&V evidence and a clean-extraction replay. No service activation or agent-host registration.'

@@ -423,4 +423,4 @@ SUBFAILED(seed=26) test_vv_semantics.py::OracleUnitTests::test_generated_polynom
 SUBFAILED(seed=27) test_vv_semantics.py::OracleUnitTests::test_generated_polynomial_and_boundary_oracle
 SUBFAILED(seed=28) test_vv_semantics.py::OracleUnitTests::test_generated_polynomial_and_boundary_oracle
 SUBFAILED(seed=31) test_vv_semantics.py::OracleUnitTests::test_generated_polynomial_and_boundary_oracle
-12 failed, 1 passed, 20 subtests passed in 0.25s
+12 failed, 1 passed, 20 subtests passed in 0.23s

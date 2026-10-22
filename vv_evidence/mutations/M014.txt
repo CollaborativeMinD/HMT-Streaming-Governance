@@ -14,8 +14,8 @@ self = <test_uplift.UpliftTests testMethod=test_byte_and_record_capacity_refuse_
         envelope = await AgentGateway(self.engine, 's').wrap_output('one')
         held = await self.engine.governance_commit_state(**frame(seq=1, parent=envelope['ledger_hash']))
 >       self.assertEqual(held, dict(status='held', reason='LEDGER_CAPACITY'))
-E       AssertionError: {'status': 'pending', 'tracking_token': 'd3486b09429e44bbb7c16978b2dcea8b'} != {'status': 'held', 'reason': 'LEDGER_CAPACITY'}
-E       - {'status': 'pending', 'tracking_token': 'd3486b09429e44bbb7c16978b2dcea8b'}
+E       AssertionError: {'status': 'pending', 'tracking_token': 'f3641a0d02c9473494f92727f121d540'} != {'status': 'held', 'reason': 'LEDGER_CAPACITY'}
+E       - {'status': 'pending', 'tracking_token': 'f3641a0d02c9473494f92727f121d540'}
 E       + {'reason': 'LEDGER_CAPACITY', 'status': 'held'}
 
 test_uplift.py:105: AssertionError

@@ -1,0 +1,16 @@
+{
+  "archive": "streaming-governance-vv.zip",
+  "archive_sha256": "2737f8569814bd3444409b8fa75e4094bb220022c32607d626974b8a89de768a",
+  "import_commit": "9c986dc",
+  "imported_files": 254,
+  "source_runtime_unchanged": true,
+  "publication_changes": [
+    "Repository README, detailed runtime contract and CI/CD runbook",
+    "Pinned CI/model/delivery tooling and negative delivery tests",
+    "certifi 2026.7.22 -> 2026.10.19 in both active script locks (PYSEC-2026-4320)",
+    "Notebook download and HTML refreshed to the admitted lock snapshot",
+    "Original release/hash records moved under provenance; exact originals retained in import commit",
+    "Large notebook SQL/CSV downloads use gzip to stay within marimo output bounds; CI rejects hidden export errors/truncation"
+  ],
+  "qualification_scope": "In-memory reference; finite declared V&V catalog; no service activation"
+}

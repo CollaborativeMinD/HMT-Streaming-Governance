@@ -9,7 +9,7 @@ _ ERROR at teardown of StateModelTests.test_cancelled_close_caller_does_not_aban
            ^^^^^^^^^^^^^^^
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = <governance_core.GovernanceLedgerEngine object at 0x7fab483f2060>
+self = <governance_core.GovernanceLedgerEngine object at 0x7fea2fbfcce0>
 
     async def close(self):
         self._closed = True
@@ -60,4 +60,4 @@ test_vv_semantics.py:133: AssertionError
 =========================== short test summary info ============================
 FAILED test_vv_semantics.py::StateModelTests::test_cancelled_close_caller_does_not_abandon_shared_cleanup
 ERROR test_vv_semantics.py::StateModelTests::test_cancelled_close_caller_does_not_abandon_shared_cleanup
-1 failed, 1 error in 0.07s
+1 failed, 1 error in 0.06s

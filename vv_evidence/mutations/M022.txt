@@ -31,7 +31,7 @@ E           AssertionError: b'' != b'\x00\x01\x02\x03\x04\x05\x06\x07\x08\t\n\[5
 test_stream.py:31: AssertionError
 =============================== warnings summary ===============================
 test_stream.py::StreamTests::test_stream_pipeline_preserves_bytes_bounds_staging_and_closes_source
-  /tmp/governance-mutant-s94ex4cu/governance_stream.py:57: RuntimeWarning: coroutine 'StreamTests.test_stream_pipeline_preserves_bytes_bounds_staging_and_closes_source.<locals>.receive' was never awaited
+  /tmp/governance-mutant-lyjy9uh8/governance_stream.py:57: RuntimeWarning: coroutine 'StreamTests.test_stream_pipeline_preserves_bytes_bounds_staging_and_closes_source.<locals>.receive' was never awaited
   Coroutine created at (most recent call last)
     File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/async_case.py", line 132, in run
       return super().run(result)
@@ -51,7 +51,7 @@ test_stream.py::StreamTests::test_stream_pipeline_preserves_bytes_bounds_staging
       handle._run()
     File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/events.py", line 88, in _run
       self._context.run(self._callback, *self._args)
-    File "/tmp/governance-mutant-s94ex4cu/governance_stream.py", line 57, in consume
+    File "/tmp/governance-mutant-lyjy9uh8/governance_stream.py", line 57, in consume
       result = self.on_verified(envelope)
     result = self.on_verified(envelope)
   Enable tracemalloc to get traceback where the object was allocated.
@@ -78,7 +78,7 @@ test_stream.py::StreamTests::test_stream_pipeline_preserves_bytes_bounds_staging
       handle._run()
     File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/events.py", line 88, in _run
       self._context.run(self._callback, *self._args)
-    File "/tmp/governance-mutant-s94ex4cu/governance_stream.py", line 57, in consume
+    File "/tmp/governance-mutant-lyjy9uh8/governance_stream.py", line 57, in consume
       result = self.on_verified(envelope)
     self._context.run(self._callback, *self._args)
   Enable tracemalloc to get traceback where the object was allocated.
@@ -87,4 +87,4 @@ test_stream.py::StreamTests::test_stream_pipeline_preserves_bytes_bounds_staging
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
 =========================== short test summary info ============================
 FAILED test_stream.py::StreamTests::test_stream_pipeline_preserves_bytes_bounds_staging_and_closes_source
-1 failed, 2 warnings in 0.07s
+1 failed, 2 warnings in 0.06s

@@ -29,4 +29,4 @@ E       + []
 test_vv_regressions.py:61: AssertionError
 =========================== short test summary info ============================
 FAILED test_vv_regressions.py::BoundaryRegressionTests::test_unexpected_verifier_failure_holds_and_clears_context
-1 failed in 0.04s
+1 failed in 0.06s

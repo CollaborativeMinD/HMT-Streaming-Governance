@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="1" failures="1" skipped="0" tests="2" time="0.070" timestamp="2026-10-16T06:47:18.949845+00:00" hostname="08f763cb05c0"><testcase classname="test_vv_semantics.StateModelTests" name="test_cancelled_close_caller_does_not_abandon_shared_cleanup" time="0.005"><failure message="AssertionError: Lists differ: [CancelledError('')] != [None]&#10;&#10;First differing element 0:&#10;CancelledError('')&#10;None&#10;&#10;- [CancelledError('')]&#10;+ [None]">self = &lt;test_vv_semantics.StateModelTests testMethod=test_cancelled_close_caller_does_not_abandon_shared_cleanup&gt;
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="1" failures="1" skipped="0" tests="2" time="0.059" timestamp="2026-10-22T01:32:41.715868+00:00" hostname="2dd7d8cfea16"><testcase classname="test_vv_semantics.StateModelTests" name="test_cancelled_close_caller_does_not_abandon_shared_cleanup" time="0.005"><failure message="AssertionError: Lists differ: [CancelledError('')] != [None]&#10;&#10;First differing element 0:&#10;CancelledError('')&#10;None&#10;&#10;- [CancelledError('')]&#10;+ [None]">self = &lt;test_vv_semantics.StateModelTests testMethod=test_cancelled_close_caller_does_not_abandon_shared_cleanup&gt;
 
     async def test_cancelled_close_caller_does_not_abandon_shared_cleanup(self):
         engine = await GovernanceLedgerEngine().start()
@@ -39,7 +39,7 @@ test_vv_semantics.py:133: AssertionError</failure></testcase><testcase classname
            ^^^^^^^^^^^^^^^
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = &lt;governance_core.GovernanceLedgerEngine object at 0x7fab483f2060&gt;
+self = &lt;governance_core.GovernanceLedgerEngine object at 0x7fea2fbfcce0&gt;
 
     async def close(self):
         self._closed = True
