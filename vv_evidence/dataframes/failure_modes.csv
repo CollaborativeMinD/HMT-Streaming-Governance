@@ -1,0 +1,33 @@
+id,description,kind
+F01,Dropped/reordered bytes at a chunk boundary,failure_challenge
+F02,Packet-size dependent cuts or incorrect polynomial,failure_challenge
+F03,Positive control: valid committed handoff,positive_control
+F04,Wrong verified predecessor,failure_challenge
+F05,Missing sequence predecessor,failure_challenge
+F06,Duplicate commit attempt,failure_challenge
+F07,Payload digest assertion differs at commit,failure_challenge
+F08,Changed payload at invocation boundary,failure_challenge
+F09,Rewritten source metadata with unchanged payload,failure_challenge
+F10,Recipient rewrite,failure_challenge
+F11,Cross-session handoff substitution,failure_challenge
+F12,Unregistered block identity,failure_challenge
+F13,Self-claimed unregistered content hash,failure_challenge
+F14,Verifier invoked after engine shutdown,failure_challenge
+F15,Availability changes across hashing await,failure_challenge
+F16,Unexpected verifier exception,failure_challenge
+F17,Concurrent verification exceeds admission cap,failure_challenge
+F18,Inbound verification cancelled while suspended,failure_challenge
+F19,Queue count at cap plus one,failure_challenge
+F20,Pending UTF-8 bytes at cap plus one,failure_challenge
+F21,Immutable record reservation exceeds cap,failure_challenge
+F22,Completed receipt evicted from bounded cache,failure_challenge
+F23,Caller mutates payload while verification is suspended,failure_challenge
+F24,Eight simultaneous shutdown callers,failure_challenge
+F25,Queued work passes its absolute deadline,failure_challenge
+F26,Positive control: byte stream under sink backpressure,positive_control
+F27,Sink failure with unknown effect outcome,failure_challenge
+F28,"Malformed types, identifiers, digest or Unicode",failure_challenge
+F29,"MCP schema coercion, unregistered hash and tampered handoff",failure_challenge
+F30,Runtime complexity exceeds declared local limits,failure_challenge
+F31,Catastrophic speed/scaling/retention regression,failure_challenge
+F32,"Missing combinations, orphan links or stale source provenance",failure_challenge

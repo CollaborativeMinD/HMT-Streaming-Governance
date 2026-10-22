@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.063" timestamp="2026-10-16T06:47:17.613201+00:00" hostname="08f763cb05c0"><testcase classname="test_uplift.UpliftTests" name="test_byte_and_record_capacity_refuse_without_advancing_head" time="0.005"><failure message="AssertionError: {'status': 'pending', 'tracking_token': 'f8554d1dac154b4cad099b8d3a191c9f'} != {'status': 'busy', 'reason': 'PENDING_BYTE_CAPACITY'}&#10;- {'status': 'pending', 'tracking_token': 'f8554d1dac154b4cad099b8d3a191c9f'}&#10;+ {'reason': 'PENDING_BYTE_CAPACITY', 'status': 'busy'}">self = &lt;test_uplift.UpliftTests testMethod=test_byte_and_record_capacity_refuse_without_advancing_head&gt;
+
+    async def test_byte_and_record_capacity_refuse_without_advancing_head(self):
+        self.engine.max_pending_bytes = 3
+        result = await self.engine.governance_commit_state(**frame(payload='four'))
+&gt;       self.assertEqual(result, dict(status='busy', reason='PENDING_BYTE_CAPACITY'))
+E       AssertionError: {'status': 'pending', 'tracking_token': 'f8554d1dac154b4cad099b8d3a191c9f'} != {'status': 'busy', 'reason': 'PENDING_BYTE_CAPACITY'}
+E       - {'status': 'pending', 'tracking_token': 'f8554d1dac154b4cad099b8d3a191c9f'}
+E       + {'reason': 'PENDING_BYTE_CAPACITY', 'status': 'busy'}
+
+test_uplift.py:99: AssertionError</failure></testcase></testsuite></testsuites>

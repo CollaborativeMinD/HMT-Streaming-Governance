@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="0.044" timestamp="2026-10-16T06:28:03.461587+00:00" hostname="08f763cb05c0"><testcase classname="test_uplift.UpliftTests" name="test_expired_queue_item_never_commits" time="0.008" /></testsuite></testsuites>

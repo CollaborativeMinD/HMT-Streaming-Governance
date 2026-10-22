@@ -1,0 +1,2 @@
+mutation_id,prior_assertion_id,superseding_assertion_id,requirement_id,prior_outcome,new_outcome,prior_evidence,explanation
+M023,pytest:test_uplift.UpliftTests.test_expired_queue_item_never_commits,PY-C025,GOV-05,SURVIVED,KILLED,vv_evidence/mutations_initial/M023.txt,"Prior assertion checked expiry and no commit but omitted quarantine count. The superseding deadline contract checks zero quarantine, zero pending bytes and HOLD; it kills the identical typed-disposition mutant. The prior test remains in the suite."

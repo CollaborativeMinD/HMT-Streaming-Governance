@@ -1,0 +1,200 @@
+[
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C001_scanner",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.013393443001405103
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C002_scanner",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.012186291000034544
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C003_nominal",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.0021124209997651633
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C004_parent",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.0016576840007473947
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C005_sequence",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.001780855000106385
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C006_replay",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.001596744999915245
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C007_payload_assertion",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.001713345000098343
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C008_payload",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.0015528400017501554
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C009_metadata",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.0013342090005608043
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C010_recipient",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.0016557710005145054
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C011_cross_session",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.0017740340008458588
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C012_block_hash",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.001699825999821769
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C013_unregistered",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.0012538009996205801
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C014_closed",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.001422167999407975
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C015_hold_race",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.0013394359993981197
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C016_verifier_fault",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.0012903339993499685
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C017_verification_capacity",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.0016853249999257969
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C018_cancel_verification",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.0015499860001000343
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C019_queue",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.0013414589993772097
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C020_pending_bytes",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.00228099900050438
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C021_ledger",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.0013450449987431057
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C022_retention",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.002183194999815896
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C023_snapshot",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.0018314190001547104
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C024_concurrent_close",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.002535943000111729
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C025_deadline",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.0012321289996179985
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C026_stream",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.006309292999503668
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C027_sink_failure",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.0045077680006215815
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C028_schema",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.0010283899991918588
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C029_api",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.7641050870006438
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C030_structure",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.024608869000076083
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C031_performance",
+    "status": "PASS",
+    "detail": "",
+    "duration": 3.571548073001395
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_C032_evidence",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.0035871250001946464
+  },
+  {
+    "nodeid": "__main__.CartesianRefutationTests.test_cartesian_set_and_links",
+    "status": "PASS",
+    "detail": "",
+    "duration": 0.02435137999964354
+  }
+]

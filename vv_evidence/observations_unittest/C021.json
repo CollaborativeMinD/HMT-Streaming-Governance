@@ -1,0 +1,6 @@
+{
+  "outcome": "held",
+  "reason": "LEDGER_CAPACITY",
+  "records": 1,
+  "head_unchanged": true
+}

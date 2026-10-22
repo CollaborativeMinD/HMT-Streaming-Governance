@@ -1,0 +1,18 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_________ LedgerTests.test_broken_parent_and_duplicate_never_overwrite _________
+
+self = <test_governance.LedgerTests testMethod=test_broken_parent_and_duplicate_never_overwrite>
+
+    async def test_broken_parent_and_duplicate_never_overwrite(self):
+        first = await self.commit(**self.frame())
+        bad = await self.commit(**self.frame(seq=1, parent="f" * 64))
+>       self.assertEqual(bad["status"], "quarantined")
+E       AssertionError: 'verified' != 'quarantined'
+E       - verified
+E       + quarantined
+
+test_governance.py:120: AssertionError
+=========================== short test summary info ============================
+FAILED test_governance.py::LedgerTests::test_broken_parent_and_duplicate_never_overwrite
+1 failed in 0.04s

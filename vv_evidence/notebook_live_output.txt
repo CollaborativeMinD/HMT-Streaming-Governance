@@ -1,0 +1,10 @@
+updated 2 UI element(s)
+filter state scope I03
+updated 2 UI element(s)
+LIVE_VV:{"errors": [], "checks": [{"check": "Byte preservation + transport independence", "result": "PASS"}, {"check": "Clean stream", "result": "PASS"}, {"check": "Payload changed before commit", "result": "PASS"}, {"check": "Payload changed in handoff", "result": "PASS"}, {"check": "Broken predecessor", "result": "PASS"}, {"check": "Missing sequence", "result": "PASS"}, {"check": "Replay sequence", "result": "PASS"}, {"check": "Routing metadata rewritten", "result": "PASS"}, {"check": "Expired transaction (injected)", "result": "PASS \u00b7 HOLD, no quarantine"}, {"check": "Verifier unavailable (injected)", "result": "PASS \u00b7 HOLD, no quarantine"}], "controls": [{"check": "Concurrent outbound calls preserve sequence", "result": "PASS"}, {"check": "Record cap refuses growth; verified records retained", "result": "PASS"}, {"check": "Receipt cache bounded; small hashes stay inline", "result": "PASS"}, {"check": "Concurrent bounded stream preserves exact bytes", "result": "PASS"}], "cross_rows": 7488, "scope": "applicable", "invariant": "all"}
+
+Warning: connecting to non-local server 'sb-07fd772f79b28828.sb.molab.run'. Ensure this is trusted.
+/tmp/marimo_5019/__marimo__cell_qPeN_.py:43: DeprecationWarning: mo.tabs is deprecated. Use mo.ui.tabs instead
+  mo.tabs(
+/tmp/marimo_5019/__marimo__cell_qPeN_.py:43: DeprecationWarning: mo.tabs is deprecated. Use mo.ui.tabs instead
+  mo.tabs(

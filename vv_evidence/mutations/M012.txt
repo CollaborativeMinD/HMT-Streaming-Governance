@@ -1,0 +1,20 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______ LedgerTests.test_bounded_queue_rejects_without_dropping_or_hanging ______
+
+self = <test_governance.LedgerTests testMethod=test_bounded_queue_rejects_without_dropping_or_hanging>
+
+    async def test_bounded_queue_rejects_without_dropping_or_hanging(self):
+        engine = await GovernanceLedgerEngine(queue_size=1).start()
+        try:
+            first = await engine.governance_commit_state(**self.frame())
+            second = await engine.governance_commit_state(**self.frame(session="other"))
+>           self.assertEqual(second["status"], "busy")
+E           AssertionError: 'verified' != 'busy'
+E           - verified
+E           + busy
+
+test_governance.py:167: AssertionError
+=========================== short test summary info ============================
+FAILED test_governance.py::LedgerTests::test_bounded_queue_rejects_without_dropping_or_hanging
+1 failed in 0.04s

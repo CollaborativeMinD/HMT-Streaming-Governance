@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="5" skipped="0" tests="5" time="0.062" timestamp="2026-10-16T06:17:02.098901+00:00" hostname="08f763cb05c0"><testcase classname="test_vv_regressions.BoundaryRegressionTests" name="test_cancelled_verification_clears_context_and_holds_session" time="0.006"><failure message="AssertionError: Lists differ: ['old context'] != []&#10;&#10;First list contains 1 additional elements.&#10;First extra element 0:&#10;'old context'&#10;&#10;- ['old context']&#10;+ []">self = &lt;test_vv_regressions.BoundaryRegressionTests testMethod=test_cancelled_verification_clears_context_and_holds_session&gt;
+
+    async def test_cancelled_verification_clears_context_and_holds_session(self):
+        engine, receiver, envelope = await self.setup_boundary()
+        receiver.context.append('old context')
+        entered = asyncio.Event()
+    
+        async def blocked(*args):
+            entered.set()
+            await asyncio.Event().wait()
+    
+        engine._compute = blocked
+        effects = []
+        task = asyncio.create_task(receiver.execute_verified(envelope, effects.append))
+        await entered.wait()
+        task.cancel()
+        with self.assertRaises(asyncio.CancelledError):
+            await task
+        self.assertEqual(effects, [])
+&gt;       self.assertEqual(receiver.context, [])
+E       AssertionError: Lists differ: ['old context'] != []
+E       
+E       First list contains 1 additional elements.
+E       First extra element 0:
+E       'old context'
+E       
+E       - ['old context']
+E       + []
+
+test_vv_regressions.py:82: AssertionError</failure></testcase><testcase classname="test_vv_regressions.BoundaryRegressionTests" name="test_closed_engine_denies_previously_verified_handoff" time="0.003"><failure message="AssertionError: HoldError not raised">self = &lt;test_vv_regressions.BoundaryRegressionTests testMethod=test_closed_engine_denies_previously_verified_handoff&gt;
+
+    async def test_closed_engine_denies_previously_verified_handoff(self):
+        engine, receiver, envelope = await self.setup_boundary()
+        receiver.context.append('old context')
+        await engine.close()
+        effects = []
+&gt;       with self.assertRaises(HoldError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: HoldError not raised
+
+test_vv_regressions.py:22: AssertionError</failure></testcase><testcase classname="test_vv_regressions.BoundaryRegressionTests" name="test_concurrent_close_has_one_shutdown_owner" time="0.005"><failure message="AssertionError: Lists differ: [None, AttributeError(&quot;'NoneType' object has no [415 chars]d'&quot;)] != [None, None, None, None, None, None, None, None]&#10;&#10;First differing element 1:&#10;AttributeError(&quot;'NoneType' object has no attribute 'cancelled'&quot;)&#10;None&#10;&#10;+ [None, None, None, None, None, None, None, None]&#10;- [None,&#10;-  AttributeError(&quot;'NoneType' object has no attribute 'cancelled'&quot;),&#10;-  AttributeError(&quot;'NoneType' object has no attribute 'cancelled'&quot;),&#10;-  AttributeError(&quot;'NoneType' object has no attribute 'cancelled'&quot;),&#10;-  AttributeError(&quot;'NoneType' object has no attribute 'cancelled'&quot;),&#10;-  AttributeError(&quot;'NoneType' object has no attribute 'cancelled'&quot;),&#10;-  AttributeError(&quot;'NoneType' object has no attribute 'cancelled'&quot;),&#10;-  AttributeError(&quot;'NoneType' object has no attribute 'cancelled'&quot;)]">self = &lt;test_vv_regressions.BoundaryRegressionTests testMethod=test_concurrent_close_has_one_shutdown_owner&gt;
+
+    async def test_concurrent_close_has_one_shutdown_owner(self):
+        engine, _, _ = await self.setup_boundary()
+        results = await asyncio.gather(*(engine.close() for _ in range(8)), return_exceptions=True)
+&gt;       self.assertEqual(results, [None] * 8)
+E       AssertionError: Lists differ: [None, AttributeError("'NoneType' object has no [415 chars]d'")] != [None, None, None, None, None, None, None, None]
+E       
+E       First differing element 1:
+E       AttributeError("'NoneType' object has no attribute 'cancelled'")
+E       None
+E       
+E       + [None, None, None, None, None, None, None, None]
+E       - [None,
+E       -  AttributeError("'NoneType' object has no attribute 'cancelled'"),
+E       -  AttributeError("'NoneType' object has no attribute 'cancelled'"),
+E       -  AttributeError("'NoneType' object has no attribute 'cancelled'"),
+E       -  AttributeError("'NoneType' object has no attribute 'cancelled'"),
+E       -  AttributeError("'NoneType' object has no attribute 'cancelled'"),
+E       -  AttributeError("'NoneType' object has no attribute 'cancelled'"),
+E       -  AttributeError("'NoneType' object has no attribute 'cancelled'")]
+
+test_vv_regressions.py:45: AssertionError</failure></testcase><testcase classname="test_vv_regressions.BoundaryRegressionTests" name="test_hold_during_standalone_hash_cannot_return_verified" time="0.002"><failure message="AssertionError: True is not false">self = &lt;test_vv_regressions.BoundaryRegressionTests testMethod=test_hold_during_standalone_hash_cannot_return_verified&gt;
+
+    async def test_hold_during_standalone_hash_cannot_return_verified(self):
+        engine, _, envelope = await self.setup_boundary()
+        original = engine._compute
+    
+        async def interrupted(function, encoded, *prefix):
+            result = await original(function, encoded, *prefix)
+            engine._hold('INJECTED_UNAVAILABLE')
+            return result
+    
+        engine._compute = interrupted
+        result = await engine.governance_verify_payload('verified bytes', envelope['payload_hash'])
+&gt;       self.assertFalse(result['verified'])
+E       AssertionError: True is not false
+
+test_vv_regressions.py:39: AssertionError</failure></testcase><testcase classname="test_vv_regressions.BoundaryRegressionTests" name="test_unexpected_verifier_failure_holds_and_clears_context" time="0.002"><failure message="RuntimeError: injected verifier fault">self = &lt;test_vv_regressions.BoundaryRegressionTests testMethod=test_unexpected_verifier_failure_holds_and_clears_context&gt;
+
+    async def test_unexpected_verifier_failure_holds_and_clears_context(self):
+        engine, receiver, envelope = await self.setup_boundary()
+        receiver.context.append('old context')
+    
+        async def broken(*args):
+            raise RuntimeError('injected verifier fault')
+    
+        engine._compute = broken
+        effects = []
+        with self.assertRaises(HoldError):
+&gt;           await receiver.execute_verified(envelope, effects.append)
+
+test_vv_regressions.py:59: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+governance_gateway.py:52: in execute_verified
+    await self.engine.verify_envelope(snapshot)
+governance_verification.py:48: in verify_envelope
+    result = await self.governance_verify_payload(tx.payload, envelope.get("payload_hash", ""))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+governance_verification.py:23: in governance_verify_payload
+    actual = await self._compute(lambda data: hashlib.sha256(data).hexdigest(), encoded)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    async def broken(*args):
+&gt;       raise RuntimeError('injected verifier fault')
+E       RuntimeError: injected verifier fault
+
+test_vv_regressions.py:54: RuntimeError</failure></testcase></testsuite></testsuites>

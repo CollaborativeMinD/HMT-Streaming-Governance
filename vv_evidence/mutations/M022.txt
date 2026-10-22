@@ -1,0 +1,90 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ StreamTests.test_stream_pipeline_preserves_bytes_bounds_staging_and_closes_source _
+
+self = <test_stream.StreamTests testMethod=test_stream_pipeline_preserves_bytes_bounds_staging_and_closes_source>
+
+    async def test_stream_pipeline_preserves_bytes_bounds_staging_and_closes_source(self):
+        data = bytes(range(256)) * 80
+        closed = []
+    
+        async def packets():
+            try:
+                for offset in range(0, len(data), 73):
+                    yield data[offset:offset+73]
+            finally:
+                closed.append(True)
+    
+        engine = await GovernanceLedgerEngine().start()
+        receiver = AgentGateway(engine, 'stream', 'tool-boundary')
+        restored = bytearray()
+    
+        async def receive(envelope):
+            await receiver.execute_verified(envelope, lambda text: restored.extend(
+                base64.b64decode(json.loads(text)['data'])))
+    
+        try:
+            counts = await stream_to_ledger(packets(), engine, 'stream', receive, staging_size=2)
+>           self.assertEqual(bytes(restored), data)
+E           AssertionError: b'' != b'\x00\x01\x02\x03\x04\x05\x06\x07\x08\t\n\[58755 chars]\xff'
+
+test_stream.py:31: AssertionError
+=============================== warnings summary ===============================
+test_stream.py::StreamTests::test_stream_pipeline_preserves_bytes_bounds_staging_and_closes_source
+  /tmp/governance-mutant-s94ex4cu/governance_stream.py:57: RuntimeWarning: coroutine 'StreamTests.test_stream_pipeline_preserves_bytes_bounds_staging_and_closes_source.<locals>.receive' was never awaited
+  Coroutine created at (most recent call last)
+    File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/async_case.py", line 132, in run
+      return super().run(result)
+    File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py", line 634, in run
+      self._callTestMethod(testMethod)
+    File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/async_case.py", line 91, in _callTestMethod
+      if self._callMaybeAsync(method) is not None:
+    File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/async_case.py", line 113, in _callMaybeAsync
+      return self._asyncioRunner.run(
+    File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py", line 118, in run
+      return self._loop.run_until_complete(task)
+    File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 678, in run_until_complete
+      self.run_forever()
+    File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 645, in run_forever
+      self._run_once()
+    File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 1991, in _run_once
+      handle._run()
+    File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/events.py", line 88, in _run
+      self._context.run(self._callback, *self._args)
+    File "/tmp/governance-mutant-s94ex4cu/governance_stream.py", line 57, in consume
+      result = self.on_verified(envelope)
+    result = self.on_verified(envelope)
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+test_stream.py::StreamTests::test_stream_pipeline_preserves_bytes_bounds_staging_and_closes_source
+  /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/events.py:88: RuntimeWarning: coroutine 'StreamTests.test_stream_pipeline_preserves_bytes_bounds_staging_and_closes_source.<locals>.receive' was never awaited
+  Coroutine created at (most recent call last)
+    File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/async_case.py", line 132, in run
+      return super().run(result)
+    File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py", line 634, in run
+      self._callTestMethod(testMethod)
+    File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/async_case.py", line 91, in _callTestMethod
+      if self._callMaybeAsync(method) is not None:
+    File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/async_case.py", line 113, in _callMaybeAsync
+      return self._asyncioRunner.run(
+    File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py", line 118, in run
+      return self._loop.run_until_complete(task)
+    File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 678, in run_until_complete
+      self.run_forever()
+    File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 645, in run_forever
+      self._run_once()
+    File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 1991, in _run_once
+      handle._run()
+    File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/events.py", line 88, in _run
+      self._context.run(self._callback, *self._args)
+    File "/tmp/governance-mutant-s94ex4cu/governance_stream.py", line 57, in consume
+      result = self.on_verified(envelope)
+    self._context.run(self._callback, *self._args)
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED test_stream.py::StreamTests::test_stream_pipeline_preserves_bytes_bounds_staging_and_closes_source
+1 failed, 2 warnings in 0.07s

@@ -1,0 +1,22 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______________ UpliftTests.test_expired_queue_item_never_commits _______________
+
+self = <test_uplift.UpliftTests testMethod=test_expired_queue_item_never_commits>
+
+    async def test_expired_queue_item_never_commits(self):
+        self.engine.transaction_timeout = 0.001
+        receipt = await self.engine.governance_commit_state(**frame())
+        # Hold the event loop until after the absolute admission deadline.
+        import time
+        time.sleep(0.003)
+        result = await self.engine.wait(receipt['tracking_token'])
+>       self.assertEqual(result['status'], 'held')
+E       AssertionError: 'verified' != 'held'
+E       - verified
+E       + held
+
+test_uplift.py:140: AssertionError
+=========================== short test summary info ============================
+FAILED test_uplift.py::UpliftTests::test_expired_queue_item_never_commits - A...
+1 failed in 0.06s

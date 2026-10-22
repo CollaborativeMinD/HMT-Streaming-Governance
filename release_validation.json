@@ -1,0 +1,28 @@
+{
+  "archive": "engine-and-model.zip",
+  "archive_sha256": "155bb17047209d95eb3277f69cb16dd0d0df35c863ec2f904e050dae832ece09",
+  "verified_manifest_files": 247,
+  "clean_extraction": "PASS",
+  "replay_command": "uv run --locked run_vv.py",
+  "replay_exit_code": 0,
+  "current_results": {
+    "PASS": 126
+  },
+  "mutations": {
+    "KILLED": 26
+  },
+  "cross_join": {
+    "OUT_OF_SCOPE": 7456,
+    "SATISFIED": 32
+  },
+  "historical_supersessions": 6,
+  "linked_finding_evidence_rows": 14976,
+  "findings_missing_two_framework_links": 0,
+  "notebook_check": "PASS: marimo 0.25.1 check",
+  "html_export": "PASS: marimo 0.25.1 export html",
+  "notebook_bundle_identity": "PASS",
+  "sql_dump_replay": "PASS",
+  "source_benchmark_identity": "PASS",
+  "notebook_sha256": "42e71d733434343261689be6c49e79d247c06c277ddb85a81a1ba106df0d61da",
+  "html_sha256": "841ff7525d1338b29ad25eac0f11c8a10e1b775918b27511406d70d29043a29f"
+}

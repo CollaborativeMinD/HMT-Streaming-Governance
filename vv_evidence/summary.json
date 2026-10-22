@@ -1,0 +1,58 @@
+{
+  "scope": "All possibilities within the finite declared catalog, not all possible inputs or interleavings.",
+  "counts": {
+    "OUT_OF_SCOPE": 7456,
+    "SATISFIED": 32
+  },
+  "total": 7488,
+  "requirements": 14,
+  "invariants": 18,
+  "failure_modes": 32,
+  "gates": 13,
+  "obligations": 32,
+  "supersessions": 6,
+  "mutation_counts": {
+    "KILLED": 26
+  },
+  "current_results": {
+    "PASS": 126
+  },
+  "runs": [
+    {
+      "id": "pre-boundary",
+      "framework": "pytest",
+      "source_seal": "7a1ba819dfa03bd60ed626a087919aa29d7a691d32f0d50b9695dbc3caf095c5",
+      "evidence_path": "vv_baseline_failures.xml",
+      "historical": 1
+    },
+    {
+      "id": "pre-api",
+      "framework": "pytest",
+      "source_seal": "f7f7eaeff656e0c8235be16f8d425c26834ea86ee43ee53c6cee7693f0edd4d7",
+      "evidence_path": "vv_api_baseline_failures.xml",
+      "historical": 1
+    },
+    {
+      "id": "current-unit",
+      "framework": "pytest",
+      "source_seal": "5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f",
+      "evidence_path": "vv_evidence/unit_results.xml",
+      "historical": 0
+    },
+    {
+      "id": "current-cross-pytest",
+      "framework": "pytest",
+      "source_seal": "5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f",
+      "evidence_path": "vv_evidence/crossjoin_pytest_results.xml",
+      "historical": 0
+    },
+    {
+      "id": "current-cross-unittest",
+      "framework": "unittest",
+      "source_seal": "5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f",
+      "evidence_path": "vv_evidence/crossjoin_unittest_results.json",
+      "historical": 0
+    }
+  ],
+  "source_seal": "5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f"
+}

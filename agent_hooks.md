@@ -1,0 +1,11 @@
+# Governance boundary instruction template
+
+Apply these instructions with an execution gateway that enforces them. Text instructions alone do not create a security boundary.
+
+**Hash hook.** Before interpreting a handoff or invoking its tool, call `governance_verify_payload` using the registered payload digest, then `governance_verify_handoff` with the transaction, payload hash, ledger block hash, expected session and recipient identity. Continue only on successful verification. On mismatch or quarantine: halt tool execution, clear the session's working context through the host's isolation mechanism, and emit `SYSTEM_QUARANTINE`. An unavailable verifier, unknown receipt or failed verification grants no trust.
+
+**Chain hook.** Wrap every outbound message with `session_id`, `sequence_number`, `source_agent`, `target_entity`, `payload`, and `previous_hash`. Use the last known verified ledger **block hash** as the parent. Genesis uses sequence 0 and 64 zeroes. Submit with `governance_commit_state`, poll `governance_get_status`, and send only once verified. Attach the receipt's `payload_hash` and `block_hash` as envelope fields `payload_hash` and `ledger_hash`. A pending token is not a verified hash. On busy, retry without advancing sequence. On rejection, correct the frame; on quarantine, halt the session.
+
+Never accept an unregistered payload merely because it matches its own claimed digest. Content verification alone does not establish lineage. The host must supply expected session and target from trusted routing context, not copy them from the incoming envelope. Coordinate outbound messages through one sequencer per session.
+
+**Availability hook.** Distinguish `held` / `HOLD` from integrity quarantine. Unknown/evicted tokens, deadlines, worker loss, capacity limits or an unavailable verifier grant no trust. Do not retry a tool, replay an accepted transaction, reset a chain, or fall back to an unverified path. Only a `busy` response for an unaccepted frame permits bounded admission retry with its original sequence. Recovery requires host-owned reconciliation. Snapshot the transaction before asynchronous verification and invoke the tool with that same immutable payload; never reread a caller-mutable envelope afterward.

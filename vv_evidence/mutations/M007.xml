@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.041" timestamp="2026-10-16T06:47:15.983954+00:00" hostname="08f763cb05c0"><testcase classname="test_governance.LedgerTests" name="test_gate_never_calls_tool_and_clears_context" time="0.005"><failure message="AssertionError: Lists differ: ['1e26314010734460e7d7e9b6b492b9066480b1e69e0dbddfc2bef4a5bc525f8a'] != []&#10;&#10;First list contains 1 additional elements.&#10;First extra element 0:&#10;'1e26314010734460e7d7e9b6b492b9066480b1e69e0dbddfc2bef4a5bc525f8a'&#10;&#10;- ['1e26314010734460e7d7e9b6b492b9066480b1e69e0dbddfc2bef4a5bc525f8a']&#10;+ []">self = &lt;test_governance.LedgerTests testMethod=test_gate_never_calls_tool_and_clears_context&gt;
+
+    async def test_gate_never_calls_tool_and_clears_context(self):
+        sender = AgentGateway(self.engine, "s", "sender")
+        receiver = AgentGateway(self.engine, "s", "receiver")
+        calls = []
+        envelope = await sender.wrap_output("safe", "receiver")
+        await receiver.execute_verified(envelope, calls.append)
+        self.assertEqual(calls, ["safe"])
+        envelope["transaction"]["payload"] = "unsafe"
+        with self.assertRaises(QuarantineError):
+            await receiver.execute_verified(envelope, calls.append)
+        self.assertEqual(calls, ["safe"])
+&gt;       self.assertEqual(receiver.context, [])
+E       AssertionError: Lists differ: ['1e26314010734460e7d7e9b6b492b9066480b1e69e0dbddfc2bef4a5bc525f8a'] != []
+E       
+E       First list contains 1 additional elements.
+E       First extra element 0:
+E       '1e26314010734460e7d7e9b6b492b9066480b1e69e0dbddfc2bef4a5bc525f8a'
+E       
+E       - ['1e26314010734460e7d7e9b6b492b9066480b1e69e0dbddfc2bef4a5bc525f8a']
+E       + []
+
+test_governance.py:147: AssertionError</failure></testcase></testsuite></testsuites>

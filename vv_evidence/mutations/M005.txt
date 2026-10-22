@@ -1,0 +1,20 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________ LedgerTests.test_two_blocks_and_registered_hash_only _____________
+
+self = <test_governance.LedgerTests testMethod=test_two_blocks_and_registered_hash_only>
+
+    async def test_two_blocks_and_registered_hash_only(self):
+        first = await self.commit(**self.frame())
+        second = await self.commit(**self.frame(seq=1, parent=first["block_hash"]))
+        self.assertEqual(second["status"], "verified")
+        good = await self.engine.governance_verify_payload("hello", first["payload_hash"])
+        self.assertTrue(good["verified"])
+        self.assertFalse((await self.engine.governance_verify_payload("changed", first["payload_hash"]))["verified"])
+>       self.assertFalse((await self.engine.governance_verify_payload("unregistered", sha256_text("unregistered")))["verified"])
+E       AssertionError: True is not false
+
+test_governance.py:107: AssertionError
+=========================== short test summary info ============================
+FAILED test_governance.py::LedgerTests::test_two_blocks_and_registered_hash_only
+1 failed in 0.04s

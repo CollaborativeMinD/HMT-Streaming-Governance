@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.053" timestamp="2026-10-16T06:47:16.241410+00:00" hostname="08f763cb05c0"><testcase classname="test_uplift.UpliftTests" name="test_mutating_handoff_during_verification_cannot_swap_tool_payload" time="0.005"><failure message="AssertionError: Lists differ: ['unverified swapped bytes'] != ['safe']&#10;&#10;First differing element 0:&#10;'unverified swapped bytes'&#10;'safe'&#10;&#10;- ['unverified swapped bytes']&#10;+ ['safe']">self = &lt;test_uplift.UpliftTests testMethod=test_mutating_handoff_during_verification_cannot_swap_tool_payload&gt;
+
+    async def test_mutating_handoff_during_verification_cannot_swap_tool_payload(self):
+        sender = AgentGateway(self.engine, 's', 'sender')
+        receiver = AgentGateway(self.engine, 's', 'receiver')
+        envelope = await sender.wrap_output('safe', 'receiver')
+        started, release = asyncio.Event(), asyncio.Event()
+        original = self.engine.governance_verify_payload
+    
+        async def blocked(payload, expected_hash):
+            started.set()
+            await release.wait()
+            return await original(payload, expected_hash)
+    
+        self.engine.governance_verify_payload = blocked
+        calls = []
+        task = asyncio.create_task(receiver.execute_verified(envelope, calls.append))
+        await started.wait()
+        envelope['transaction']['payload'] = 'unverified swapped bytes'
+        release.set()
+        await task
+&gt;       self.assertEqual(calls, ['safe'])
+E       AssertionError: Lists differ: ['unverified swapped bytes'] != ['safe']
+E       
+E       First differing element 0:
+E       'unverified swapped bytes'
+E       'safe'
+E       
+E       - ['unverified swapped bytes']
+E       + ['safe']
+
+test_uplift.py:72: AssertionError</failure></testcase></testsuite></testsuites>

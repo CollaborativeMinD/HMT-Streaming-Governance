@@ -1,0 +1,17 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______________ LedgerTests.test_payload_assertion_and_malformed _______________
+
+self = <test_governance.LedgerTests testMethod=test_payload_assertion_and_malformed>
+
+    async def test_payload_assertion_and_malformed(self):
+        result = await self.commit(**self.frame(), expected_hash=sha256_text("other"))
+>       self.assertEqual(result["status"], "quarantined")
+E       AssertionError: 'verified' != 'quarantined'
+E       - verified
+E       + quarantined
+
+test_governance.py:129: AssertionError
+=========================== short test summary info ============================
+FAILED test_governance.py::LedgerTests::test_payload_assertion_and_malformed
+1 failed in 0.04s

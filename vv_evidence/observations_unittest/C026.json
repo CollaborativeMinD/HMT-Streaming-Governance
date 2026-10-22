@@ -1,0 +1,9 @@
+{
+  "exact_bytes": true,
+  "input_bytes": 3081,
+  "expected_bytes": 3081,
+  "staging_bounded": true,
+  "chunks": 2,
+  "records": 2,
+  "source_closed": true
+}

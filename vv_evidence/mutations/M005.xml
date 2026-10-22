@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.042" timestamp="2026-10-16T06:47:15.462992+00:00" hostname="08f763cb05c0"><testcase classname="test_governance.LedgerTests" name="test_two_blocks_and_registered_hash_only" time="0.005"><failure message="AssertionError: True is not false">self = &lt;test_governance.LedgerTests testMethod=test_two_blocks_and_registered_hash_only&gt;
+
+    async def test_two_blocks_and_registered_hash_only(self):
+        first = await self.commit(**self.frame())
+        second = await self.commit(**self.frame(seq=1, parent=first["block_hash"]))
+        self.assertEqual(second["status"], "verified")
+        good = await self.engine.governance_verify_payload("hello", first["payload_hash"])
+        self.assertTrue(good["verified"])
+        self.assertFalse((await self.engine.governance_verify_payload("changed", first["payload_hash"]))["verified"])
+&gt;       self.assertFalse((await self.engine.governance_verify_payload("unregistered", sha256_text("unregistered")))["verified"])
+E       AssertionError: True is not false
+
+test_governance.py:107: AssertionError</failure></testcase></testsuite></testsuites>

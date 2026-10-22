@@ -1,0 +1,7 @@
+{
+  "outcome": "busy",
+  "reason": "PENDING_BYTE_CAPACITY",
+  "accepted": "verified",
+  "records": 1,
+  "pending_bytes": 0
+}

@@ -1,0 +1,62 @@
+test_C001_scanner (__main__.CartesianRefutationTests.test_C001_scanner) ... ok
+test_C002_scanner (__main__.CartesianRefutationTests.test_C002_scanner) ... ok
+test_C003_nominal (__main__.CartesianRefutationTests.test_C003_nominal) ... ok
+test_C004_parent (__main__.CartesianRefutationTests.test_C004_parent) ... ok
+test_C005_sequence (__main__.CartesianRefutationTests.test_C005_sequence) ... ok
+test_C006_replay (__main__.CartesianRefutationTests.test_C006_replay) ... ok
+test_C007_payload_assertion (__main__.CartesianRefutationTests.test_C007_payload_assertion) ... ok
+test_C008_payload (__main__.CartesianRefutationTests.test_C008_payload) ... ok
+test_C009_metadata (__main__.CartesianRefutationTests.test_C009_metadata) ... ok
+test_C010_recipient (__main__.CartesianRefutationTests.test_C010_recipient) ... ok
+test_C011_cross_session (__main__.CartesianRefutationTests.test_C011_cross_session) ... ok
+test_C012_block_hash (__main__.CartesianRefutationTests.test_C012_block_hash) ... ok
+test_C013_unregistered (__main__.CartesianRefutationTests.test_C013_unregistered) ... ok
+test_C014_closed (__main__.CartesianRefutationTests.test_C014_closed) ... ok
+test_C015_hold_race (__main__.CartesianRefutationTests.test_C015_hold_race) ... ok
+test_C016_verifier_fault (__main__.CartesianRefutationTests.test_C016_verifier_fault) ... ok
+test_C017_verification_capacity (__main__.CartesianRefutationTests.test_C017_verification_capacity) ... ok
+test_C018_cancel_verification (__main__.CartesianRefutationTests.test_C018_cancel_verification) ... ok
+test_C019_queue (__main__.CartesianRefutationTests.test_C019_queue) ... ok
+test_C020_pending_bytes (__main__.CartesianRefutationTests.test_C020_pending_bytes) ... ok
+test_C021_ledger (__main__.CartesianRefutationTests.test_C021_ledger) ... ok
+test_C022_retention (__main__.CartesianRefutationTests.test_C022_retention) ... ok
+test_C023_snapshot (__main__.CartesianRefutationTests.test_C023_snapshot) ... ok
+test_C024_concurrent_close (__main__.CartesianRefutationTests.test_C024_concurrent_close) ... ok
+test_C025_deadline (__main__.CartesianRefutationTests.test_C025_deadline) ... ok
+test_C026_stream (__main__.CartesianRefutationTests.test_C026_stream) ... ok
+test_C027_sink_failure (__main__.CartesianRefutationTests.test_C027_sink_failure) ... ok
+test_C028_schema (__main__.CartesianRefutationTests.test_C028_schema) ... ok
+test_C029_api (__main__.CartesianRefutationTests.test_C029_api) ... Executing <Task pending name='Task-209' coro=<make_test.<locals>.test() running at /workspace/marimo_governance/vv_crossjoin_unittest.py:42> cb=[_run_until_complete_cb() at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py:181] created at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py:100> took 0.290 seconds
+[10/16/26 06:47:09] INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+ok
+test_C030_structure (__main__.CartesianRefutationTests.test_C030_structure) ... ok
+test_C031_performance (__main__.CartesianRefutationTests.test_C031_performance) ... Executing <Task pending name='Task-220' coro=<make_test.<locals>.test() running at /workspace/marimo_governance/vv_crossjoin_unittest.py:42> wait_for=<Future pending cb=[shield.<locals>._outer_done_callback() at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/tasks.py:922, Task.task_wakeup()] created at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py:448> cb=[_run_until_complete_cb() at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py:181] created at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py:100> took 0.771 seconds
+ok
+test_C032_evidence (__main__.CartesianRefutationTests.test_C032_evidence) ... ok
+test_cartesian_set_and_links (__main__.CartesianRefutationTests.test_cartesian_set_and_links) ... ok
+
+----------------------------------------------------------------------
+Ran 33 tests in 4.473s
+
+OK

@@ -1,0 +1,12 @@
+{
+  "outcome": "delivered",
+  "effects": [
+    "safe"
+  ],
+  "context": 2,
+  "quarantined": 0,
+  "held": 0,
+  "records": 1,
+  "pending_bytes": 0,
+  "block_oracle": true
+}

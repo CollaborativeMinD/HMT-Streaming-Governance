@@ -1,0 +1,87 @@
+{
+  "scope": "Source review and comparison only; upstream campaigns not rerun or inherited as admission.",
+  "archives": [
+    {
+      "name": "1-HMT_Continuity_SoS.zip",
+      "sha256": "84671861c656333d7e77d06b640d27f71df567c8662d5adfdb14acdd6cacf8b0"
+    },
+    {
+      "name": "2-HMT-Fallback-Chains-v1.0.0.zip",
+      "sha256": "da1bbe2bbf5b093e0592dff4f16013cedad2f904ba945487b1946b7cdb03e888"
+    },
+    {
+      "name": "3-hmt-field-cards.zip",
+      "sha256": "fc9922d3fc77ad71a72e9156cf9b38b749423e97c5f9909e4147a17da971f8aa"
+    },
+    {
+      "name": "4-hmt-optimization-engines.zip",
+      "sha256": "0ab4b70f6473d8026ae35090f07683173212b6cdbeabbf5fc8db66b673c01f09"
+    },
+    {
+      "name": "5-hmt-policy-bundle-v2.0.0.zip",
+      "sha256": "b18b494ddce9427a320da24aa3ffd424d24a021271029fe5a1192661cb61dd87"
+    }
+  ],
+  "inspected_files": [
+    {
+      "path": "1-HMT_Continuity_SoS/HMT_Continuity_SoS/README.md",
+      "sha256": "ce58d6c63c856800d57dbf063bb718be6eebbf6c09e14098f48e2fd6c56b0a02"
+    },
+    {
+      "path": "1-HMT_Continuity_SoS/HMT_Continuity_SoS/src/hmt_continuity/breaker.py",
+      "sha256": "3223334cb3d4b7730d8b11d6cfe45f6e3c9c734d9ac730c64cd86f07b48be4a9"
+    },
+    {
+      "path": "1-HMT_Continuity_SoS/HMT_Continuity_SoS/docs/Integration.md",
+      "sha256": "e90ff70c38780c4aa2cb89f2a727c91004b5c2eb7243aec236bc9339bfb53da5"
+    },
+    {
+      "path": "2-HMT-Fallback-Chains-v1.0.0/HMT-Fallback-Chains-v1.0.0/src/hmt_fallback/chain.py",
+      "sha256": "847d1fc9d0dcec27d5a567cbb1c5810a7ec557a89364e6be494dc7023143bb28"
+    },
+    {
+      "path": "2-HMT-Fallback-Chains-v1.0.0/HMT-Fallback-Chains-v1.0.0/src/hmt_fallback/contracts.py",
+      "sha256": "c8b839ecae118367deed426614a61bf42b7bb22b17b87ff55a78df16f4fd6144"
+    },
+    {
+      "path": "3-hmt-field-cards/hmt-field-cards/control-geometry/chapters/07_timing_abortability.md",
+      "sha256": "9d37dec28d9f23660e156cd252848eb2b99ed9b75065b75504a58ffb886b9469"
+    },
+    {
+      "path": "3-hmt-field-cards/hmt-field-cards/control-geometry/chapters/09_information_airlocks.md",
+      "sha256": "91ce9e47d7bedff73fc94cef7978d436b9c5eb6872a546ed3fc17bd6df2a865b"
+    },
+    {
+      "path": "nested/hmt-performance-orchestration_v1.0.0_PASS/hmt-bounded-performance-orchestration_v1.0.0/src/hmt_bounded_performance/resources.py",
+      "sha256": "fb6afabcd361afdde4ed4ee34729e9666ce119b426ccc8b54b0113cebb33bf75"
+    },
+    {
+      "path": "nested/hmt-performance-orchestration_v1.0.0_PASS/hmt-bounded-performance-orchestration_v1.0.0/README.md",
+      "sha256": "528eda472373b2dadc193719fd02d8be9f673bc76793f8477342244a24da8ccc"
+    },
+    {
+      "path": "nested/HMT_Unified_Mission_Assurance_v1.0.0/HMT_Unified_Mission_Assurance_v1.0.0/Runbook.md",
+      "sha256": "3632348276f18bd99809d29b2bf732ae1367d2d86b0f30b49bcac6e5f0aa36cd"
+    },
+    {
+      "path": "nested/HMT_Unified_Mission_Assurance_v1.0.0/HMT_Unified_Mission_Assurance_v1.0.0/vendor/watchdog/src/hmt_watchdog.py",
+      "sha256": "a5efdf3146a035f7006131503cfc0597c65f387e8f751b2c8c53a1cc59da74e9"
+    },
+    {
+      "path": "5-hmt-policy-bundle-v2.0.0/hmt-policy-bundle-v2.0.0/README.md",
+      "sha256": "d42553ceb1366af1798cacd528091131162d375529f5f0e826121d4f4e865418"
+    }
+  ],
+  "additional_github_sources": [
+    {
+      "repository": "CollaborativeMinD/HMT-Debugger-Agent",
+      "commit": "bdc4d529772f852a77bfb447b4cfb05f6888e936",
+      "path": "tooling/optimization-lane/README.md"
+    },
+    {
+      "repository": "CollaborativeMinD/hmt-truth-serum-hiring-v4",
+      "commit": "69e34b00b8f585386cfbd75e86b9aa4cb06b1be0",
+      "path": "architecture/reuse_map.md"
+    }
+  ]
+}

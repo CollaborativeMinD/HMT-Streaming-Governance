@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.059" timestamp="2026-10-16T06:47:17.946777+00:00" hostname="08f763cb05c0"><testcase classname="test_uplift.UpliftTests" name="test_byte_and_record_capacity_refuse_without_advancing_head" time="0.005"><failure message="AssertionError: {'status': 'pending', 'tracking_token': 'd3486b09429e44bbb7c16978b2dcea8b'} != {'status': 'held', 'reason': 'LEDGER_CAPACITY'}&#10;- {'status': 'pending', 'tracking_token': 'd3486b09429e44bbb7c16978b2dcea8b'}&#10;+ {'reason': 'LEDGER_CAPACITY', 'status': 'held'}">self = &lt;test_uplift.UpliftTests testMethod=test_byte_and_record_capacity_refuse_without_advancing_head&gt;
+
+    async def test_byte_and_record_capacity_refuse_without_advancing_head(self):
+        self.engine.max_pending_bytes = 3
+        result = await self.engine.governance_commit_state(**frame(payload='four'))
+        self.assertEqual(result, dict(status='busy', reason='PENDING_BYTE_CAPACITY'))
+        self.assertEqual(self.engine.head('s'), (-1, GENESIS_HASH))
+        self.engine.max_pending_bytes = 100
+        self.engine.max_records = 1
+        envelope = await AgentGateway(self.engine, 's').wrap_output('one')
+        held = await self.engine.governance_commit_state(**frame(seq=1, parent=envelope['ledger_hash']))
+&gt;       self.assertEqual(held, dict(status='held', reason='LEDGER_CAPACITY'))
+E       AssertionError: {'status': 'pending', 'tracking_token': 'd3486b09429e44bbb7c16978b2dcea8b'} != {'status': 'held', 'reason': 'LEDGER_CAPACITY'}
+E       - {'status': 'pending', 'tracking_token': 'd3486b09429e44bbb7c16978b2dcea8b'}
+E       + {'reason': 'LEDGER_CAPACITY', 'status': 'held'}
+
+test_uplift.py:105: AssertionError</failure></testcase></testsuite></testsuites>

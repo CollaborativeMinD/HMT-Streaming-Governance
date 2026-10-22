@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.043" timestamp="2026-10-16T06:47:15.200836+00:00" hostname="08f763cb05c0"><testcase classname="test_governance.LedgerTests" name="test_metadata_rewrite_blocked_with_identical_payload" time="0.005"><failure message="AssertionError: Tool ran">self = &lt;test_governance.LedgerTests testMethod=test_metadata_rewrite_blocked_with_identical_payload&gt;
+
+    async def test_metadata_rewrite_blocked_with_identical_payload(self):
+        envelope = await AgentGateway(self.engine, "s", "sender").wrap_output("safe", "receiver")
+        envelope["transaction"]["source_agent"] = "attacker"
+        with self.assertRaises(QuarantineError):
+&gt;           await AgentGateway(self.engine, "s", "receiver").execute_verified(envelope, lambda _: self.fail("Tool ran"))
+
+test_governance.py:154: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+governance_gateway.py:66: in execute_verified
+    return tool(transaction.payload)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+test_governance.py:154: in &lt;lambda&gt;
+    await AgentGateway(self.engine, "s", "receiver").execute_verified(envelope, lambda _: self.fail("Tool ran"))
+                                                                                          ^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: Tool ran</failure></testcase></testsuite></testsuites>

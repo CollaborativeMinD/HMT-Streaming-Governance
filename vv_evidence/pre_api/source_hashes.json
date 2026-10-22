@@ -1,0 +1,12 @@
+{
+  "governance_cdc.py": "7b89c738b9f11363d8e41e4e50a4d1a14020a92d4cd5d03e76995dfa423810af",
+  "governance_contracts.py": "96762aae0996d88fe9b4ba90760a3866c00df6aa0f99d89d73e23c22d2502e25",
+  "governance_core.py": "1f5dc598dbfbe6e31ac40ba548724edf30bdac9bfc6cf93cae9b6e1759d16221",
+  "governance_gateway.py": "ea14f7ac0487374ec625b2abe02a1f3f944b9cf2893400401a271f5e4dfdefa1",
+  "governance_mcp.py": "ed6a06c1899a74415bf37eea828a05ce75c1d4dd1aae0c41f02ed8e58b07613a",
+  "governance_receipts.py": "ee3a6a8e9f614f89ed7b17172391a27914121e1cbbfc5a1474f0d645dc200433",
+  "governance_state.py": "fde8784b098a7870d9e5769a8be685dbf78d84450d3bd8abedf93fa8b07a17a4",
+  "governance_stream.py": "869314df25f1a89df4ffdd866df14e99e6967ca29a10228e0e29492fef08fc44",
+  "governance_verification.py": "60cae54e3f12d63e6fad62e45290bbe223ddef13588263216e102f609c913fd8",
+  "governance_worker.py": "240e4020271fd2c05ec63a162877b1d8318c923292a6f44cab0c7e3292da12df"
+}

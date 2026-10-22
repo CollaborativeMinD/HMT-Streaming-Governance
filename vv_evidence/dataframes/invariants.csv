@@ -1,0 +1,19 @@
+id,requirement_id,description
+I01,CDC-01,Every input byte appears once at its original byte offset.
+I02,CDC-01,Packet splits do not change cuts or the independent polynomial oracle.
+I03,GOV-01,"Sequence gaps, duplicate commits and incorrect parents never advance the ledger."
+I04,GOV-02,"Committed block identity binds routing, source, session and predecessor."
+I05,GOV-02,Only a committed matching payload can cross the invocation gate.
+I06,GOV-03,Integrity mismatch clears context and causes zero additional effects.
+I07,GOV-05,Unavailable or interrupted verification cannot return trust.
+I08,GOV-04,Count and encoded-byte admission remain within configured bounds.
+I09,GOV-06,Unknown/evicted receipt grants no trust; ledger identities remain available.
+I10,GOV-07,An input mutation during await cannot replace bytes delivered to the tool.
+I11,VV-01,Concurrent shutdown has one owner; pending bookkeeping reaches zero.
+I12,GOV-05,An expired transaction cannot commit or be classified as tampering.
+I13,GOV-08,Streaming preserves bytes with bounded staging and closes its source.
+I14,GOV-08,A failed effect sink is invoked once; siblings cancel and source closes.
+I15,VV-03,Malformed core/wire frames are rejected before immutable admission.
+I16,VV-02,"Runtime modules <=180 lines, functions <=60, decision nesting <=5, AST branch proxy <=20."
+I17,VV-04,Scanner/ledger speed and memory satisfy explicit local catastrophic-regression ceilings.
+I18,VV-05,"Every finite Cartesian tuple and declared requirement retains referentially valid, source-bound assertion links."
