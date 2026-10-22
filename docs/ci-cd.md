@@ -8,6 +8,7 @@ The active lane is [`.github/workflows/ci.yml`](../.github/workflows/ci.yml). It
 | Model/notebook/supply chain | Strict SysML validation, actual notebook export, pandas load, vulnerability and secret scans, workflow syntax | Pinned tools; current tree plus two archive levels; published vulnerability data at run time |
 | Admission | Every upstream lane succeeds | Failure, cancellation and skip prevent packaging |
 | Verified archive/clean replay | Per-file manifest, archive checksum, complete campaign after clean extraction | Exact source and fresh Python 3.12/tooling evidence |
+| Release eligibility | Verified archive/clean replay succeeds | Runs after packaging, including on failure or skip; rejects every result except success |
 | Tag delivery | Same verified ZIP/checksum uploaded to GitHub Release | No service activation or agent-host registration |
 
 The runtime uses the standard library. The MCP adapter and V&V runner use their separate PEP 723 locks. SysML tooling uses `package-lock.json`; Node.js 22 and uv 0.12.23 are explicit. Actions are pinned to immutable commits. `pip-audit` is pinned to 2.10.1; vulnerability data remains time dependent. Gitleaks 8.30.1 and actionlint 1.7.12 downloads are SHA-256 verified.
@@ -23,6 +24,8 @@ The secret-scan exceptions are restricted to the generic-key rule: receipt UUIDs
 5. Merge only the reviewed, passing head. A successor needs another run.
 
 Repository branch protection is separate from workflow logic. Recommended required checks are **Admission** and **Verified archive and clean replay**, with PRs required. A workflow cannot prevent an administrator or unprotected direct push; the workflow token does not gain repository-administration rights.
+
+PR qualification accepts both `main` and the `codex/durable-tailcat-control` uplift branch as base branches, so the stacked CI draft can run before the uplift merges. **Release eligibility** reports only whether verified packaging succeeded. **Publish Tagged GitHub Release** runs only for a `v*` tag push and depends on eligibility; its result reports publication. A conditionally skipped publishing job is expected on a PR. Eligibility does not replace the repository's separate CodeQL or Code Quality requirements and does not resolve missing security-analysis results.
 
 ## Reproduce locally
 
