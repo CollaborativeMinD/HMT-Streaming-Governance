@@ -22,8 +22,8 @@ INSERT INTO "assertions" VALUES('E03-assert','E03','EFFECT','service/tests/test_
 INSERT INTO "assertions" VALUES('K01-assert','K01','KEYS','service/tests/test_keys.py::test_transit_independent_verification_context_tamper_and_rotation',26);
 INSERT INTO "assertions" VALUES('K02-assert','K02','KEYS','service/tests/test_keys.py::test_runtime_acl_cannot_read_root_rotate_or_mint_tokens',52);
 INSERT INTO "assertions" VALUES('K03-assert','K03','KEYS','service/tests/test_keys.py::test_seal_and_revoked_token_never_return_keys_or_signatures',60);
-INSERT INTO "assertions" VALUES('N01-assert','N01','NETWORK','service/tests/test_native.py::test_headscale_native_acl_allow_and_deny',70);
-INSERT INTO "assertions" VALUES('N02-assert','N02','NETWORK','service/tests/test_native.py::test_tailcat_native_peer_handoff_revocation_and_fencing',86);
+INSERT INTO "assertions" VALUES('N01-assert','N01','NETWORK','service/tests/test_native.py::test_headscale_native_acl_allow_and_deny',72);
+INSERT INTO "assertions" VALUES('N02-assert','N02','NETWORK','service/tests/test_native.py::test_tailcat_native_peer_handoff_revocation_and_fencing',88);
 INSERT INTO "assertions" VALUES('N03-assert','N03','NETWORK','service/tests/test_boundaries.py::test_container_transport_network_cannot_reach_data_or_write_root',120);
 INSERT INTO "assertions" VALUES('B02-assert','B02','BOUNDARY','service/tests/test_boundaries.py::test_uds_api_schema_errors_no_remote_identity_override',88);
 INSERT INTO "assertions" VALUES('B03-assert','B03','BOUNDARY','service/tests/test_boundaries.py::test_request_capacity_and_close_owned_jobs',102);

@@ -1,0 +1,17 @@
+{
+  "status": "HISTORICAL_FAILED",
+  "run": "https://github.com/CollaborativeMinD/HMT-Streaming-Governance/actions/runs/39722496045",
+  "source_commit": "403f739d50564d51e516c010c127a4c3eb6e99b9",
+  "failed_tests": [
+    "tests/test_cross_findings.py::test_nullify_executable_finding[N02]",
+    "tests/test_native.py::test_tailcat_native_peer_handoff_revocation_and_fencing"
+  ],
+  "reason": "GitHub checkout made the fixture socket path 115 bytes; Linux AF_UNIX pathname capacity was exceeded",
+  "supersession": "Fixture allocates a mode-0700 short temporary socket directory and asserts the pathname is below 108 bytes",
+  "satisfying_source_seal": "933d0e2f32ef9d5d8da9e8d9322300e25ba3c10f21df9b2786f01a41340e6422",
+  "current_clean_replay": {
+    "pytest": 86,
+    "unittest": 29,
+    "selected_mutants_killed": 10
+  }
+}

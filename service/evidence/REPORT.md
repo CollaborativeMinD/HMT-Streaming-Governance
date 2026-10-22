@@ -47,4 +47,4 @@ Model witnesses: strict SysML validation with zero errors/warnings; 128 release 
 
 The local speed fixture includes PostgreSQL, polling and fresh receiver authorization. [Timing and traced Python memory](performance.json) exclude service RSS and WAN behavior.
 
-Source binding: `69aeaa8dfce296a4f647bd753b1a400378078778432a1a7a95ebd643f073838b`. [Source bytes](source-manifest.json) · [Both-framework results](summary.json) · [Mutation witnesses](mutations/summary.json).
+Source binding: `933d0e2f32ef9d5d8da9e8d9322300e25ba3c10f21df9b2786f01a41340e6422`. [Source bytes](source-manifest.json) · [Both-framework results](summary.json) · [Mutation witnesses](mutations/summary.json).

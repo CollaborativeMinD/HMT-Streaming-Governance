@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.200" timestamp="2026-10-22T04:25:39.711357+00:00" hostname="2dd7d8cfea16"><testcase classname="tests.test_ledger" name="test_ungranted_route_and_missing_sender_role_are_denied" time="0.050"><failure message="Failed: DID NOT RAISE Rejected">async def test_ungranted_route_and_missing_sender_role_are_denied():
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.246" timestamp="2026-10-22T04:32:14.253578+00:00" hostname="2dd7d8cfea16"><testcase classname="tests.test_ledger" name="test_ungranted_route_and_missing_sender_role_are_denied" time="0.065"><failure message="Failed: DID NOT RAISE Rejected">async def test_ungranted_route_and_missing_sender_role_are_denied():
         async with Host() as host:
             with pytest.raises(Rejected, match="ROUTE_REVOKED"):
                 await host.commit(host.frame(target_entity=host.intruder))

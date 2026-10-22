@@ -3,6 +3,8 @@ import asyncio
 import json
 import os
 import socket
+import tempfile
+import shutil
 from pathlib import Path
 
 import pytest
@@ -89,7 +91,8 @@ async def test_tailcat_native_peer_handoff_revocation_and_fencing():
     containers=Containers()
     port=8443
     relay_address=json.loads((LAB/'endpoints.json').read_text())['addresses']['relay']
-    (directory/'socket').mkdir(mode=0o700)
+    socket_directory=Path(tempfile.mkdtemp(prefix='hmt-native-uds-'))
+    assert len(str(socket_directory/'broker.sock').encode()) < 108
     (directory/'endpoint-output').mkdir(mode=0o700)
     endpoint_path=directory/'endpoint-output/private' 
     private(directory/'relay.json', dict(listen=f'0.0.0.0:{port}',
@@ -112,16 +115,16 @@ async def test_tailcat_native_peer_handoff_revocation_and_fencing():
             for name, agent in [('sender',host.sender),('receiver',host.receiver)]:
                 await host.sql('UPDATE governance.agents SET peer_key=%s WHERE agent_id=%s',(peers[name],agent))
                 host.peers[agent] = peers[name]
-            server = await serve(host.engine,directory/'socket/broker.sock')
+            server = await serve(host.engine,socket_directory/'broker.sock')
             async with server:
                 private(directory/'gateway.json',dict(key_file=str(directory/'gateway.key'),
-                    socket=str(directory/'socket/broker.sock'),endpoint_file=str(endpoint_path),
+                    socket=str(socket_directory/'broker.sock'),endpoint_file=str(endpoint_path),
                     allowed=[peers['sender'],peers['receiver']],
                     region=dict(RegionID=997,RegionCode='private',RegionName='Private Tailcat',
                         Nodes=[dict(Name='private',RegionID=997,HostName=relay_address,IPv4=relay_address,DERPPort=port,STUNPort=-1)])))
                 gateway=await containers.start('gateway',['serve',directory/'gateway.json'],
                     files=[directory/'gateway.json',directory/'gateway.key'],
-                    directories=[(directory/'socket',True),(directory/'endpoint-output',False)])
+                    directories=[(socket_directory,True),(directory/'endpoint-output',False)])
                 for _ in range(100):
                     if endpoint_path.exists(): break
                     assert gateway.returncode is None, 'Gateway failed before private endpoint creation'
@@ -170,3 +173,4 @@ async def test_tailcat_native_peer_handoff_revocation_and_fencing():
             if process and process.returncode is None:
                 process.terminate()
                 await process.wait()
+        shutil.rmtree(socket_directory,ignore_errors=True)

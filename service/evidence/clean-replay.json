@@ -1,1 +1,8 @@
-{"status":"PASS","scope":"Complete durable local campaign after manifest-verified clean extraction; four HOLDs retained"}
+{
+  "status": "PASS",
+  "scope": "Complete durable local campaign after manifest-verified clean extraction; four HOLDs retained",
+  "source_seal": "933d0e2f32ef9d5d8da9e8d9322300e25ba3c10f21df9b2786f01a41340e6422",
+  "pytest": 86,
+  "unittest": 29,
+  "selected_mutants_killed": 10
+}

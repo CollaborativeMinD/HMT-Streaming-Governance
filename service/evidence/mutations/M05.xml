@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="6" time="0.179" timestamp="2026-10-22T04:25:38.203260+00:00" hostname="2dd7d8cfea16"><testcase classname="tests.test_boundaries" name="test_json_invalid_cases[{&quot;x&quot;:1,&quot;x&quot;:2}]" time="0.001"><failure message="Failed: DID NOT RAISE Rejected">raw = b'{"x":1,"x":2}'
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="6" time="0.176" timestamp="2026-10-22T04:32:12.716608+00:00" hostname="2dd7d8cfea16"><testcase classname="tests.test_boundaries" name="test_json_invalid_cases[{&quot;x&quot;:1,&quot;x&quot;:2}]" time="0.001"><failure message="Failed: DID NOT RAISE Rejected">raw = b'{"x":1,"x":2}'
 
     @pytest.mark.parametrize('raw',[b'{"x":1,"x":2}',b'{"x":NaN}',b'[]',b'null',b'{"x":"\\ud800"}',b'{'])
     def test_json_invalid_cases(raw):

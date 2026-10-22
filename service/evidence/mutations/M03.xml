@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.161" timestamp="2026-10-22T04:25:37.315021+00:00" hostname="2dd7d8cfea16"><testcase classname="tests.test_boundaries" name="test_utf8_payload_byte_boundary_and_no_surrogate" time="0.001"><failure message="Failed: DID NOT RAISE Rejected">def test_utf8_payload_byte_boundary_and_no_surrogate():
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.189" timestamp="2026-10-22T04:32:11.705394+00:00" hostname="2dd7d8cfea16"><testcase classname="tests.test_boundaries" name="test_utf8_payload_byte_boundary_and_no_surrogate" time="0.001"><failure message="Failed: DID NOT RAISE Rejected">def test_utf8_payload_byte_boundary_and_no_surrogate():
         value=dict(session_id='s',sequence_number=0,source_agent='a',target_entity='b',payload='é'*3,previous_hash=GENESIS)
         assert frame(value,6)==value
 &gt;       with pytest.raises(Rejected,match='PAYLOAD_CAPACITY'):frame(value,5)
