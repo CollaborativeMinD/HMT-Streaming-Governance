@@ -1,0 +1,19 @@
+title = "Streaming governance secret-scan rules"
+[extend]
+useDefault = true
+# Only the generic-key detector gets these exact semantic exceptions.
+# All provider-specific secret rules continue scanning these files.
+[[rules]]
+id = "generic-api-key"
+[[rules.allowlists]]
+description = "Random engine receipt identifiers grant no authentication authority"
+regexTarget = "match"
+regexes = ['''tracking_token['"]?\s*:\s*['"][0-9a-f]{32}['"]''']
+[[rules.allowlists]]
+description = "SHA-256 source identity entries whose filename includes api"
+regexTarget = "match"
+regexes = ['''(?:test_vv_api\.py|vv_api\.py)["']\s*:\s*["'][0-9a-f]{64}["']''']
+
+[[allowlists]]
+description = "Dependency trees, Git internals and generated CI output are not project credential inputs"
+paths = ['''(^|/)node_modules/''', '''(^|/)\.git/''', '''(^|/)\.ci-output/''']

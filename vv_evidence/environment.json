@@ -1,0 +1,119 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "source_seal": "5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f",
+  "packages": {
+    "pytest": "9.1.1",
+    "coverage": "7.16.2",
+    "mcp": "1.30.0",
+    "pydantic": "2.14.1"
+  },
+  "production_source_hashes": {
+    "governance_cdc.py": "7b89c738b9f11363d8e41e4e50a4d1a14020a92d4cd5d03e76995dfa423810af",
+    "governance_contracts.py": "96762aae0996d88fe9b4ba90760a3866c00df6aa0f99d89d73e23c22d2502e25",
+    "governance_core.py": "1f5dc598dbfbe6e31ac40ba548724edf30bdac9bfc6cf93cae9b6e1759d16221",
+    "governance_gateway.py": "ea14f7ac0487374ec625b2abe02a1f3f944b9cf2893400401a271f5e4dfdefa1",
+    "governance_mcp.py": "046a6f6c6ad031efda9b68f223f95a9e8f43d1f894b9137ab7a89376309c8372",
+    "governance_receipts.py": "ee3a6a8e9f614f89ed7b17172391a27914121e1cbbfc5a1474f0d645dc200433",
+    "governance_state.py": "fde8784b098a7870d9e5769a8be685dbf78d84450d3bd8abedf93fa8b07a17a4",
+    "governance_stream.py": "869314df25f1a89df4ffdd866df14e99e6967ca29a10228e0e29492fef08fc44",
+    "governance_verification.py": "60cae54e3f12d63e6fad62e45290bbe223ddef13588263216e102f609c913fd8",
+    "governance_worker.py": "240e4020271fd2c05ec63a162877b1d8318c923292a6f44cab0c7e3292da12df"
+  },
+  "commands": {
+    "unit": {
+      "command": [
+        "/home/agent/.cache/uv/environments-v2/run-vv-2577c91ec4513084/bin/python",
+        "-m",
+        "coverage",
+        "run",
+        "--branch",
+        "--source=governance_cdc,governance_contracts,governance_core,governance_gateway,governance_receipts,governance_state,governance_stream,governance_verification,governance_worker",
+        "-m",
+        "pytest",
+        "-q",
+        "test_fault_controls.py",
+        "test_governance.py",
+        "test_stream.py",
+        "test_uplift.py",
+        "test_vv_api.py",
+        "test_vv_evidence.py",
+        "test_vv_model.py",
+        "test_vv_regressions.py",
+        "test_vv_semantics.py",
+        "--junitxml=vv_evidence/unit_results.xml"
+      ],
+      "elapsed_seconds": 2.413324493999994,
+      "exit_code": 0
+    },
+    "coverage": {
+      "command": [
+        "/home/agent/.cache/uv/environments-v2/run-vv-2577c91ec4513084/bin/python",
+        "-m",
+        "coverage",
+        "json",
+        "-o",
+        "vv_evidence/coverage.json"
+      ],
+      "elapsed_seconds": 0.14498993800003745,
+      "exit_code": 0
+    },
+    "crossjoin_pytest": {
+      "command": [
+        "/home/agent/.cache/uv/environments-v2/run-vv-2577c91ec4513084/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "vv_crossjoin_pytest.py",
+        "--junitxml=vv_evidence/crossjoin_pytest_results.xml"
+      ],
+      "elapsed_seconds": 2.2301752660000034,
+      "exit_code": 0
+    },
+    "crossjoin_unittest": {
+      "command": [
+        "/home/agent/.cache/uv/environments-v2/run-vv-2577c91ec4513084/bin/python",
+        "vv_crossjoin_unittest.py"
+      ],
+      "elapsed_seconds": 4.16467879999999,
+      "exit_code": 0
+    },
+    "mutation": {
+      "command": [
+        "/home/agent/.cache/uv/environments-v2/run-vv-2577c91ec4513084/bin/python",
+        "vv_mutation.py"
+      ],
+      "elapsed_seconds": 12.815731733000007,
+      "exit_code": 0
+    }
+  },
+  "coverage_scope": "In-process runtime modules; MCP subprocess transport is functionally tested, not included in this branch percentage.",
+  "validation_source_hashes": {
+    "test_vv_semantics.py": "2e5bbca58a151a0ad9c11a87be231564a5fcbffcb54284faca6f5e59f54e6e18",
+    "test_uplift.py": "370062143f8ea80ba38fbb082f3e017aae85634f2631b77d35e7b641e2ff0cfe",
+    "test_fault_controls.py": "0b07d404dd0b6265ba2e45b7ce5ecc34a3b2af2d763d6d03995f8e0439b0aabb",
+    "test_vv_evidence.py": "0ad121f4edd04eb5b22adbfb4e8190e4c7139f05894c5537c5a1395ab8ff7399",
+    "test_stream.py": "4f6bc5f9340705a91c31b76ed69de8c5ff6eea1bf07ba27f4f700917c61ecf5a",
+    "test_vv_api.py": "fd221bdc78e3117977e4ad646eacaccbcef3f92a14231001042eafcb3cf5b382",
+    "test_governance.py": "4b83ab5225cb968a57f3ef138286c50ebbe5cb493564593cc9f775b5445c296c",
+    "test_vv_regressions.py": "f4e8dbdfa1d491cd750c79037c2cc63575a1994b73f17830372383c5526ceb5f",
+    "test_vv_model.py": "3c34fabf850097ad364b5e7e64187941923ddfba1247578441c199764b735e7f",
+    "vv_crossjoin_unittest.py": "8fa0879c3c3156387925417f78630cc84286a2b0122aa0bc14073948c540b20f",
+    "vv_api.py": "3055caedff44782fc744f243adaac1b9a253d3aa5f3861140b41107aa4c8448d",
+    "vv_build.py": "372df283d8cbd20a96adfc77b4e4233868f02ac142df1bffc5e2c4d9a78c2ab0",
+    "vv_crossjoin_pytest.py": "d02c3f8b9bdd8ab681977db2c84f7ce914e6333ac7c41c9593f7cbac065b0aee",
+    "vv_report.py": "2edd5bb0d085dd5b9eccb7ace2928fcba817d25eeea624697088f986aab16236",
+    "vv_probe_resources.py": "3a7457ac108abc3bcf38f61ce4746498025552946605794a0b71efba2627184b",
+    "vv_probe_quality.py": "bb2289a020ee3ddb023ff6e39ca827082229c3d04f42580fe6a8a78b6322453c",
+    "vv_probe_boundary.py": "0dada1470c42d9ff32a784d033d2d3d4f6670ffc52cbf57d384be64a2d8b98e0",
+    "vv_mutation.py": "518b099c3337436b19ed2214d640c60903e0468d3876aedef6d395232f73ad77",
+    "vv_probes.py": "066252bd6b4564cf499e3fca9d8c221d915b551839492a4e96e69e6ecbb0cb79",
+    "vv_common.py": "725f1d65af592d007be5e8a1b4c7b645fafe8f40cab10291ff48b2532d22962e",
+    "vv_mutation_catalog.json": "d1ee173f82d8f66f3c3bc16349399cf97f66b1abd06ea56fa38b3236c2ebc170",
+    "vv_test_inventory.json": "4972312c792a9003f623f0e234218bfd9f2052e8226f4dd764c3de0a79ebfa81",
+    "vv_catalog.json": "a6b782d7bc183319144bbe0f8b691dc0ed12d4511799d31a5598dc3ddb201ac9",
+    "vv_cross_join.sql": "9b3a02cdb450004344f60c9997007316be46abc83ebc94df301c2166e271ac52",
+    "vv_schema.sql": "e121c7f4c5008c64c19437df58885f00afe522b75a50795d4e302db5c79939f6",
+    "run_vv.py": "d71087f648864f7cd33a03882f2c3845048f916d96fbce0343bf50f406b7c43e"
+  }
+}

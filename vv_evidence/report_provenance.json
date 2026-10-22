@@ -1,0 +1,11 @@
+{
+  "generated_at": "2026-10-16T06:48:21.133659+00:00",
+  "source_hashes": {
+    "vv_report.py": "2edd5bb0d085dd5b9eccb7ace2928fcba817d25eeea624697088f986aab16236",
+    "governance.sysml": "03914329cdf5efe2a112430bc045478f5c8deb73bbd69b05782323f6b3deb910",
+    "sysml_validation.json": "d7157b75930747dba700bf4fe71521b022ba9d0b10f493969d3cc91d74c5f6b5",
+    "vv_evidence/model_truth_table.csv": "9452b767d473476c468db4af65136a08c35e385e5f6cd4cb0de6b1a77bcbd76d",
+    "vv_schema.sql": "e121c7f4c5008c64c19437df58885f00afe522b75a50795d4e302db5c79939f6",
+    "vv_cross_join.sql": "9b3a02cdb450004344f60c9997007316be46abc83ebc94df301c2166e271ac52"
+  }
+}

@@ -1,0 +1,19 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ BoundaryRegressionTests.test_closed_engine_denies_previously_verified_handoff _
+
+self = <test_vv_regressions.BoundaryRegressionTests testMethod=test_closed_engine_denies_previously_verified_handoff>
+
+    async def test_closed_engine_denies_previously_verified_handoff(self):
+        engine, receiver, envelope = await self.setup_boundary()
+        receiver.context.append('old context')
+        await engine.close()
+        effects = []
+>       with self.assertRaises(HoldError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: HoldError not raised
+
+test_vv_regressions.py:22: AssertionError
+=========================== short test summary info ============================
+FAILED test_vv_regressions.py::BoundaryRegressionTests::test_closed_engine_denies_previously_verified_handoff
+1 failed in 0.05s

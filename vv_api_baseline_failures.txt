@@ -1,0 +1,48 @@
+Installed 40 packages in 16ms
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________ APIContractTests.test_strict_schema_and_real_stdio_handoff __________
+
+self = <test_vv_api.APIContractTests testMethod=test_strict_schema_and_real_stdio_handoff>
+
+    async def test_strict_schema_and_real_stdio_handoff(self):
+        observed = await api_probe()
+>       self.assertEqual(observed['strict_rejections'], [True, True, True])
+E       AssertionError: Lists differ: [False, False, False] != [True, True, True]
+E       
+E       First differing element 0:
+E       False
+E       True
+E       
+E       - [False, False, False]
+E       + [True, True, True]
+
+test_vv_api.py:10: AssertionError
+----------------------------- Captured stderr call -----------------------------
+/home/agent/.cache/uv/archive-v0/XrgdO0kkmX-8YySA/lib/python3.12/site-packages/pydantic_settings/sources/utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+[10/16/26 06:20:09] INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+=========================== short test summary info ============================
+FAILED test_vv_api.py::APIContractTests::test_strict_schema_and_real_stdio_handoff
+1 failed in 1.43s

@@ -1,0 +1,1019 @@
+{
+  "version": 1,
+  "scope": "Finite declared catalog; not exhaustive over all programs, inputs, interleavings, threats or deployments.",
+  "requirements": [
+    {
+      "id": "CDC-01",
+      "description": "Byte-exact, deterministic packet-independent polynomial chunking."
+    },
+    {
+      "id": "GOV-01",
+      "description": "Only the exact next sequence and verified predecessor may commit."
+    },
+    {
+      "id": "GOV-02",
+      "description": "Verify committed content and intended routing before every effect."
+    },
+    {
+      "id": "GOV-03",
+      "description": "Integrity failures quarantine, clear context, and prevent effects."
+    },
+    {
+      "id": "GOV-04",
+      "description": "Bound queue, payload bytes, session count, and immutable record admission."
+    },
+    {
+      "id": "GOV-05",
+      "description": "Availability failure yields HOLD without granting trust or alleging tampering."
+    },
+    {
+      "id": "GOV-06",
+      "description": "Diagnostic eviction never removes committed verification identities."
+    },
+    {
+      "id": "GOV-07",
+      "description": "Capture immutable verified inputs before any suspension."
+    },
+    {
+      "id": "GOV-08",
+      "description": "Apply bounded stream backpressure and own source cleanup without effect retries."
+    },
+    {
+      "id": "VV-01",
+      "description": "Shutdown and cancellation have one cleanup owner and settle resources."
+    },
+    {
+      "id": "VV-02",
+      "description": "Enforce explicit structural and semantic branch complexity budgets."
+    },
+    {
+      "id": "VV-03",
+      "description": "Validate the actual MCP wire contract without numeric coercion."
+    },
+    {
+      "id": "VV-04",
+      "description": "Measure speed and memory under declared environment-scoped budgets."
+    },
+    {
+      "id": "VV-05",
+      "description": "Retain reproducible assertions, failures, and requirement-preserving supersession."
+    }
+  ],
+  "invariants": [
+    {
+      "id": "I01",
+      "requirement_id": "CDC-01",
+      "description": "Every input byte appears once at its original byte offset."
+    },
+    {
+      "id": "I02",
+      "requirement_id": "CDC-01",
+      "description": "Packet splits do not change cuts or the independent polynomial oracle."
+    },
+    {
+      "id": "I03",
+      "requirement_id": "GOV-01",
+      "description": "Sequence gaps, duplicate commits and incorrect parents never advance the ledger."
+    },
+    {
+      "id": "I04",
+      "requirement_id": "GOV-02",
+      "description": "Committed block identity binds routing, source, session and predecessor."
+    },
+    {
+      "id": "I05",
+      "requirement_id": "GOV-02",
+      "description": "Only a committed matching payload can cross the invocation gate."
+    },
+    {
+      "id": "I06",
+      "requirement_id": "GOV-03",
+      "description": "Integrity mismatch clears context and causes zero additional effects."
+    },
+    {
+      "id": "I07",
+      "requirement_id": "GOV-05",
+      "description": "Unavailable or interrupted verification cannot return trust."
+    },
+    {
+      "id": "I08",
+      "requirement_id": "GOV-04",
+      "description": "Count and encoded-byte admission remain within configured bounds."
+    },
+    {
+      "id": "I09",
+      "requirement_id": "GOV-06",
+      "description": "Unknown/evicted receipt grants no trust; ledger identities remain available."
+    },
+    {
+      "id": "I10",
+      "requirement_id": "GOV-07",
+      "description": "An input mutation during await cannot replace bytes delivered to the tool."
+    },
+    {
+      "id": "I11",
+      "requirement_id": "VV-01",
+      "description": "Concurrent shutdown has one owner; pending bookkeeping reaches zero."
+    },
+    {
+      "id": "I12",
+      "requirement_id": "GOV-05",
+      "description": "An expired transaction cannot commit or be classified as tampering."
+    },
+    {
+      "id": "I13",
+      "requirement_id": "GOV-08",
+      "description": "Streaming preserves bytes with bounded staging and closes its source."
+    },
+    {
+      "id": "I14",
+      "requirement_id": "GOV-08",
+      "description": "A failed effect sink is invoked once; siblings cancel and source closes."
+    },
+    {
+      "id": "I15",
+      "requirement_id": "VV-03",
+      "description": "Malformed core/wire frames are rejected before immutable admission."
+    },
+    {
+      "id": "I16",
+      "requirement_id": "VV-02",
+      "description": "Runtime modules <=180 lines, functions <=60, decision nesting <=5, AST branch proxy <=20."
+    },
+    {
+      "id": "I17",
+      "requirement_id": "VV-04",
+      "description": "Scanner/ledger speed and memory satisfy explicit local catastrophic-regression ceilings."
+    },
+    {
+      "id": "I18",
+      "requirement_id": "VV-05",
+      "description": "Every finite Cartesian tuple and declared requirement retains referentially valid, source-bound assertion links."
+    }
+  ],
+  "failure_modes": [
+    {
+      "id": "F01",
+      "description": "Dropped/reordered bytes at a chunk boundary",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F02",
+      "description": "Packet-size dependent cuts or incorrect polynomial",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F03",
+      "description": "Positive control: valid committed handoff",
+      "kind": "positive_control"
+    },
+    {
+      "id": "F04",
+      "description": "Wrong verified predecessor",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F05",
+      "description": "Missing sequence predecessor",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F06",
+      "description": "Duplicate commit attempt",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F07",
+      "description": "Payload digest assertion differs at commit",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F08",
+      "description": "Changed payload at invocation boundary",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F09",
+      "description": "Rewritten source metadata with unchanged payload",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F10",
+      "description": "Recipient rewrite",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F11",
+      "description": "Cross-session handoff substitution",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F12",
+      "description": "Unregistered block identity",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F13",
+      "description": "Self-claimed unregistered content hash",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F14",
+      "description": "Verifier invoked after engine shutdown",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F15",
+      "description": "Availability changes across hashing await",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F16",
+      "description": "Unexpected verifier exception",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F17",
+      "description": "Concurrent verification exceeds admission cap",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F18",
+      "description": "Inbound verification cancelled while suspended",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F19",
+      "description": "Queue count at cap plus one",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F20",
+      "description": "Pending UTF-8 bytes at cap plus one",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F21",
+      "description": "Immutable record reservation exceeds cap",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F22",
+      "description": "Completed receipt evicted from bounded cache",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F23",
+      "description": "Caller mutates payload while verification is suspended",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F24",
+      "description": "Eight simultaneous shutdown callers",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F25",
+      "description": "Queued work passes its absolute deadline",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F26",
+      "description": "Positive control: byte stream under sink backpressure",
+      "kind": "positive_control"
+    },
+    {
+      "id": "F27",
+      "description": "Sink failure with unknown effect outcome",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F28",
+      "description": "Malformed types, identifiers, digest or Unicode",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F29",
+      "description": "MCP schema coercion, unregistered hash and tampered handoff",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F30",
+      "description": "Runtime complexity exceeds declared local limits",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F31",
+      "description": "Catastrophic speed/scaling/retention regression",
+      "kind": "failure_challenge"
+    },
+    {
+      "id": "F32",
+      "description": "Missing combinations, orphan links or stale source provenance",
+      "kind": "failure_challenge"
+    }
+  ],
+  "gates": [
+    {
+      "id": "G01",
+      "phase": "scanner",
+      "description": "Rolling polynomial, min/max boundary and byte-carving gate."
+    },
+    {
+      "id": "G02",
+      "phase": "worker",
+      "description": "Strict sequence, parent, payload assertion and append gate."
+    },
+    {
+      "id": "G03",
+      "phase": "boundary",
+      "description": "Registered payload and metadata verification immediately before invocation."
+    },
+    {
+      "id": "G04",
+      "phase": "admission",
+      "description": "Queue-count, pending-byte and immutable-ledger reservation gate."
+    },
+    {
+      "id": "G05",
+      "phase": "availability",
+      "description": "Verifier availability checked both before and after hash work."
+    },
+    {
+      "id": "G06",
+      "phase": "retention",
+      "description": "Bounded receipt/event observations separate from immutable records."
+    },
+    {
+      "id": "G07",
+      "phase": "snapshot",
+      "description": "Immutable incoming snapshot before verification await."
+    },
+    {
+      "id": "G08",
+      "phase": "lifecycle",
+      "description": "Shared shielded shutdown task and cancellation cleanup."
+    },
+    {
+      "id": "G09",
+      "phase": "deadline",
+      "description": "Absolute transaction deadline checked before and after hashing."
+    },
+    {
+      "id": "G10",
+      "phase": "pipeline",
+      "description": "Bounded staging, structured sibling cancellation and source close."
+    },
+    {
+      "id": "G11",
+      "phase": "schema",
+      "description": "Strict scalar parsing in core and real MCP stdio."
+    },
+    {
+      "id": "G12",
+      "phase": "quality",
+      "description": "Executable structural, local speed and memory budgets."
+    },
+    {
+      "id": "G13",
+      "phase": "evidence",
+      "description": "Relational completeness, foreign keys and production source provenance gate."
+    }
+  ],
+  "obligations": [
+    {
+      "id": "C001",
+      "case": "scanner",
+      "invariant_id": "I01",
+      "failure_id": "F01",
+      "gate_id": "G01",
+      "categories": [
+        "unit",
+        "boundary",
+        "semantic"
+      ],
+      "expected": {
+        "exact_bytes": true,
+        "oracle": true,
+        "packet_independent": true,
+        "bounded": true
+      },
+      "rationale": "Dropped/reordered bytes at a chunk boundary. Every input byte appears once at its original byte offset. Owner: Rolling polynomial, min/max boundary and byte-carving gate.",
+      "requirement_id": "CDC-01"
+    },
+    {
+      "id": "C002",
+      "case": "scanner",
+      "invariant_id": "I02",
+      "failure_id": "F02",
+      "gate_id": "G01",
+      "categories": [
+        "behavioral",
+        "semantic"
+      ],
+      "expected": {
+        "exact_bytes": true,
+        "oracle": true,
+        "packet_independent": true,
+        "bounded": true
+      },
+      "rationale": "Packet-size dependent cuts or incorrect polynomial. Packet splits do not change cuts or the independent polynomial oracle. Owner: Rolling polynomial, min/max boundary and byte-carving gate.",
+      "requirement_id": "CDC-01"
+    },
+    {
+      "id": "C003",
+      "case": "nominal",
+      "invariant_id": "I05",
+      "failure_id": "F03",
+      "gate_id": "G03",
+      "categories": [
+        "integration",
+        "behavioral"
+      ],
+      "expected": {
+        "outcome": "delivered",
+        "effects": [
+          "safe"
+        ],
+        "context": 2,
+        "records": 1,
+        "quarantined": 0,
+        "block_oracle": true
+      },
+      "rationale": "Positive control: valid committed handoff. Only a committed matching payload can cross the invocation gate. Owner: Registered payload and metadata verification immediately before invocation.",
+      "requirement_id": "GOV-02"
+    },
+    {
+      "id": "C004",
+      "case": "parent",
+      "invariant_id": "I03",
+      "failure_id": "F04",
+      "gate_id": "G02",
+      "categories": [
+        "negative"
+      ],
+      "expected": {
+        "outcome": "quarantined",
+        "effects": [],
+        "context": 0,
+        "records": 1,
+        "quarantined": 1,
+        "pending_bytes": 0
+      },
+      "rationale": "Wrong verified predecessor. Sequence gaps, duplicate commits and incorrect parents never advance the ledger. Owner: Strict sequence, parent, payload assertion and append gate.",
+      "requirement_id": "GOV-01"
+    },
+    {
+      "id": "C005",
+      "case": "sequence",
+      "invariant_id": "I03",
+      "failure_id": "F05",
+      "gate_id": "G02",
+      "categories": [
+        "negative",
+        "boundary"
+      ],
+      "expected": {
+        "outcome": "quarantined",
+        "effects": [],
+        "context": 0,
+        "records": 1,
+        "quarantined": 1
+      },
+      "rationale": "Missing sequence predecessor. Sequence gaps, duplicate commits and incorrect parents never advance the ledger. Owner: Strict sequence, parent, payload assertion and append gate.",
+      "requirement_id": "GOV-01"
+    },
+    {
+      "id": "C006",
+      "case": "replay",
+      "invariant_id": "I03",
+      "failure_id": "F06",
+      "gate_id": "G02",
+      "categories": [
+        "negative",
+        "behavioral"
+      ],
+      "expected": {
+        "outcome": "quarantined",
+        "effects": [],
+        "context": 0,
+        "records": 1,
+        "quarantined": 1
+      },
+      "rationale": "Duplicate commit attempt. Sequence gaps, duplicate commits and incorrect parents never advance the ledger. Owner: Strict sequence, parent, payload assertion and append gate.",
+      "requirement_id": "GOV-01"
+    },
+    {
+      "id": "C007",
+      "case": "payload_assertion",
+      "invariant_id": "I06",
+      "failure_id": "F07",
+      "gate_id": "G02",
+      "categories": [
+        "negative"
+      ],
+      "expected": {
+        "outcome": "quarantined",
+        "effects": [],
+        "context": 0,
+        "records": 1,
+        "quarantined": 1
+      },
+      "rationale": "Payload digest assertion differs at commit. Integrity mismatch clears context and causes zero additional effects. Owner: Strict sequence, parent, payload assertion and append gate.",
+      "requirement_id": "GOV-03"
+    },
+    {
+      "id": "C008",
+      "case": "payload",
+      "invariant_id": "I06",
+      "failure_id": "F08",
+      "gate_id": "G03",
+      "categories": [
+        "negative",
+        "integration"
+      ],
+      "expected": {
+        "outcome": "quarantined",
+        "effects": [],
+        "context": 0,
+        "records": 1,
+        "quarantined": 1
+      },
+      "rationale": "Changed payload at invocation boundary. Integrity mismatch clears context and causes zero additional effects. Owner: Registered payload and metadata verification immediately before invocation.",
+      "requirement_id": "GOV-03"
+    },
+    {
+      "id": "C009",
+      "case": "metadata",
+      "invariant_id": "I04",
+      "failure_id": "F09",
+      "gate_id": "G03",
+      "categories": [
+        "negative",
+        "semantic"
+      ],
+      "expected": {
+        "outcome": "quarantined",
+        "effects": [],
+        "context": 0,
+        "records": 1,
+        "quarantined": 1
+      },
+      "rationale": "Rewritten source metadata with unchanged payload. Committed block identity binds routing, source, session and predecessor. Owner: Registered payload and metadata verification immediately before invocation.",
+      "requirement_id": "GOV-02"
+    },
+    {
+      "id": "C010",
+      "case": "recipient",
+      "invariant_id": "I04",
+      "failure_id": "F10",
+      "gate_id": "G03",
+      "categories": [
+        "negative"
+      ],
+      "expected": {
+        "outcome": "quarantined",
+        "effects": [],
+        "context": 0,
+        "quarantined": 1
+      },
+      "rationale": "Recipient rewrite. Committed block identity binds routing, source, session and predecessor. Owner: Registered payload and metadata verification immediately before invocation.",
+      "requirement_id": "GOV-02"
+    },
+    {
+      "id": "C011",
+      "case": "cross_session",
+      "invariant_id": "I04",
+      "failure_id": "F11",
+      "gate_id": "G03",
+      "categories": [
+        "negative"
+      ],
+      "expected": {
+        "outcome": "quarantined",
+        "effects": [],
+        "context": 0,
+        "quarantined": 1
+      },
+      "rationale": "Cross-session handoff substitution. Committed block identity binds routing, source, session and predecessor. Owner: Registered payload and metadata verification immediately before invocation.",
+      "requirement_id": "GOV-02"
+    },
+    {
+      "id": "C012",
+      "case": "block_hash",
+      "invariant_id": "I04",
+      "failure_id": "F12",
+      "gate_id": "G03",
+      "categories": [
+        "negative"
+      ],
+      "expected": {
+        "outcome": "quarantined",
+        "effects": [],
+        "context": 0,
+        "quarantined": 1
+      },
+      "rationale": "Unregistered block identity. Committed block identity binds routing, source, session and predecessor. Owner: Registered payload and metadata verification immediately before invocation.",
+      "requirement_id": "GOV-02"
+    },
+    {
+      "id": "C013",
+      "case": "unregistered",
+      "invariant_id": "I05",
+      "failure_id": "F13",
+      "gate_id": "G03",
+      "categories": [
+        "negative"
+      ],
+      "expected": {
+        "verified": false,
+        "registered": false
+      },
+      "rationale": "Self-claimed unregistered content hash. Only a committed matching payload can cross the invocation gate. Owner: Registered payload and metadata verification immediately before invocation.",
+      "requirement_id": "GOV-02"
+    },
+    {
+      "id": "C014",
+      "case": "closed",
+      "invariant_id": "I07",
+      "failure_id": "F14",
+      "gate_id": "G05",
+      "categories": [
+        "boundary",
+        "behavioral"
+      ],
+      "expected": {
+        "outcome": "held",
+        "effects": [],
+        "context": 0,
+        "records": 1,
+        "quarantined": 0
+      },
+      "rationale": "Verifier invoked after engine shutdown. Unavailable or interrupted verification cannot return trust. Owner: Verifier availability checked both before and after hash work.",
+      "requirement_id": "GOV-05"
+    },
+    {
+      "id": "C015",
+      "case": "hold_race",
+      "invariant_id": "I07",
+      "failure_id": "F15",
+      "gate_id": "G05",
+      "categories": [
+        "negative",
+        "behavioral"
+      ],
+      "expected": {
+        "outcome": "held",
+        "effects": [],
+        "context": 0,
+        "quarantined": 0
+      },
+      "rationale": "Availability changes across hashing await. Unavailable or interrupted verification cannot return trust. Owner: Verifier availability checked both before and after hash work.",
+      "requirement_id": "GOV-05"
+    },
+    {
+      "id": "C016",
+      "case": "verifier_fault",
+      "invariant_id": "I07",
+      "failure_id": "F16",
+      "gate_id": "G05",
+      "categories": [
+        "negative"
+      ],
+      "expected": {
+        "outcome": "held",
+        "effects": [],
+        "context": 0,
+        "quarantined": 0
+      },
+      "rationale": "Unexpected verifier exception. Unavailable or interrupted verification cannot return trust. Owner: Verifier availability checked both before and after hash work.",
+      "requirement_id": "GOV-05"
+    },
+    {
+      "id": "C017",
+      "case": "verification_capacity",
+      "invariant_id": "I07",
+      "failure_id": "F17",
+      "gate_id": "G05",
+      "categories": [
+        "boundary"
+      ],
+      "expected": {
+        "outcome": "held",
+        "verified": false,
+        "quarantined": 0,
+        "active_verifications": 0
+      },
+      "rationale": "Concurrent verification exceeds admission cap. Unavailable or interrupted verification cannot return trust. Owner: Verifier availability checked both before and after hash work.",
+      "requirement_id": "GOV-05"
+    },
+    {
+      "id": "C018",
+      "case": "cancel_verification",
+      "invariant_id": "I07",
+      "failure_id": "F18",
+      "gate_id": "G08",
+      "categories": [
+        "negative",
+        "behavioral"
+      ],
+      "expected": {
+        "outcome": "cancelled",
+        "effects": [],
+        "context": 0,
+        "held": 1,
+        "quarantined": 0,
+        "active_verifications": 0
+      },
+      "rationale": "Inbound verification cancelled while suspended. Unavailable or interrupted verification cannot return trust. Owner: Shared shielded shutdown task and cancellation cleanup.",
+      "requirement_id": "GOV-05"
+    },
+    {
+      "id": "C019",
+      "case": "queue",
+      "invariant_id": "I08",
+      "failure_id": "F19",
+      "gate_id": "G04",
+      "categories": [
+        "boundary"
+      ],
+      "expected": {
+        "outcome": "busy",
+        "reason": "QUEUE_CAPACITY",
+        "accepted": "verified",
+        "records": 1,
+        "pending_bytes": 0
+      },
+      "rationale": "Queue count at cap plus one. Count and encoded-byte admission remain within configured bounds. Owner: Queue-count, pending-byte and immutable-ledger reservation gate.",
+      "requirement_id": "GOV-04"
+    },
+    {
+      "id": "C020",
+      "case": "pending_bytes",
+      "invariant_id": "I08",
+      "failure_id": "F20",
+      "gate_id": "G04",
+      "categories": [
+        "boundary"
+      ],
+      "expected": {
+        "outcome": "busy",
+        "reason": "PENDING_BYTE_CAPACITY",
+        "accepted": "verified",
+        "records": 1,
+        "pending_bytes": 0
+      },
+      "rationale": "Pending UTF-8 bytes at cap plus one. Count and encoded-byte admission remain within configured bounds. Owner: Queue-count, pending-byte and immutable-ledger reservation gate.",
+      "requirement_id": "GOV-04"
+    },
+    {
+      "id": "C021",
+      "case": "ledger",
+      "invariant_id": "I08",
+      "failure_id": "F21",
+      "gate_id": "G04",
+      "categories": [
+        "boundary"
+      ],
+      "expected": {
+        "outcome": "held",
+        "reason": "LEDGER_CAPACITY",
+        "records": 1,
+        "head_unchanged": true
+      },
+      "rationale": "Immutable record reservation exceeds cap. Count and encoded-byte admission remain within configured bounds. Owner: Queue-count, pending-byte and immutable-ledger reservation gate.",
+      "requirement_id": "GOV-04"
+    },
+    {
+      "id": "C022",
+      "case": "retention",
+      "invariant_id": "I09",
+      "failure_id": "F22",
+      "gate_id": "G06",
+      "categories": [
+        "boundary",
+        "behavioral"
+      ],
+      "expected": {
+        "outcome": "unknown",
+        "records": 2,
+        "receipts": 1,
+        "events": 2,
+        "registered": true
+      },
+      "rationale": "Completed receipt evicted from bounded cache. Unknown/evicted receipt grants no trust; ledger identities remain available. Owner: Bounded receipt/event observations separate from immutable records.",
+      "requirement_id": "GOV-06"
+    },
+    {
+      "id": "C023",
+      "case": "snapshot",
+      "invariant_id": "I10",
+      "failure_id": "F23",
+      "gate_id": "G07",
+      "categories": [
+        "negative",
+        "behavioral"
+      ],
+      "expected": {
+        "outcome": "delivered",
+        "effects": [
+          "safe"
+        ],
+        "context": 2,
+        "quarantined": 0
+      },
+      "rationale": "Caller mutates payload while verification is suspended. An input mutation during await cannot replace bytes delivered to the tool. Owner: Immutable incoming snapshot before verification await.",
+      "requirement_id": "GOV-07"
+    },
+    {
+      "id": "C024",
+      "case": "concurrent_close",
+      "invariant_id": "I11",
+      "failure_id": "F24",
+      "gate_id": "G08",
+      "categories": [
+        "integration",
+        "boundary"
+      ],
+      "expected": {
+        "all_closed": true,
+        "pending": 0,
+        "pending_bytes": 0,
+        "worker_alive": false
+      },
+      "rationale": "Eight simultaneous shutdown callers. Concurrent shutdown has one owner; pending bookkeeping reaches zero. Owner: Shared shielded shutdown task and cancellation cleanup.",
+      "requirement_id": "VV-01"
+    },
+    {
+      "id": "C025",
+      "case": "deadline",
+      "invariant_id": "I12",
+      "failure_id": "F25",
+      "gate_id": "G09",
+      "categories": [
+        "negative",
+        "boundary"
+      ],
+      "expected": {
+        "outcome": "held",
+        "reason": "TRANSACTION_DEADLINE",
+        "records": 0,
+        "quarantined": 0,
+        "pending_bytes": 0
+      },
+      "rationale": "Queued work passes its absolute deadline. An expired transaction cannot commit or be classified as tampering. Owner: Absolute transaction deadline checked before and after hashing.",
+      "requirement_id": "GOV-05"
+    },
+    {
+      "id": "C026",
+      "case": "stream",
+      "invariant_id": "I13",
+      "failure_id": "F26",
+      "gate_id": "G10",
+      "categories": [
+        "integration",
+        "e2e"
+      ],
+      "expected": {
+        "exact_bytes": true,
+        "staging_bounded": true,
+        "source_closed": true,
+        "input_bytes": 3081,
+        "expected_bytes": 3081
+      },
+      "rationale": "Positive control: byte stream under sink backpressure. Streaming preserves bytes with bounded staging and closes its source. Owner: Bounded staging, structured sibling cancellation and source close.",
+      "requirement_id": "GOV-08"
+    },
+    {
+      "id": "C027",
+      "case": "sink_failure",
+      "invariant_id": "I14",
+      "failure_id": "F27",
+      "gate_id": "G10",
+      "categories": [
+        "negative",
+        "e2e"
+      ],
+      "expected": {
+        "attempts": 1,
+        "source_closed": true
+      },
+      "rationale": "Sink failure with unknown effect outcome. A failed effect sink is invoked once; siblings cancel and source closes. Owner: Bounded staging, structured sibling cancellation and source close.",
+      "requirement_id": "GOV-08"
+    },
+    {
+      "id": "C028",
+      "case": "schema",
+      "invariant_id": "I15",
+      "failure_id": "F28",
+      "gate_id": "G11",
+      "categories": [
+        "unit",
+        "negative",
+        "boundary"
+      ],
+      "expected": {
+        "outcomes": [
+          "rejected",
+          "rejected",
+          "rejected",
+          "rejected",
+          "rejected",
+          "rejected"
+        ],
+        "records": 0,
+        "pending_bytes": 0
+      },
+      "rationale": "Malformed types, identifiers, digest or Unicode. Malformed core/wire frames are rejected before immutable admission. Owner: Strict scalar parsing in core and real MCP stdio.",
+      "requirement_id": "VV-03"
+    },
+    {
+      "id": "C029",
+      "case": "api",
+      "invariant_id": "I15",
+      "failure_id": "F29",
+      "gate_id": "G11",
+      "categories": [
+        "api",
+        "e2e"
+      ],
+      "expected": {
+        "tools": 5,
+        "strict_rejections": [
+          true,
+          true,
+          true
+        ],
+        "missing_rejected": true,
+        "commit": "verified",
+        "valid": true,
+        "bad": false,
+        "bad_action": "SYSTEM_QUARANTINE",
+        "unknown": "unknown",
+        "unregistered": false,
+        "payload_oracle": true
+      },
+      "rationale": "MCP schema coercion, unregistered hash and tampered handoff. Malformed core/wire frames are rejected before immutable admission. Owner: Strict scalar parsing in core and real MCP stdio.",
+      "requirement_id": "VV-03"
+    },
+    {
+      "id": "C030",
+      "case": "structure",
+      "invariant_id": "I16",
+      "failure_id": "F30",
+      "gate_id": "G12",
+      "categories": [
+        "structural",
+        "semantic"
+      ],
+      "expected": {
+        "module_budget": true,
+        "function_budget": true,
+        "depth_budget": true,
+        "branch_budget": true
+      },
+      "rationale": "Runtime complexity exceeds declared local limits. Runtime modules <=180 lines, functions <=60, decision nesting <=5, AST branch proxy <=20. Owner: Executable structural, local speed and memory budgets.",
+      "requirement_id": "VV-02"
+    },
+    {
+      "id": "C031",
+      "case": "performance",
+      "invariant_id": "I17",
+      "failure_id": "F31",
+      "gate_id": "G12",
+      "categories": [
+        "speed",
+        "boundary"
+      ],
+      "expected": {
+        "scanner_budget": true,
+        "scaling_budget": true,
+        "ledger_budget": true,
+        "memory_budget": true,
+        "records": 1500,
+        "caches_bounded": true
+      },
+      "rationale": "Catastrophic speed/scaling/retention regression. Scanner/ledger speed and memory satisfy explicit local catastrophic-regression ceilings. Owner: Executable structural, local speed and memory budgets.",
+      "requirement_id": "VV-04"
+    },
+    {
+      "id": "C032",
+      "case": "evidence",
+      "invariant_id": "I18",
+      "failure_id": "F32",
+      "gate_id": "G13",
+      "categories": [
+        "semantic",
+        "structural"
+      ],
+      "expected": {
+        "complete_cartesian": true,
+        "all_requirements": true,
+        "no_orphans": true,
+        "provenance": true
+      },
+      "rationale": "Complete catalog cardinality, explicit assertion links and unchanged source seal are required before using campaign evidence.",
+      "requirement_id": "VV-05"
+    }
+  ]
+}

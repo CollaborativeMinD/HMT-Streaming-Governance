@@ -1,0 +1,23 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________ StateModelTests.test_utf8_exact_limit_and_limit_plus_one ___________
+
+self = <test_vv_semantics.StateModelTests testMethod=test_utf8_exact_limit_and_limit_plus_one>
+
+    async def test_utf8_exact_limit_and_limit_plus_one(self):
+        engine = await GovernanceLedgerEngine(max_payload_bytes=4).start()
+        self.addAsyncCleanup(engine.close)
+        good = await AgentGateway(engine, 'good').wrap_output('éé')
+        self.assertTrue((await engine.governance_verify_payload('éé', good['payload_hash']))['verified'])
+        for payload in ('ééa', '\ud800'):
+            result = await engine.governance_commit_state(session_id='bad', sequence_number=0,
+                source_agent='sender', target_entity='receiver', previous_hash='0'*64, payload=payload)
+>           self.assertEqual(result['status'], 'rejected')
+E           AssertionError: 'pending' != 'rejected'
+E           - pending
+E           + rejected
+
+test_vv_semantics.py:109: AssertionError
+=========================== short test summary info ============================
+FAILED test_vv_semantics.py::StateModelTests::test_utf8_exact_limit_and_limit_plus_one
+1 failed in 0.04s

@@ -1,0 +1,38 @@
+{
+  "phase": "expanded-vv",
+  "unit_tests": 60,
+  "unit_test_result": "PASS",
+  "runtime_statement_branch_coverage": 96.15384615384616,
+  "mcp_stdio": "PASS: five tools, commit/poll/content/envelope/quarantine/health",
+  "notebook_flows": 9,
+  "notebook_control_checks": 4,
+  "notebook_empty_restore": "PASS",
+  "sysml": {
+    "error": 0,
+    "warning": 0,
+    "info": 0,
+    "hint": 4
+  },
+  "source_reference_scope": "Inspected supplied archives; no inherited runtime qualification",
+  "runtime_structure": "Modules <=180 lines; functions <=60; decision depth <=5; documented AST branch proxy <=20",
+  "benchmark_parity": "Exact scanner signatures and final ledger heads match",
+  "measured_source_seal_matches": true,
+  "pytest_crossjoin_tests": 33,
+  "unittest_crossjoin_tests": 33,
+  "total_current_test_executions": 126,
+  "semantic_mutants_killed": 26,
+  "semantic_mutants_total": 26,
+  "historical_regressions": 6,
+  "mutation_survivor_supersessions": 1,
+  "cross_join": {
+    "OUT_OF_SCOPE": 7456,
+    "SATISFIED": 32
+  },
+  "cross_join_total": 7488,
+  "runtime_statement_coverage": 97.9020979020979,
+  "runtime_branch_coverage": 89.74358974358974,
+  "coverage_scope": "In-process runtime modules; MCP subprocess transport is functionally tested, not included in this branch percentage.",
+  "model_boolean_vectors": 256,
+  "notebook_vv_browser": "PASS: SQL filter changes and restore; no cell errors",
+  "notebook_sql_rows": 7488
+}

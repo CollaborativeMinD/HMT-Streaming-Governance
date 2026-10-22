@@ -1,0 +1,24 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________ UpliftTests.test_bounded_caches_do_not_evict_ledger ______________
+
+self = <test_uplift.UpliftTests testMethod=test_bounded_caches_do_not_evict_ledger>
+
+    async def test_bounded_caches_do_not_evict_ledger(self):
+        self.engine.receipt_capacity = 2
+        sender = AgentGateway(self.engine, 's', 'sender')
+        receiver = AgentGateway(self.engine, 's', 'receiver', max_context_entries=2)
+        first = None
+        for i in range(8):
+            envelope = await sender.wrap_output(str(i), 'receiver')
+            if first is None:
+                first = copy.deepcopy(envelope)
+            await receiver.execute_verified(envelope, lambda _: None)
+        self.assertEqual(len(self.engine._completed), 2)
+>       self.assertEqual(len(receiver.context), 2)
+E       AssertionError: 8 != 2
+
+test_uplift.py:92: AssertionError
+=========================== short test summary info ============================
+FAILED test_uplift.py::UpliftTests::test_bounded_caches_do_not_evict_ledger
+1 failed in 0.06s

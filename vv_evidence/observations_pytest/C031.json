@@ -1,0 +1,24 @@
+{
+  "scanner_budget": true,
+  "scaling_budget": true,
+  "ledger_budget": true,
+  "memory_budget": true,
+  "records": 1500,
+  "caches_bounded": true,
+  "measurements": {
+    "scanner_small_seconds": [
+      0.0802938579999477,
+      0.0772829340000385,
+      0.08008899899999733
+    ],
+    "scanner_large_seconds": [
+      0.15624909899997874,
+      0.15302318099998047,
+      0.15386692399999902
+    ],
+    "doubling_ratio": 1.9211992398606974,
+    "ledger_seconds": 0.2937689040000464,
+    "retained_bytes": 769664,
+    "peak_bytes": 773473
+  }
+}

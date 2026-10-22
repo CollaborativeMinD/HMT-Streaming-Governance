@@ -1,0 +1,18 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___ UpliftTests.test_byte_and_record_capacity_refuse_without_advancing_head ____
+
+self = <test_uplift.UpliftTests testMethod=test_byte_and_record_capacity_refuse_without_advancing_head>
+
+    async def test_byte_and_record_capacity_refuse_without_advancing_head(self):
+        self.engine.max_pending_bytes = 3
+        result = await self.engine.governance_commit_state(**frame(payload='four'))
+>       self.assertEqual(result, dict(status='busy', reason='PENDING_BYTE_CAPACITY'))
+E       AssertionError: {'status': 'pending', 'tracking_token': 'f5f648dd5580476eac5807c0eec47ef3'} != {'status': 'busy', 'reason': 'PENDING_BYTE_CAPACITY'}
+E       - {'status': 'pending', 'tracking_token': 'f5f648dd5580476eac5807c0eec47ef3'}
+E       + {'reason': 'PENDING_BYTE_CAPACITY', 'status': 'busy'}
+
+test_uplift.py:99: AssertionError
+=========================== short test summary info ============================
+FAILED test_uplift.py::UpliftTests::test_byte_and_record_capacity_refuse_without_advancing_head
+1 failed in 0.09s

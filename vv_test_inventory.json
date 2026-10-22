@@ -1,0 +1,302 @@
+{
+  "test_vv_semantics.OracleUnitTests.test_generated_polynomial_and_boundary_oracle": {
+    "requirement_id": "CDC-01",
+    "source": "test_vv_semantics.py",
+    "line": 31
+  },
+  "test_vv_semantics.OracleUnitTests.test_canonical_json_known_answer_and_key_order": {
+    "requirement_id": "GOV-02",
+    "source": "test_vv_semantics.py",
+    "line": 48
+  },
+  "test_vv_semantics.OracleUnitTests.test_scanner_invalid_configuration_types_and_edges": {
+    "requirement_id": "CDC-01",
+    "source": "test_vv_semantics.py",
+    "line": 53
+  },
+  "test_vv_semantics.StateModelTests.test_generated_traces_match_abstract_chain_model": {
+    "requirement_id": "GOV-01",
+    "source": "test_vv_semantics.py",
+    "line": 66
+  },
+  "test_vv_semantics.StateModelTests.test_utf8_exact_limit_and_limit_plus_one": {
+    "requirement_id": "GOV-04",
+    "source": "test_vv_semantics.py",
+    "line": 101
+  },
+  "test_vv_semantics.StateModelTests.test_cancelled_close_caller_does_not_abandon_shared_cleanup": {
+    "requirement_id": "VV-01",
+    "source": "test_vv_semantics.py",
+    "line": 112
+  },
+  "test_uplift.UpliftTests.test_wait_is_per_receipt_and_cancellation_does_not_cancel_commit": {
+    "requirement_id": "VV-01",
+    "source": "test_uplift.py",
+    "line": 27
+  },
+  "test_uplift.UpliftTests.test_mutating_handoff_during_verification_cannot_swap_tool_payload": {
+    "requirement_id": "GOV-07",
+    "source": "test_uplift.py",
+    "line": 53
+  },
+  "test_uplift.UpliftTests.test_shared_session_lock_serializes_concurrent_senders": {
+    "requirement_id": "GOV-01",
+    "source": "test_uplift.py",
+    "line": 74
+  },
+  "test_uplift.UpliftTests.test_bounded_caches_do_not_evict_ledger": {
+    "requirement_id": "GOV-06",
+    "source": "test_uplift.py",
+    "line": 81
+  },
+  "test_uplift.UpliftTests.test_byte_and_record_capacity_refuse_without_advancing_head": {
+    "requirement_id": "GOV-04",
+    "source": "test_uplift.py",
+    "line": 96
+  },
+  "test_uplift.UpliftTests.test_hash_timeout_is_hold_and_never_invokes_tool": {
+    "requirement_id": "GOV-05",
+    "source": "test_uplift.py",
+    "line": 108
+  },
+  "test_uplift.UpliftTests.test_worker_cancellation_settles_pending_and_drains_queue": {
+    "requirement_id": "VV-01",
+    "source": "test_uplift.py",
+    "line": 123
+  },
+  "test_uplift.UpliftTests.test_expired_queue_item_never_commits": {
+    "requirement_id": "GOV-05",
+    "source": "test_uplift.py",
+    "line": 133
+  },
+  "test_uplift.UpliftTests.test_receipt_timeout_preserves_pending_result": {
+    "requirement_id": "GOV-05",
+    "source": "test_uplift.py",
+    "line": 144
+  },
+  "test_uplift.UpliftTests.test_verification_overload_is_hold_without_quarantine": {
+    "requirement_id": "GOV-05",
+    "source": "test_uplift.py",
+    "line": 163
+  },
+  "test_uplift.UpliftTests.test_small_hashes_avoid_thread_jobs_and_large_hashes_offload": {
+    "requirement_id": "VV-04",
+    "source": "test_uplift.py",
+    "line": 170
+  },
+  "test_uplift.ScannerUpliftTests.test_non_power_of_two_modulus_and_abandoned_generator": {
+    "requirement_id": "CDC-01",
+    "source": "test_uplift.py",
+    "line": 178
+  },
+  "test_fault_controls.FaultControlTests.test_outbound_cancellation_holds_the_session": {
+    "requirement_id": "GOV-05",
+    "source": "test_fault_controls.py",
+    "line": 15
+  },
+  "test_fault_controls.FaultControlTests.test_deadline_is_rechecked_after_verification": {
+    "requirement_id": "GOV-05",
+    "source": "test_fault_controls.py",
+    "line": 40
+  },
+  "test_fault_controls.FaultControlTests.test_inline_worker_yields_during_a_full_queue": {
+    "requirement_id": "VV-04",
+    "source": "test_fault_controls.py",
+    "line": 57
+  },
+  "test_fault_controls.FaultControlTests.test_configuration_rejects_bool_negative_and_nonfinite_limits": {
+    "requirement_id": "GOV-04",
+    "source": "test_fault_controls.py",
+    "line": 68
+  },
+  "test_fault_controls.FaultControlTests.test_session_capacity_and_unknown_receipts_do_not_grant_trust": {
+    "requirement_id": "GOV-04",
+    "source": "test_fault_controls.py",
+    "line": 76
+  },
+  "test_fault_controls.FaultControlTests.test_byte_budget_checks_unicode_and_malformed_expected_hash": {
+    "requirement_id": "GOV-04",
+    "source": "test_fault_controls.py",
+    "line": 92
+  },
+  "test_fault_controls.FaultControlTests.test_worker_error_holds_all_queued_work_without_quarantine": {
+    "requirement_id": "GOV-05",
+    "source": "test_fault_controls.py",
+    "line": 104
+  },
+  "test_fault_controls.FaultControlTests.test_shutdown_timeout_cancels_active_worker_and_settles_receipt": {
+    "requirement_id": "VV-01",
+    "source": "test_fault_controls.py",
+    "line": 124
+  },
+  "test_fault_controls.FaultControlTests.test_gateway_receipt_timeout_holds_session_and_releases_lock": {
+    "requirement_id": "GOV-05",
+    "source": "test_fault_controls.py",
+    "line": 143
+  },
+  "test_fault_controls.FaultControlTests.test_gateway_rejects_quarantined_outbound_and_verifier_byte_exhaustion": {
+    "requirement_id": "GOV-05",
+    "source": "test_fault_controls.py",
+    "line": 167
+  },
+  "test_vv_evidence.EvidenceSemanticsTests.test_missing_or_one_framework_evidence_leaves_finding_open": {
+    "requirement_id": "VV-05",
+    "source": "test_vv_evidence.py",
+    "line": 29
+  },
+  "test_vv_evidence.EvidenceSemanticsTests.test_failure_has_precedence_over_other_passing_assertions": {
+    "requirement_id": "VV-05",
+    "source": "test_vv_evidence.py",
+    "line": 35
+  },
+  "test_vv_evidence.EvidenceSemanticsTests.test_stale_source_evidence_cannot_satisfy": {
+    "requirement_id": "VV-05",
+    "source": "test_vv_evidence.py",
+    "line": 40
+  },
+  "test_vv_evidence.EvidenceSemanticsTests.test_historical_pass_cannot_satisfy_current_release": {
+    "requirement_id": "VV-05",
+    "source": "test_vv_evidence.py",
+    "line": 44
+  },
+  "test_vv_evidence.EvidenceSemanticsTests.test_two_current_independent_frameworks_satisfy": {
+    "requirement_id": "VV-05",
+    "source": "test_vv_evidence.py",
+    "line": 48
+  },
+  "test_vv_evidence.EvidenceSemanticsTests.test_unknown_requirement_and_dangling_result_are_rejected": {
+    "requirement_id": "VV-05",
+    "source": "test_vv_evidence.py",
+    "line": 52
+  },
+  "test_stream.StreamTests.test_stream_pipeline_preserves_bytes_bounds_staging_and_closes_source": {
+    "requirement_id": "GOV-08",
+    "source": "test_stream.py",
+    "line": 10
+  },
+  "test_stream.StreamTests.test_sink_failure_cancels_source_without_retry": {
+    "requirement_id": "GOV-08",
+    "source": "test_stream.py",
+    "line": 39
+  },
+  "test_stream.StreamTests.test_oversized_packet_and_deadline_close_the_source": {
+    "requirement_id": "GOV-08",
+    "source": "test_stream.py",
+    "line": 62
+  },
+  "test_vv_api.APIContractTests.test_strict_schema_and_real_stdio_handoff": {
+    "requirement_id": "VV-03",
+    "source": "test_vv_api.py",
+    "line": 8
+  },
+  "test_governance.ScannerTests.test_lossless_and_packet_independent": {
+    "requirement_id": "CDC-01",
+    "source": "test_governance.py",
+    "line": 29
+  },
+  "test_governance.ScannerTests.test_fingerprint_matches_full_polynomial": {
+    "requirement_id": "CDC-01",
+    "source": "test_governance.py",
+    "line": 41
+  },
+  "test_governance.ScannerTests.test_empty_short_unicode_and_forced_max": {
+    "requirement_id": "CDC-01",
+    "source": "test_governance.py",
+    "line": 51
+  },
+  "test_governance.ScannerTests.test_finish_and_configuration": {
+    "requirement_id": "CDC-01",
+    "source": "test_governance.py",
+    "line": 60
+  },
+  "test_governance.LedgerTests.test_pending_then_verified_and_immutable": {
+    "requirement_id": "GOV-02",
+    "source": "test_governance.py",
+    "line": 88
+  },
+  "test_governance.LedgerTests.test_two_blocks_and_registered_hash_only": {
+    "requirement_id": "GOV-02",
+    "source": "test_governance.py",
+    "line": 100
+  },
+  "test_governance.LedgerTests.test_missing_predecessor_quarantines_and_isolates_session": {
+    "requirement_id": "GOV-01",
+    "source": "test_governance.py",
+    "line": 109
+  },
+  "test_governance.LedgerTests.test_broken_parent_and_duplicate_never_overwrite": {
+    "requirement_id": "GOV-01",
+    "source": "test_governance.py",
+    "line": 117
+  },
+  "test_governance.LedgerTests.test_payload_assertion_and_malformed": {
+    "requirement_id": "GOV-03",
+    "source": "test_governance.py",
+    "line": 127
+  },
+  "test_governance.LedgerTests.test_gate_never_calls_tool_and_clears_context": {
+    "requirement_id": "GOV-03",
+    "source": "test_governance.py",
+    "line": 136
+  },
+  "test_governance.LedgerTests.test_metadata_rewrite_blocked_with_identical_payload": {
+    "requirement_id": "GOV-02",
+    "source": "test_governance.py",
+    "line": 150
+  },
+  "test_governance.LedgerTests.test_wrong_recipient_and_cross_session_blocked": {
+    "requirement_id": "GOV-02",
+    "source": "test_governance.py",
+    "line": 156
+  },
+  "test_governance.LedgerTests.test_bounded_queue_rejects_without_dropping_or_hanging": {
+    "requirement_id": "GOV-04",
+    "source": "test_governance.py",
+    "line": 162
+  },
+  "test_governance.LedgerTests.test_quarantine_during_hashing_never_commits": {
+    "requirement_id": "GOV-03",
+    "source": "test_governance.py",
+    "line": 173
+  },
+  "test_vv_regressions.BoundaryRegressionTests.test_closed_engine_denies_previously_verified_handoff": {
+    "requirement_id": "GOV-05",
+    "source": "test_vv_regressions.py",
+    "line": 17
+  },
+  "test_vv_regressions.BoundaryRegressionTests.test_hold_during_standalone_hash_cannot_return_verified": {
+    "requirement_id": "GOV-05",
+    "source": "test_vv_regressions.py",
+    "line": 28
+  },
+  "test_vv_regressions.BoundaryRegressionTests.test_concurrent_close_has_one_shutdown_owner": {
+    "requirement_id": "VV-01",
+    "source": "test_vv_regressions.py",
+    "line": 42
+  },
+  "test_vv_regressions.BoundaryRegressionTests.test_unexpected_verifier_failure_holds_and_clears_context": {
+    "requirement_id": "GOV-05",
+    "source": "test_vv_regressions.py",
+    "line": 49
+  },
+  "test_vv_regressions.BoundaryRegressionTests.test_cancelled_verification_clears_context_and_holds_session": {
+    "requirement_id": "GOV-05",
+    "source": "test_vv_regressions.py",
+    "line": 65
+  },
+  "test_vv_model.FunctionalModelTests.test_sysml_requirements_match_sql_catalog": {
+    "requirement_id": "VV-05",
+    "source": "test_vv_model.py",
+    "line": 33
+  },
+  "test_vv_model.FunctionalModelTests.test_model_boolean_calculations_and_operational_gate": {
+    "requirement_id": "VV-02",
+    "source": "test_vv_model.py",
+    "line": 37
+  },
+  "test_vv_model.FunctionalModelTests.test_model_boundary_calculation_edges": {
+    "requirement_id": "VV-02",
+    "source": "test_vv_model.py",
+    "line": 57
+  }
+}

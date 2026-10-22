@@ -1,0 +1,255 @@
+run_id,assertion_id,status,duration_seconds,detail
+pre-boundary,REG-01,FAIL,0.006,"self = <test_vv_regressions.BoundaryRegressionTests testMethod=test_cancelled_verification_clears_context_and_holds_session>
+
+    async def test_cancelled_verification_clears_context_and_holds_session(self):
+        engine, receiver, envelope = await self.setup_boundary()
+        receiver.context.append('old context')
+        entered = asyncio.Event()
+    
+        async def blocked(*args):
+            entered.set()
+            await asyncio.Event().wait()
+    
+        engine._compute = blocked
+        effects = []
+        task = asyncio.create_task(receiver.execute_verified(envelope, effects.append))
+        await entered.wait()
+        task.cancel()
+        with self.assertRaises(asyncio.CancelledError):
+            await task
+        self.assertEqual(effects, [])
+>       self.assertEqual(receiver.context, [])
+E       AssertionError: Lists differ: ['old context'] != []
+E       
+E       First list contains 1 additional elements.
+E       First extra element 0:
+E       'old context'
+E       
+E       - ['old context']
+E       + []
+
+test_vv_regressions.py:82: AssertionError"
+pre-boundary,REG-02,FAIL,0.003,"self = <test_vv_regressions.BoundaryRegressionTests testMethod=test_closed_engine_denies_previously_verified_handoff>
+
+    async def test_closed_engine_denies_previously_verified_handoff(self):
+        engine, receiver, envelope = await self.setup_boundary()
+        receiver.context.append('old context')
+        await engine.close()
+        effects = []
+>       with self.assertRaises(HoldError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: HoldError not raised
+
+test_vv_regressions.py:22: AssertionError"
+pre-boundary,REG-03,FAIL,0.005,"self = <test_vv_regressions.BoundaryRegressionTests testMethod=test_concurrent_close_has_one_shutdown_owner>
+
+    async def test_concurrent_close_has_one_shutdown_owner(self):
+        engine, _, _ = await self.setup_boundary()
+        results = await asyncio.gather(*(engine.close() for _ in range(8)), return_exceptions=True)
+>       self.assertEqual(results, [None] * 8)
+E       AssertionError: Lists differ: [None, AttributeError(""'NoneType' object has no [415 chars]d'"")] != [None, None, None, None, None, None, None, None]
+E       
+E       First differing element 1:
+E       AttributeError(""'NoneType' object has no attribute 'cancelled'"")
+E       None
+E       
+E       + [None, None, None, None, None, None, None, None]
+E       - [None,
+E       -  AttributeError(""'NoneType' object has no attribute 'cancelled'""),
+E       -  AttributeError(""'NoneType' object has no attribute 'cancelled'""),
+E       -  AttributeError(""'NoneType' object has no attribute 'cancelled'""),
+E       -  AttributeError(""'NoneType' object has no attribute 'cancelled'""),
+E       -  AttributeError(""'NoneType' object has no attribute 'cancelled'""),
+E       -  AttributeError(""'NoneType' object has no attribute 'cancelled'""),
+E       -  AttributeError(""'NoneType' object has no attribute 'cancelled'"")]
+
+test_vv_regressions.py:45: AssertionError"
+pre-boundary,REG-04,FAIL,0.002,"self = <test_vv_regressions.BoundaryRegressionTests testMethod=test_hold_during_standalone_hash_cannot_return_verified>
+
+    async def test_hold_during_standalone_hash_cannot_return_verified(self):
+        engine, _, envelope = await self.setup_boundary()
+        original = engine._compute
+    
+        async def interrupted(function, encoded, *prefix):
+            result = await original(function, encoded, *prefix)
+            engine._hold('INJECTED_UNAVAILABLE')
+            return result
+    
+        engine._compute = interrupted
+        result = await engine.governance_verify_payload('verified bytes', envelope['payload_hash'])
+>       self.assertFalse(result['verified'])
+E       AssertionError: True is not false
+
+test_vv_regressions.py:39: AssertionError"
+pre-boundary,REG-05,FAIL,0.002,"self = <test_vv_regressions.BoundaryRegressionTests testMethod=test_unexpected_verifier_failure_holds_and_clears_context>
+
+    async def test_unexpected_verifier_failure_holds_and_clears_context(self):
+        engine, receiver, envelope = await self.setup_boundary()
+        receiver.context.append('old context')
+    
+        async def broken(*args):
+            raise RuntimeError('injected verifier fault')
+    
+        engine._compute = broken
+        effects = []
+        with self.assertRaises(HoldError):
+>           await receiver.execute_verified(envelope, effects.append)
+
+test_vv_regressions.py:59: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+governance_gateway.py:52: in execute_verified
+    await self.engine.verify_envelope(snapshot)
+governance_verification.py:48: in verify_envelope
+    result = await self.governance_verify_payload(tx.payload, envelope.get(""payload_hash"", """"))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+governance_verification.py:23: in governance_verify_payload
+    actual = await self._compute(lambda data: hashlib.sha256(data).hexdigest(), encoded)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    async def broken(*args):
+>       raise RuntimeError('injected verifier fault')
+E       RuntimeError: injected verifier fault
+
+test_vv_regressions.py:54: RuntimeError"
+pre-api,REG-06,FAIL,0.629,"self = <test_vv_api.APIContractTests testMethod=test_strict_schema_and_real_stdio_handoff>
+
+    async def test_strict_schema_and_real_stdio_handoff(self):
+        observed = await api_probe()
+>       self.assertEqual(observed['strict_rejections'], [True, True, True])
+E       AssertionError: Lists differ: [False, False, False] != [True, True, True]
+E       
+E       First differing element 0:
+E       False
+E       True
+E       
+E       - [False, False, False]
+E       + [True, True, True]
+
+test_vv_api.py:10: AssertionError"
+current-unit,pytest:test_fault_controls.FaultControlTests.test_byte_budget_checks_unicode_and_malformed_expected_hash,PASS,0.007,
+current-unit,pytest:test_fault_controls.FaultControlTests.test_configuration_rejects_bool_negative_and_nonfinite_limits,PASS,0.003,
+current-unit,pytest:test_fault_controls.FaultControlTests.test_deadline_is_rechecked_after_verification,PASS,0.025,
+current-unit,pytest:test_fault_controls.FaultControlTests.test_gateway_receipt_timeout_holds_session_and_releases_lock,PASS,0.006,
+current-unit,pytest:test_fault_controls.FaultControlTests.test_gateway_rejects_quarantined_outbound_and_verifier_byte_exhaustion,PASS,0.005,
+current-unit,pytest:test_fault_controls.FaultControlTests.test_inline_worker_yields_during_a_full_queue,PASS,0.006,
+current-unit,pytest:test_fault_controls.FaultControlTests.test_outbound_cancellation_holds_the_session,PASS,0.006,
+current-unit,pytest:test_fault_controls.FaultControlTests.test_session_capacity_and_unknown_receipts_do_not_grant_trust,PASS,0.006,
+current-unit,pytest:test_fault_controls.FaultControlTests.test_shutdown_timeout_cancels_active_worker_and_settles_receipt,PASS,0.005,
+current-unit,pytest:test_fault_controls.FaultControlTests.test_worker_error_holds_all_queued_work_without_quarantine,PASS,0.004,
+current-unit,pytest:test_governance.ScannerTests.test_empty_short_unicode_and_forced_max,PASS,0.003,
+current-unit,pytest:test_governance.ScannerTests.test_fingerprint_matches_full_polynomial,PASS,0.016,
+current-unit,pytest:test_governance.ScannerTests.test_finish_and_configuration,PASS,0.001,
+current-unit,pytest:test_governance.ScannerTests.test_lossless_and_packet_independent,PASS,0.165,
+current-unit,pytest:test_governance.LedgerTests.test_bounded_queue_rejects_without_dropping_or_hanging,PASS,0.006,
+current-unit,pytest:test_governance.LedgerTests.test_broken_parent_and_duplicate_never_overwrite,PASS,0.007,
+current-unit,pytest:test_governance.LedgerTests.test_gate_never_calls_tool_and_clears_context,PASS,0.004,
+current-unit,pytest:test_governance.LedgerTests.test_metadata_rewrite_blocked_with_identical_payload,PASS,0.004,
+current-unit,pytest:test_governance.LedgerTests.test_missing_predecessor_quarantines_and_isolates_session,PASS,0.006,
+current-unit,pytest:test_governance.LedgerTests.test_payload_assertion_and_malformed,PASS,0.005,
+current-unit,pytest:test_governance.LedgerTests.test_pending_then_verified_and_immutable,PASS,0.004,
+current-unit,pytest:test_governance.LedgerTests.test_quarantine_during_hashing_never_commits,PASS,0.011,
+current-unit,pytest:test_governance.LedgerTests.test_two_blocks_and_registered_hash_only,PASS,0.005,
+current-unit,pytest:test_governance.LedgerTests.test_wrong_recipient_and_cross_session_blocked,PASS,0.004,
+current-unit,pytest:test_stream.StreamTests.test_oversized_packet_and_deadline_close_the_source,PASS,0.021,
+current-unit,pytest:test_stream.StreamTests.test_sink_failure_cancels_source_without_retry,PASS,0.012,
+current-unit,pytest:test_stream.StreamTests.test_stream_pipeline_preserves_bytes_bounds_staging_and_closes_source,PASS,0.055,
+current-unit,pytest:test_uplift.UpliftTests.test_bounded_caches_do_not_evict_ledger,PASS,0.011,
+current-unit,pytest:test_uplift.UpliftTests.test_byte_and_record_capacity_refuse_without_advancing_head,PASS,0.005,
+current-unit,pytest:test_uplift.UpliftTests.test_expired_queue_item_never_commits,PASS,0.007,
+current-unit,pytest:test_uplift.UpliftTests.test_hash_timeout_is_hold_and_never_invokes_tool,PASS,0.015,
+current-unit,pytest:test_uplift.UpliftTests.test_mutating_handoff_during_verification_cannot_swap_tool_payload,PASS,0.005,
+current-unit,pytest:test_uplift.UpliftTests.test_receipt_timeout_preserves_pending_result,PASS,0.007,
+current-unit,pytest:test_uplift.UpliftTests.test_shared_session_lock_serializes_concurrent_senders,PASS,0.016,
+current-unit,pytest:test_uplift.UpliftTests.test_small_hashes_avoid_thread_jobs_and_large_hashes_offload,PASS,0.007,
+current-unit,pytest:test_uplift.UpliftTests.test_verification_overload_is_hold_without_quarantine,PASS,0.005,
+current-unit,pytest:test_uplift.UpliftTests.test_wait_is_per_receipt_and_cancellation_does_not_cancel_commit,PASS,0.006,
+current-unit,pytest:test_uplift.UpliftTests.test_worker_cancellation_settles_pending_and_drains_queue,PASS,0.004,
+current-unit,pytest:test_uplift.ScannerUpliftTests.test_non_power_of_two_modulus_and_abandoned_generator,PASS,0.003,
+current-unit,REG-06,PASS,0.446,
+current-unit,pytest:test_vv_evidence.EvidenceSemanticsTests.test_failure_has_precedence_over_other_passing_assertions,PASS,0.003,
+current-unit,pytest:test_vv_evidence.EvidenceSemanticsTests.test_historical_pass_cannot_satisfy_current_release,PASS,0.002,
+current-unit,pytest:test_vv_evidence.EvidenceSemanticsTests.test_missing_or_one_framework_evidence_leaves_finding_open,PASS,0.002,
+current-unit,pytest:test_vv_evidence.EvidenceSemanticsTests.test_stale_source_evidence_cannot_satisfy,PASS,0.002,
+current-unit,pytest:test_vv_evidence.EvidenceSemanticsTests.test_two_current_independent_frameworks_satisfy,PASS,0.002,
+current-unit,pytest:test_vv_evidence.EvidenceSemanticsTests.test_unknown_requirement_and_dangling_result_are_rejected,PASS,0.001,
+current-unit,pytest:test_vv_model.FunctionalModelTests.test_model_boolean_calculations_and_operational_gate,PASS,0.007,
+current-unit,pytest:test_vv_model.FunctionalModelTests.test_model_boundary_calculation_edges,PASS,0.003,
+current-unit,pytest:test_vv_model.FunctionalModelTests.test_sysml_requirements_match_sql_catalog,PASS,0.001,
+current-unit,REG-01,PASS,0.006,
+current-unit,REG-02,PASS,0.004,
+current-unit,REG-03,PASS,0.009,
+current-unit,REG-04,PASS,0.004,
+current-unit,REG-05,PASS,0.005,
+current-unit,pytest:test_vv_semantics.OracleUnitTests.test_canonical_json_known_answer_and_key_order,PASS,0.001,
+current-unit,pytest:test_vv_semantics.OracleUnitTests.test_generated_polynomial_and_boundary_oracle,PASS,0.033,
+current-unit,pytest:test_vv_semantics.OracleUnitTests.test_scanner_invalid_configuration_types_and_edges,PASS,0.002,
+current-unit,pytest:test_vv_semantics.StateModelTests.test_cancelled_close_caller_does_not_abandon_shared_cleanup,PASS,0.006,
+current-unit,pytest:test_vv_semantics.StateModelTests.test_generated_traces_match_abstract_chain_model,PASS,0.042,
+current-unit,pytest:test_vv_semantics.StateModelTests.test_utf8_exact_limit_and_limit_plus_one,PASS,0.005,
+current-cross-pytest,PY-C001,PASS,0.014,
+current-cross-pytest,PY-C002,PASS,0.013,
+current-cross-pytest,PY-C003,PASS,0.001,
+current-cross-pytest,PY-C004,PASS,0.001,
+current-cross-pytest,PY-C005,PASS,0.001,
+current-cross-pytest,PY-C006,PASS,0.001,
+current-cross-pytest,PY-C007,PASS,0.001,
+current-cross-pytest,PY-C008,PASS,0.001,
+current-cross-pytest,PY-C009,PASS,0.001,
+current-cross-pytest,PY-C010,PASS,0.001,
+current-cross-pytest,PY-C011,PASS,0.001,
+current-cross-pytest,PY-C012,PASS,0.001,
+current-cross-pytest,PY-C013,PASS,0.001,
+current-cross-pytest,PY-C014,PASS,0.001,
+current-cross-pytest,PY-C015,PASS,0.001,
+current-cross-pytest,PY-C016,PASS,0.001,
+current-cross-pytest,PY-C017,PASS,0.001,
+current-cross-pytest,PY-C018,PASS,0.001,
+current-cross-pytest,PY-C019,PASS,0.001,
+current-cross-pytest,PY-C020,PASS,0.001,
+current-cross-pytest,PY-C021,PASS,0.001,
+current-cross-pytest,PY-C022,PASS,0.001,
+current-cross-pytest,PY-C023,PASS,0.001,
+current-cross-pytest,PY-C024,PASS,0.001,
+current-cross-pytest,PY-C025,PASS,0.001,
+current-cross-pytest,PY-C026,PASS,0.003,
+current-cross-pytest,PY-C027,PASS,0.002,
+current-cross-pytest,PY-C028,PASS,0.001,
+current-cross-pytest,PY-C029,PASS,0.739,
+current-cross-pytest,PY-C030,PASS,0.024,
+current-cross-pytest,PY-C031,PASS,1.024,
+current-cross-pytest,PY-C032,PASS,0.003,
+current-cross-pytest,SCOPE-PY,PASS,0.014,
+current-cross-unittest,UT-C001,PASS,0.012668327000028512,
+current-cross-unittest,UT-C002,PASS,0.011464380000006713,
+current-cross-unittest,UT-C003,PASS,0.0020312860000331057,
+current-cross-unittest,UT-C004,PASS,0.0016606359999968845,
+current-cross-unittest,UT-C005,PASS,0.001613744999986011,
+current-cross-unittest,UT-C006,PASS,0.001570630000003348,
+current-cross-unittest,UT-C007,PASS,0.001621806999992259,
+current-cross-unittest,UT-C008,PASS,0.0013220949999777076,
+current-cross-unittest,UT-C009,PASS,0.0013939940000113893,
+current-cross-unittest,UT-C010,PASS,0.0012671819999923173,
+current-cross-unittest,UT-C011,PASS,0.001403847999995378,
+current-cross-unittest,UT-C012,PASS,0.0014823459999888655,
+current-cross-unittest,UT-C013,PASS,0.001282806000006076,
+current-cross-unittest,UT-C014,PASS,0.0013383399999611356,
+current-cross-unittest,UT-C015,PASS,0.001325138999959563,
+current-cross-unittest,UT-C016,PASS,0.0013283050000154617,
+current-cross-unittest,UT-C017,PASS,0.0017704619999676652,
+current-cross-unittest,UT-C018,PASS,0.0017107820000319407,
+current-cross-unittest,UT-C019,PASS,0.0014216060000080688,
+current-cross-unittest,UT-C020,PASS,0.00140820500001837,
+current-cross-unittest,UT-C021,PASS,0.0012738219999732792,
+current-cross-unittest,UT-C022,PASS,0.0016126040000017383,
+current-cross-unittest,UT-C023,PASS,0.0015272449999770288,
+current-cross-unittest,UT-C024,PASS,0.002510038000025361,
+current-cross-unittest,UT-C025,PASS,0.0012179180000089218,
+current-cross-unittest,UT-C026,PASS,0.005465638000032413,
+current-cross-unittest,UT-C027,PASS,0.003962790000002769,
+current-cross-unittest,UT-C028,PASS,0.0010709669999755533,
+current-cross-unittest,UT-C029,PASS,0.6930938379999816,
+current-cross-unittest,UT-C030,PASS,0.01830659500001275,
+current-cross-unittest,UT-C031,PASS,3.1999447609999834,
+current-cross-unittest,UT-C032,PASS,0.003185497000004034,
+current-cross-unittest,SCOPE-UT,PASS,0.02289217500003815,

@@ -1,0 +1,10 @@
+{
+  "outcome": "cancelled",
+  "effects": [],
+  "context": 0,
+  "quarantined": 0,
+  "held": 1,
+  "records": 1,
+  "pending_bytes": 0,
+  "active_verifications": 0
+}

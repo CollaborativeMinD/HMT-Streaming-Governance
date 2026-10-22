@@ -1,0 +1,24 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______ LedgerTests.test_metadata_rewrite_blocked_with_identical_payload _______
+
+self = <test_governance.LedgerTests testMethod=test_metadata_rewrite_blocked_with_identical_payload>
+
+    async def test_metadata_rewrite_blocked_with_identical_payload(self):
+        envelope = await AgentGateway(self.engine, "s", "sender").wrap_output("safe", "receiver")
+        envelope["transaction"]["source_agent"] = "attacker"
+        with self.assertRaises(QuarantineError):
+>           await AgentGateway(self.engine, "s", "receiver").execute_verified(envelope, lambda _: self.fail("Tool ran"))
+
+test_governance.py:154: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+governance_gateway.py:66: in execute_verified
+    return tool(transaction.payload)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+test_governance.py:154: in <lambda>
+    await AgentGateway(self.engine, "s", "receiver").execute_verified(envelope, lambda _: self.fail("Tool ran"))
+                                                                                          ^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: Tool ran
+=========================== short test summary info ============================
+FAILED test_governance.py::LedgerTests::test_metadata_rewrite_blocked_with_identical_payload
+1 failed in 0.04s

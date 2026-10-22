@@ -1,0 +1,861 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="31" skipped="0" tests="33" time="2.915" timestamp="2026-10-22T01:32:42.304410+00:00" hostname="2dd7d8cfea16"><testcase classname="test_vv_semantics.OracleUnitTests" name="test_generated_polynomial_and_boundary_oracle" time="2.896"><failure message="AssertionError: Lists differ: [(0, 29, 955865292127616743, 'content'), (29, [897 chars]il')] != [(0, 19, 16051391363562865, 'content'), (19, 5[903 chars]il')]&#10;&#10;First differing element 0:&#10;(0, 29, 955865292127616743, 'content')&#10;(0, 19, 16051391363562865, 'content')&#10;&#10;Second list contains 1 additional elements.&#10;First extra element 22:&#10;(517, 523, 57430049066127919, 'tail')&#10;&#10;Diff is 2037 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 29, 955865292127616743, 'content'), (29, [897 chars]il')] != [(0, 19, 16051391363562865, 'content'), (19, 5[903 chars]il')]
+E               
+E               First differing element 0:
+E               (0, 29, 955865292127616743, 'content')
+E               (0, 19, 16051391363562865, 'content')
+E               
+E               Second list contains 1 additional elements.
+E               First extra element 22:
+E               (517, 523, 57430049066127919, 'tail')
+E               
+E               Diff is 2037 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 6, 2286655027244344279, 'max size'), (6, 12,[3776 chars]il')] != [(0, 6, 12755928, 'max size'), (6, 12, 1107320, '[2775 chars]il')]&#10;&#10;First differing element 0:&#10;(0, 6, 2286655027244344279, 'max size')&#10;(0, 6, 12755928, 'max size')&#10;&#10;First list contains 1 additional elements.&#10;First extra element 86:&#10;(505, 507, 1195497243959671666, 'tail')&#10;&#10;Diff is 8395 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 6, 2286655027244344279, 'max size'), (6, 12,[3776 chars]il')] != [(0, 6, 12755928, 'max size'), (6, 12, 1107320, '[2775 chars]il')]
+E               
+E               First differing element 0:
+E               (0, 6, 2286655027244344279, 'max size')
+E               (0, 6, 12755928, 'max size')
+E               
+E               First list contains 1 additional elements.
+E               First extra element 86:
+E               (505, 507, 1195497243959671666, 'tail')
+E               
+E               Diff is 8395 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 3, 2305843007199479655, 'content'), (3, 4[3455 chars]il')] != [(0, 2, 135, 'content'), (2, 5, 255, 'content'[2226 chars]il')]&#10;&#10;First differing element 0:&#10;(0, 3, 2305843007199479655, 'content')&#10;(0, 2, 135, 'content')&#10;&#10;Second list contains 4 additional elements.&#10;First extra element 83:&#10;(161, 165, 51, 'content')&#10;&#10;Diff is 6710 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 3, 2305843007199479655, 'content'), (3, 4[3455 chars]il')] != [(0, 2, 135, 'content'), (2, 5, 255, 'content'[2226 chars]il')]
+E               
+E               First differing element 0:
+E               (0, 3, 2305843007199479655, 'content')
+E               (0, 2, 135, 'content')
+E               
+E               Second list contains 4 additional elements.
+E               First extra element 83:
+E               (161, 165, 51, 'content')
+E               
+E               Diff is 6710 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 19, 1651094914503768938, 'max size'), (19,[1439 chars]il')] != [(0, 16, 3649029648, 'content'), (16, 35, 35961[1247 chars]il')]&#10;&#10;First differing element 0:&#10;(0, 19, 1651094914503768938, 'max size')&#10;(0, 16, 3649029648, 'content')&#10;&#10;Second list contains 3 additional elements.&#10;First extra element 34:&#10;(575, 594, 2164992976, 'content')&#10;&#10;Diff is 3003 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 19, 1651094914503768938, 'max size'), (19,[1439 chars]il')] != [(0, 16, 3649029648, 'content'), (16, 35, 35961[1247 chars]il')]
+E               
+E               First differing element 0:
+E               (0, 19, 1651094914503768938, 'max size')
+E               (0, 16, 3649029648, 'content')
+E               
+E               Second list contains 3 additional elements.
+E               First extra element 34:
+E               (575, 594, 2164992976, 'content')
+E               
+E               Diff is 3003 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 19, 2234829304599654468, 'max size'), (19, 26[576 chars]il')] != [(0, 19, 1718000037, 'max size'), (19, 32, 4285655[345 chars]il')]&#10;&#10;First differing element 0:&#10;(0, 19, 2234829304599654468, 'max size')&#10;(0, 19, 1718000037, 'max size')&#10;&#10;First list contains 3 additional elements.&#10;First extra element 12:&#10;(137, 148, 82721456300678316, 'content')&#10;&#10;Diff is 1112 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 19, 2234829304599654468, 'max size'), (19, 26[576 chars]il')] != [(0, 19, 1718000037, 'max size'), (19, 32, 4285655[345 chars]il')]
+E               
+E               First differing element 0:
+E               (0, 19, 2234829304599654468, 'max size')
+E               (0, 19, 1718000037, 'max size')
+E               
+E               First list contains 3 additional elements.
+E               First extra element 12:
+E               (137, 148, 82721456300678316, 'content')
+E               
+E               Diff is 1112 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 38, 1865873054634531657, 'max size'), (38,[684 chars]il')] != [(0, 32, 966065176951786064, 'content'), (32, 7[895 chars]il')]&#10;&#10;First differing element 0:&#10;(0, 38, 1865873054634531657, 'max size')&#10;(0, 32, 966065176951786064, 'content')&#10;&#10;Second list contains 5 additional elements.&#10;First extra element 17:&#10;(380, 404, 1413170473736488624, 'content')&#10;&#10;Diff is 1800 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 38, 1865873054634531657, 'max size'), (38,[684 chars]il')] != [(0, 32, 966065176951786064, 'content'), (32, 7[895 chars]il')]
+E               
+E               First differing element 0:
+E               (0, 38, 1865873054634531657, 'max size')
+E               (0, 32, 966065176951786064, 'content')
+E               
+E               Second list contains 5 additional elements.
+E               First extra element 17:
+E               (380, 404, 1413170473736488624, 'content')
+E               
+E               Diff is 1800 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 10, 995906365856280619, 'max size'), (10, 19,[277 chars]il')] != [(0, 10, 47898272797160, 'max size'), (10, 20, 173[248 chars]il')]&#10;&#10;First differing element 0:&#10;(0, 10, 995906365856280619, 'max size')&#10;(0, 10, 47898272797160, 'max size')&#10;&#10;Diff is 743 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 10, 995906365856280619, 'max size'), (10, 19,[277 chars]il')] != [(0, 10, 47898272797160, 'max size'), (10, 20, 173[248 chars]il')]
+E               
+E               First differing element 0:
+E               (0, 10, 995906365856280619, 'max size')
+E               (0, 10, 47898272797160, 'max size')
+E               
+E               Diff is 743 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 13, 410611315972993859, 'max size'), (13, [2668 chars]il')] != [(0, 10, 3457536548, 'content'), (10, 23, 34789[2086 chars]il')]&#10;&#10;First differing element 0:&#10;(0, 13, 410611315972993859, 'max size')&#10;(0, 10, 3457536548, 'content')&#10;&#10;First list contains 1 additional elements.&#10;First extra element 61:&#10;(716, 721, 1699788208182499859, 'tail')&#10;&#10;Diff is 5575 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 13, 410611315972993859, 'max size'), (13, [2668 chars]il')] != [(0, 10, 3457536548, 'content'), (10, 23, 34789[2086 chars]il')]
+E               
+E               First differing element 0:
+E               (0, 13, 410611315972993859, 'max size')
+E               (0, 10, 3457536548, 'content')
+E               
+E               First list contains 1 additional elements.
+E               First extra element 61:
+E               (716, 721, 1699788208182499859, 'tail')
+E               
+E               Diff is 5575 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 14, 1585269278342910617, 'max size'), (14, 28,[546 chars]il')] != [(0, 14, 1778166190443673217, 'max size'), (14, 28,[546 chars]il')]&#10;&#10;First differing element 0:&#10;(0, 14, 1585269278342910617, 'max size')&#10;(0, 14, 1778166190443673217, 'max size')&#10;&#10;Diff is 1417 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 14, 1585269278342910617, 'max size'), (14, 28,[546 chars]il')] != [(0, 14, 1778166190443673217, 'max size'), (14, 28,[546 chars]il')]
+E               
+E               First differing element 0:
+E               (0, 14, 1585269278342910617, 'max size')
+E               (0, 14, 1778166190443673217, 'max size')
+E               
+E               Diff is 1417 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 13, 965867684191760599, 'content'), (13, 15, 1408103478464098488, 'tail')] != [(0, 13, 966996673152118999, 'content'), (13, 15, 1610549470336921816, 'tail')]&#10;&#10;First differing element 0:&#10;(0, 13, 965867684191760599, 'content')&#10;(0, 13, 966996673152118999, 'content')&#10;&#10;- [(0, 13, 965867684191760599, 'content'), (13, 15, 1408103478464098488, 'tail')]&#10;+ [(0, 13, 966996673152118999, 'content'), (13, 15, 1610549470336921816, 'tail')]">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 13, 965867684191760599, 'content'), (13, 15, 1408103478464098488, 'tail')] != [(0, 13, 966996673152118999, 'content'), (13, 15, 1610549470336921816, 'tail')]
+E               
+E               First differing element 0:
+E               (0, 13, 965867684191760599, 'content')
+E               (0, 13, 966996673152118999, 'content')
+E               
+E               - [(0, 13, 965867684191760599, 'content'), (13, 15, 1408103478464098488, 'tail')]
+E               + [(0, 13, 966996673152118999, 'content'), (13, 15, 1610549470336921816, 'tail')]
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 27, 1778190776710209209, 'content'), (27, 54, [1002 chars]il')] != [(0, 27, 1835777872383272751, 'max size'), (27, 38,[1078 chars]il')]&#10;&#10;First differing element 0:&#10;(0, 27, 1778190776710209209, 'content')&#10;(0, 27, 1835777872383272751, 'max size')&#10;&#10;Second list contains 2 additional elements.&#10;First extra element 24:&#10;(584, 600, 1656555955611930361, 'content')&#10;&#10;Diff is 2342 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 27, 1778190776710209209, 'content'), (27, 54, [1002 chars]il')] != [(0, 27, 1835777872383272751, 'max size'), (27, 38,[1078 chars]il')]
+E               
+E               First differing element 0:
+E               (0, 27, 1778190776710209209, 'content')
+E               (0, 27, 1835777872383272751, 'max size')
+E               
+E               Second list contains 2 additional elements.
+E               First extra element 24:
+E               (584, 600, 1656555955611930361, 'content')
+E               
+E               Diff is 2342 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 16, 698079480138328832, 'max size'), (16, 32,[1073 chars]il')] != [(0, 16, 1290825963322050427, 'content'), (16, 32,[1041 chars]ze')]&#10;&#10;First differing element 0:&#10;(0, 16, 698079480138328832, 'max size')&#10;(0, 16, 1290825963322050427, 'content')&#10;&#10;First list contains 1 additional elements.&#10;First extra element 25:&#10;(383, 390, 840787241338274462, 'tail')&#10;&#10;Diff is 2377 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 16, 698079480138328832, 'max size'), (16, 32,[1073 chars]il')] != [(0, 16, 1290825963322050427, 'content'), (16, 32,[1041 chars]ze')]
+E               
+E               First differing element 0:
+E               (0, 16, 698079480138328832, 'max size')
+E               (0, 16, 1290825963322050427, 'content')
+E               
+E               First list contains 1 additional elements.
+E               First extra element 25:
+E               (383, 390, 840787241338274462, 'tail')
+E               
+E               Diff is 2377 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 15, 1022300981558973463, 'content'), (15,[284 chars]il')] != [(0, 6, 1011563241799, 'content'), (6, 19, 999[267 chars]il')]&#10;&#10;First differing element 0:&#10;(0, 15, 1022300981558973463, 'content')&#10;(0, 6, 1011563241799, 'content')&#10;&#10;Second list contains 1 additional elements.&#10;First extra element 8:&#10;(135, 150, 814804579531, 'tail')&#10;&#10;Diff is 704 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 15, 1022300981558973463, 'content'), (15,[284 chars]il')] != [(0, 6, 1011563241799, 'content'), (6, 19, 999[267 chars]il')]
+E               
+E               First differing element 0:
+E               (0, 15, 1022300981558973463, 'content')
+E               (0, 6, 1011563241799, 'content')
+E               
+E               Second list contains 1 additional elements.
+E               First extra element 8:
+E               (135, 150, 814804579531, 'tail')
+E               
+E               Diff is 704 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 14, 1553564433334532300, 'max size'), (14, 28[2409 chars]il')] != [(0, 14, 64667, 'max size'), (14, 28, 36941, 'max [1675 chars]il')]&#10;&#10;First differing element 0:&#10;(0, 14, 1553564433334532300, 'max size')&#10;(0, 14, 64667, 'max size')&#10;&#10;Second list contains 1 additional elements.&#10;First extra element 56:&#10;(748, 752, 11136, 'tail')&#10;&#10;Diff is 4722 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 14, 1553564433334532300, 'max size'), (14, 28[2409 chars]il')] != [(0, 14, 64667, 'max size'), (14, 28, 36941, 'max [1675 chars]il')]
+E               
+E               First differing element 0:
+E               (0, 14, 1553564433334532300, 'max size')
+E               (0, 14, 64667, 'max size')
+E               
+E               Second list contains 1 additional elements.
+E               First extra element 56:
+E               (748, 752, 11136, 'tail')
+E               
+E               Diff is 4722 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 9, 1751341703510175872, 'content'), (9, 1[1134 chars]il')] != [(0, 8, 1446158, 'content'), (8, 16, 138349774[888 chars]il')]&#10;&#10;First differing element 0:&#10;(0, 9, 1751341703510175872, 'content')&#10;(0, 8, 1446158, 'content')&#10;&#10;Diff is 2410 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 9, 1751341703510175872, 'content'), (9, 1[1134 chars]il')] != [(0, 8, 1446158, 'content'), (8, 16, 138349774[888 chars]il')]
+E               
+E               First differing element 0:
+E               (0, 9, 1751341703510175872, 'content')
+E               (0, 8, 1446158, 'content')
+E               
+E               Diff is 2410 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 20, 1562303753529241801, 'content'), (20,[467 chars]nt')] != [(0, 10, 253568410047493, 'content'), (10, 22,[420 chars]il')]&#10;&#10;First differing element 0:&#10;(0, 20, 1562303753529241801, 'content')&#10;(0, 10, 253568410047493, 'content')&#10;&#10;Diff is 1061 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 20, 1562303753529241801, 'content'), (20,[467 chars]nt')] != [(0, 10, 253568410047493, 'content'), (10, 22,[420 chars]il')]
+E               
+E               First differing element 0:
+E               (0, 20, 1562303753529241801, 'content')
+E               (0, 10, 253568410047493, 'content')
+E               
+E               Diff is 1061 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 22, 1182405010182963902, 'max size'), (22, 37[596 chars]il')] != [(0, 22, 555332082831356776, 'max size'), (22, 44,[596 chars]il')]&#10;&#10;First differing element 0:&#10;(0, 22, 1182405010182963902, 'max size')&#10;(0, 22, 555332082831356776, 'max size')&#10;&#10;Diff is 1392 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 22, 1182405010182963902, 'max size'), (22, 37[596 chars]il')] != [(0, 22, 555332082831356776, 'max size'), (22, 44,[596 chars]il')]
+E               
+E               First differing element 0:
+E               (0, 22, 1182405010182963902, 'max size')
+E               (0, 22, 555332082831356776, 'max size')
+E               
+E               Diff is 1392 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 6, 2276246216452051679, 'content'), (6, 1[1224 chars]il')] != [(0, 8, 14700669, 'content'), (8, 15, 9113209,[858 chars]nt')]&#10;&#10;First differing element 0:&#10;(0, 6, 2276246216452051679, 'content')&#10;(0, 8, 14700669, 'content')&#10;&#10;First list contains 1 additional elements.&#10;First extra element 29:&#10;(196, 202, 1894917410252547272, 'tail')&#10;&#10;Diff is 2520 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 6, 2276246216452051679, 'content'), (6, 1[1224 chars]il')] != [(0, 8, 14700669, 'content'), (8, 15, 9113209,[858 chars]nt')]
+E               
+E               First differing element 0:
+E               (0, 6, 2276246216452051679, 'content')
+E               (0, 8, 14700669, 'content')
+E               
+E               First list contains 1 additional elements.
+E               First extra element 29:
+E               (196, 202, 1894917410252547272, 'tail')
+E               
+E               Diff is 2520 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 20, 1803893410316290406, 'content'), (20,[498 chars]il')] != [(0, 19, 2283206785782381458, 'content'), (19,[498 chars]il')]&#10;&#10;First differing element 0:&#10;(0, 20, 1803893410316290406, 'content')&#10;(0, 19, 2283206785782381458, 'content')&#10;&#10;Diff is 1176 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 20, 1803893410316290406, 'content'), (20,[498 chars]il')] != [(0, 19, 2283206785782381458, 'content'), (19,[498 chars]il')]
+E               
+E               First differing element 0:
+E               (0, 20, 1803893410316290406, 'content')
+E               (0, 19, 2283206785782381458, 'content')
+E               
+E               Diff is 1176 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 34, 216906826699884803, 'max size'), (34, 68,[822 chars]il')] != [(0, 34, 785826877774984008, 'max size'), (34, 68,[818 chars]il')]&#10;&#10;First differing element 0:&#10;(0, 34, 216906826699884803, 'max size')&#10;(0, 34, 785826877774984008, 'max size')&#10;&#10;Diff is 1870 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 34, 216906826699884803, 'max size'), (34, 68,[822 chars]il')] != [(0, 34, 785826877774984008, 'max size'), (34, 68,[818 chars]il')]
+E               
+E               First differing element 0:
+E               (0, 34, 216906826699884803, 'max size')
+E               (0, 34, 785826877774984008, 'max size')
+E               
+E               Diff is 1870 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 15, 2053306860753346181, 'max size'), (15, 30[1515 chars]il')] != [(0, 15, 1574378, 'max size'), (15, 28, 4363766, '[1144 chars]il')]&#10;&#10;First differing element 0:&#10;(0, 15, 2053306860753346181, 'max size')&#10;(0, 15, 1574378, 'max size')&#10;&#10;Second list contains 1 additional elements.&#10;First extra element 36:&#10;(480, 490, 8304896, 'tail')&#10;&#10;Diff is 3154 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 15, 2053306860753346181, 'max size'), (15, 30[1515 chars]il')] != [(0, 15, 1574378, 'max size'), (15, 28, 4363766, '[1144 chars]il')]
+E               
+E               First differing element 0:
+E               (0, 15, 2053306860753346181, 'max size')
+E               (0, 15, 1574378, 'max size')
+E               
+E               Second list contains 1 additional elements.
+E               First extra element 36:
+E               (480, 490, 8304896, 'tail')
+E               
+E               Diff is 3154 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 17, 1052878292642444951, 'content'), (17,[838 chars]il')] != [(0, 8, 2088734, 'content'), (8, 11, 11402325,[759 chars]il')]&#10;&#10;First differing element 0:&#10;(0, 17, 1052878292642444951, 'content')&#10;(0, 8, 2088734, 'content')&#10;&#10;Second list contains 5 additional elements.&#10;First extra element 21:&#10;(156, 162, 15730481, 'content')&#10;&#10;Diff is 1896 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 17, 1052878292642444951, 'content'), (17,[838 chars]il')] != [(0, 8, 2088734, 'content'), (8, 11, 11402325,[759 chars]il')]
+E               
+E               First differing element 0:
+E               (0, 17, 1052878292642444951, 'content')
+E               (0, 8, 2088734, 'content')
+E               
+E               Second list contains 5 additional elements.
+E               First extra element 21:
+E               (156, 162, 15730481, 'content')
+E               
+E               Diff is 1896 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 6, 2301918687722466333, 'content'), (6, 1[2742 chars]il')] != [(0, 7, 771079544491, 'content'), (7, 12, 3933[2346 chars]il')]&#10;&#10;First differing element 0:&#10;(0, 6, 2301918687722466333, 'content')&#10;(0, 7, 771079544491, 'content')&#10;&#10;Second list contains 1 additional elements.&#10;First extra element 65:&#10;(384, 388, 238080698178, 'tail')&#10;&#10;Diff is 5813 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 6, 2301918687722466333, 'content'), (6, 1[2742 chars]il')] != [(0, 7, 771079544491, 'content'), (7, 12, 3933[2346 chars]il')]
+E               
+E               First differing element 0:
+E               (0, 6, 2301918687722466333, 'content')
+E               (0, 7, 771079544491, 'content')
+E               
+E               Second list contains 1 additional elements.
+E               First extra element 65:
+E               (384, 388, 238080698178, 'tail')
+E               
+E               Diff is 5813 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 22, 1211168756497197619, 'max size'), (22[330 chars]il')] != [(0, 19, 827167554150871420, 'content'), (19, [288 chars]il')]&#10;&#10;First differing element 0:&#10;(0, 22, 1211168756497197619, 'max size')&#10;(0, 19, 827167554150871420, 'content')&#10;&#10;First list contains 1 additional elements.&#10;First extra element 8:&#10;(154, 171, 1222704863595558429, 'tail')&#10;&#10;Diff is 771 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 22, 1211168756497197619, 'max size'), (22[330 chars]il')] != [(0, 19, 827167554150871420, 'content'), (19, [288 chars]il')]
+E               
+E               First differing element 0:
+E               (0, 22, 1211168756497197619, 'max size')
+E               (0, 19, 827167554150871420, 'content')
+E               
+E               First list contains 1 additional elements.
+E               First extra element 8:
+E               (154, 171, 1222704863595558429, 'tail')
+E               
+E               Diff is 771 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 8, 1240137009259258457, 'content'), (8, 17, 1[2266 chars]il')] != [(0, 8, 15157910614485211, 'content'), (8, 16, 706[2212 chars]il')]&#10;&#10;First differing element 0:&#10;(0, 8, 1240137009259258457, 'content')&#10;(0, 8, 15157910614485211, 'content')&#10;&#10;Second list contains 1 additional elements.&#10;First extra element 54:&#10;(478, 484, 59480155679839987, 'tail')&#10;&#10;Diff is 5107 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 8, 1240137009259258457, 'content'), (8, 17, 1[2266 chars]il')] != [(0, 8, 15157910614485211, 'content'), (8, 16, 706[2212 chars]il')]
+E               
+E               First differing element 0:
+E               (0, 8, 1240137009259258457, 'content')
+E               (0, 8, 15157910614485211, 'content')
+E               
+E               Second list contains 1 additional elements.
+E               First extra element 54:
+E               (478, 484, 59480155679839987, 'tail')
+E               
+E               Diff is 5107 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 19, 249392653936154284, 'content'), (19, 4[1239 chars]il')] != [(0, 15, 36443030465799520, 'content'), (15, 41[1283 chars]il')]&#10;&#10;First differing element 0:&#10;(0, 19, 249392653936154284, 'content')&#10;(0, 15, 36443030465799520, 'content')&#10;&#10;Second list contains 1 additional elements.&#10;First extra element 30:&#10;(533, 557, 1915065999308751108, 'tail')&#10;&#10;Diff is 2809 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 19, 249392653936154284, 'content'), (19, 4[1239 chars]il')] != [(0, 15, 36443030465799520, 'content'), (15, 41[1283 chars]il')]
+E               
+E               First differing element 0:
+E               (0, 19, 249392653936154284, 'content')
+E               (0, 15, 36443030465799520, 'content')
+E               
+E               Second list contains 1 additional elements.
+E               First extra element 30:
+E               (533, 557, 1915065999308751108, 'tail')
+E               
+E               Diff is 2809 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 22, 1028761838227569540, 'max size'), (22,[419 chars]il')] != [(0, 20, 542686863668421273, 'content'), (20, 4[372 chars]il')]&#10;&#10;First differing element 0:&#10;(0, 22, 1028761838227569540, 'max size')&#10;(0, 20, 542686863668421273, 'content')&#10;&#10;First list contains 1 additional elements.&#10;First extra element 10:&#10;(194, 201, 1488190456772152538, 'tail')&#10;&#10;Diff is 958 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 22, 1028761838227569540, 'max size'), (22,[419 chars]il')] != [(0, 20, 542686863668421273, 'content'), (20, 4[372 chars]il')]
+E               
+E               First differing element 0:
+E               (0, 22, 1028761838227569540, 'max size')
+E               (0, 20, 542686863668421273, 'content')
+E               
+E               First list contains 1 additional elements.
+E               First extra element 10:
+E               (194, 201, 1488190456772152538, 'tail')
+E               
+E               Diff is 958 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 10, 863983430917907169, 'max size'), (10, 20,[545 chars]il')] != [(0, 10, 59404, 'max size'), (10, 20, 65077, 'max [353 chars]il')]&#10;&#10;First differing element 0:&#10;(0, 10, 863983430917907169, 'max size')&#10;(0, 10, 59404, 'max size')&#10;&#10;Diff is 1449 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 10, 863983430917907169, 'max size'), (10, 20,[545 chars]il')] != [(0, 10, 59404, 'max size'), (10, 20, 65077, 'max [353 chars]il')]
+E               
+E               First differing element 0:
+E               (0, 10, 863983430917907169, 'max size')
+E               (0, 10, 59404, 'max size')
+E               
+E               Diff is 1449 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 11, 965518548905539485, 'content'), (11, 23, 2146864[1882 chars]il')] != [(0, 11, 965518562401787805, 'content'), (11, 22, 2119579[1877 chars]il')]&#10;&#10;First differing element 0:&#10;(0, 11, 965518548905539485, 'content')&#10;(0, 11, 965518562401787805, 'content')&#10;&#10;Diff is 4280 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 11, 965518548905539485, 'content'), (11, 23, 2146864[1882 chars]il')] != [(0, 11, 965518562401787805, 'content'), (11, 22, 2119579[1877 chars]il')]
+E               
+E               First differing element 0:
+E               (0, 11, 965518548905539485, 'content')
+E               (0, 11, 965518562401787805, 'content')
+E               
+E               Diff is 4280 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 21, 2022822776670348000, 'content'), (21, [1121 chars]il')] != [(0, 23, 96242898681122960, 'content'), (23, 46[1158 chars]il')]&#10;&#10;First differing element 0:&#10;(0, 21, 2022822776670348000, 'content')&#10;(0, 23, 96242898681122960, 'content')&#10;&#10;Second list contains 1 additional elements.&#10;First extra element 27:&#10;(654, 669, 314979642150786429, 'tail')&#10;&#10;Diff is 2548 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 21, 2022822776670348000, 'content'), (21, [1121 chars]il')] != [(0, 23, 96242898681122960, 'content'), (23, 46[1158 chars]il')]
+E               
+E               First differing element 0:
+E               (0, 21, 2022822776670348000, 'content')
+E               (0, 23, 96242898681122960, 'content')
+E               
+E               Second list contains 1 additional elements.
+E               First extra element 27:
+E               (654, 669, 314979642150786429, 'tail')
+E               
+E               Diff is 2548 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure><failure message="AssertionError: Lists differ: [(0, 13, 937270058532634647, 'max size'), (13, 26,[455 chars]il')] != [(0, 13, 251, 'max size'), (13, 26, 102, 'max size[320 chars]il')]&#10;&#10;First differing element 0:&#10;(0, 13, 937270058532634647, 'max size')&#10;(0, 13, 251, 'max size')&#10;&#10;Second list contains 2 additional elements.&#10;First extra element 12:&#10;(128, 137, 179, 'content')&#10;&#10;Diff is 963 characters long. Set self.maxDiff to None to see it.">self = &lt;test_vv_semantics.OracleUnitTests testMethod=test_generated_polynomial_and_boundary_oracle&gt;
+
+    def test_generated_polynomial_and_boundary_oracle(self):
+        for seed in range(32):
+            with self.subTest(seed=seed):
+                rng = random.Random(seed)
+                width, modulus = rng.randint(1, 12), rng.choice((2, 7, 16, 31, 64, 257))
+                minimum, target = width + rng.randint(0, 4), rng.randrange(modulus)
+                maximum = minimum + rng.randint(0, 30)
+                data = rng.randbytes(rng.randint(0, 800))
+                expected = reference_cuts(data, width, minimum, maximum, modulus, target)
+                scanner = RabinCDCScanner(modulus, width, minimum, maximum, target)
+                actual = []
+                for offset in range(0, len(data), 13):
+                    actual.extend(scanner.feed(data[offset:offset + 13]))
+                actual.extend(scanner.finish())
+&gt;               self.assertEqual([(c.start, c.end, c.fingerprint, c.reason) for c in actual], expected)
+E               AssertionError: Lists differ: [(0, 13, 937270058532634647, 'max size'), (13, 26,[455 chars]il')] != [(0, 13, 251, 'max size'), (13, 26, 102, 'max size[320 chars]il')]
+E               
+E               First differing element 0:
+E               (0, 13, 937270058532634647, 'max size')
+E               (0, 13, 251, 'max size')
+E               
+E               Second list contains 2 additional elements.
+E               First extra element 12:
+E               (128, 137, 179, 'content')
+E               
+E               Diff is 963 characters long. Set self.maxDiff to None to see it.
+
+test_vv_semantics.py:45: AssertionError</failure></testcase></testsuite></testsuites>

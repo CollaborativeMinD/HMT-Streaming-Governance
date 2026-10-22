@@ -1,0 +1,145 @@
+{
+  "server_name": "Streaming Governance Ledger",
+  "tools": [
+    {
+      "name": "governance_commit_state",
+      "description": "Queue a bounded transaction. Pending is NOT verified. Poll its token.\n\n    previous_hash is the prior verified BLOCK hash, or 64 zeros for sequence 0.\n    Optional expected_hash asserts the payload's SHA-256 before commit.\n    busy means retry with the same sequence; rejected means invalid input.\n    held means resource or verification availability prevented admission.\n    ",
+      "inputSchema": {
+        "properties": {
+          "session_id": {
+            "title": "Session Id",
+            "type": "string"
+          },
+          "sequence_number": {
+            "title": "Sequence Number",
+            "type": "integer"
+          },
+          "source_agent": {
+            "title": "Source Agent",
+            "type": "string"
+          },
+          "target_entity": {
+            "title": "Target Entity",
+            "type": "string"
+          },
+          "payload": {
+            "title": "Payload",
+            "type": "string"
+          },
+          "previous_hash": {
+            "title": "Previous Hash",
+            "type": "string"
+          },
+          "expected_hash": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Expected Hash"
+          }
+        },
+        "required": [
+          "session_id",
+          "sequence_number",
+          "source_agent",
+          "target_entity",
+          "payload",
+          "previous_hash"
+        ],
+        "title": "governance_commit_stateArguments",
+        "type": "object"
+      }
+    },
+    {
+      "name": "governance_verify_payload",
+      "description": "Verify UTF-8 content against a SHA-256 already committed to this ledger.\n\n    An unregistered, self-claimed hash fails. Use governance_verify_handoff\n    at a tool/agent boundary to bind session, routing, and predecessor too.\n    ",
+      "inputSchema": {
+        "properties": {
+          "payload": {
+            "title": "Payload",
+            "type": "string"
+          },
+          "expected_hash": {
+            "title": "Expected Hash",
+            "type": "string"
+          }
+        },
+        "required": [
+          "payload",
+          "expected_hash"
+        ],
+        "title": "governance_verify_payloadArguments",
+        "type": "object"
+      }
+    },
+    {
+      "name": "governance_get_status",
+      "description": "Poll a receipt: pending, verified, quarantined, held, or unknown.\n\n    A verified receipt includes payload_hash and block_hash. Only then may\n    the next transaction use block_hash as its previous_hash. Completed tokens\n    are bounded cached observations; an evicted token is unknown, never trusted.\n    ",
+      "inputSchema": {
+        "properties": {
+          "tracking_token": {
+            "title": "Tracking Token",
+            "type": "string"
+          }
+        },
+        "required": [
+          "tracking_token"
+        ],
+        "title": "governance_get_statusArguments",
+        "type": "object"
+      }
+    },
+    {
+      "name": "governance_get_health",
+      "description": "Read resource use, receipt/event retention, hash jobs, and HOLD state.\n\n    Observability only; a healthy process does not authorize a tool invocation.\n    ",
+      "inputSchema": {
+        "properties": {},
+        "title": "governance_get_healthArguments",
+        "type": "object"
+      }
+    },
+    {
+      "name": "governance_verify_handoff",
+      "description": "Verify committed lineage, payload, session and intended recipient.\n\n    On failure the receiving session is quarantined. Caller must halt tool\n    execution, clear its working context, and emit System Quarantine.\n    ",
+      "inputSchema": {
+        "properties": {
+          "transaction": {
+            "additionalProperties": true,
+            "title": "Transaction",
+            "type": "object"
+          },
+          "payload_hash": {
+            "title": "Payload Hash",
+            "type": "string"
+          },
+          "ledger_hash": {
+            "title": "Ledger Hash",
+            "type": "string"
+          },
+          "expected_session_id": {
+            "title": "Expected Session Id",
+            "type": "string"
+          },
+          "expected_target": {
+            "title": "Expected Target",
+            "type": "string"
+          }
+        },
+        "required": [
+          "transaction",
+          "payload_hash",
+          "ledger_hash",
+          "expected_session_id",
+          "expected_target"
+        ],
+        "title": "governance_verify_handoffArguments",
+        "type": "object"
+      }
+    }
+  ]
+}

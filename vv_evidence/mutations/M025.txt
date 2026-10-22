@@ -1,0 +1,21 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______________ LedgerTests.test_payload_assertion_and_malformed _______________
+
+self = <test_governance.LedgerTests testMethod=test_payload_assertion_and_malformed>
+
+    async def test_payload_assertion_and_malformed(self):
+        result = await self.commit(**self.frame(), expected_hash=sha256_text("other"))
+        self.assertEqual(result["status"], "quarantined")
+        for changes in (dict(sequence_number=True), dict(payload=42),
+                        dict(previous_hash="bad"), dict(session_id="")):
+            frame = self.frame(session="malformed") | changes
+>           self.assertEqual((await self.engine.governance_commit_state(**frame))["status"], "rejected")
+E           AssertionError: 'pending' != 'rejected'
+E           - pending
+E           + rejected
+
+test_governance.py:133: AssertionError
+=========================== short test summary info ============================
+FAILED test_governance.py::LedgerTests::test_payload_assertion_and_malformed
+1 failed in 0.04s

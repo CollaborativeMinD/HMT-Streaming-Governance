@@ -1,0 +1,78 @@
+{
+  "module_budget": true,
+  "function_budget": true,
+  "depth_budget": true,
+  "branch_budget": true,
+  "measurements": [
+    {
+      "module": "governance_cdc.py",
+      "lines": 95,
+      "function_lines": 32,
+      "decision_depth": 3,
+      "cyclomatic_proxy": 13
+    },
+    {
+      "module": "governance_contracts.py",
+      "lines": 67,
+      "function_lines": 6,
+      "decision_depth": 0,
+      "cyclomatic_proxy": 1
+    },
+    {
+      "module": "governance_core.py",
+      "lines": 52,
+      "function_lines": 0,
+      "decision_depth": 0,
+      "cyclomatic_proxy": 1
+    },
+    {
+      "module": "governance_gateway.py",
+      "lines": 66,
+      "function_lines": 25,
+      "decision_depth": 2,
+      "cyclomatic_proxy": 7
+    },
+    {
+      "module": "governance_mcp.py",
+      "lines": 105,
+      "function_lines": 22,
+      "decision_depth": 1,
+      "cyclomatic_proxy": 5
+    },
+    {
+      "module": "governance_receipts.py",
+      "lines": 105,
+      "function_lines": 27,
+      "decision_depth": 2,
+      "cyclomatic_proxy": 11
+    },
+    {
+      "module": "governance_state.py",
+      "lines": 117,
+      "function_lines": 38,
+      "decision_depth": 3,
+      "cyclomatic_proxy": 9
+    },
+    {
+      "module": "governance_stream.py",
+      "lines": 88,
+      "function_lines": 24,
+      "decision_depth": 2,
+      "cyclomatic_proxy": 7
+    },
+    {
+      "module": "governance_verification.py",
+      "lines": 64,
+      "function_lines": 31,
+      "decision_depth": 2,
+      "cyclomatic_proxy": 11
+    },
+    {
+      "module": "governance_worker.py",
+      "lines": 128,
+      "function_lines": 26,
+      "decision_depth": 2,
+      "cyclomatic_proxy": 8
+    }
+  ]
+}

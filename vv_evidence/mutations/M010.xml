@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.041" timestamp="2026-10-22T01:32:39.339771+00:00" hostname="2dd7d8cfea16"><testcase classname="test_vv_regressions.BoundaryRegressionTests" name="test_hold_during_standalone_hash_cannot_return_verified" time="0.005"><failure message="AssertionError: True is not false">self = &lt;test_vv_regressions.BoundaryRegressionTests testMethod=test_hold_during_standalone_hash_cannot_return_verified&gt;
+
+    async def test_hold_during_standalone_hash_cannot_return_verified(self):
+        engine, _, envelope = await self.setup_boundary()
+        original = engine._compute
+    
+        async def interrupted(function, encoded, *prefix):
+            result = await original(function, encoded, *prefix)
+            engine._hold('INJECTED_UNAVAILABLE')
+            return result
+    
+        engine._compute = interrupted
+        result = await engine.governance_verify_payload('verified bytes', envelope['payload_hash'])
+&gt;       self.assertFalse(result['verified'])
+E       AssertionError: True is not false
+
+test_vv_regressions.py:39: AssertionError</failure></testcase></testsuite></testsuites>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.737" timestamp="2026-10-22T01:32:47.229461+00:00" hostname="2dd7d8cfea16"><testcase classname="test_vv_api.APIContractTests" name="test_strict_schema_and_real_stdio_handoff" time="0.421"><failure message="AssertionError: Lists differ: [False, False, False] != [True, True, True]&#10;&#10;First differing element 0:&#10;False&#10;True&#10;&#10;- [False, False, False]&#10;+ [True, True, True]">self = &lt;test_vv_api.APIContractTests testMethod=test_strict_schema_and_real_stdio_handoff&gt;
+
+    async def test_strict_schema_and_real_stdio_handoff(self):
+        observed = await api_probe()
+&gt;       self.assertEqual(observed['strict_rejections'], [True, True, True])
+E       AssertionError: Lists differ: [False, False, False] != [True, True, True]
+E       
+E       First differing element 0:
+E       False
+E       True
+E       
+E       - [False, False, False]
+E       + [True, True, True]
+
+test_vv_api.py:10: AssertionError</failure></testcase></testsuite></testsuites>

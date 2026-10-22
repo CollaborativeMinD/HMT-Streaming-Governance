@@ -1,0 +1,6 @@
+{
+  "oracle": true,
+  "exact_bytes": true,
+  "packet_independent": true,
+  "bounded": true
+}

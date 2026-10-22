@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.043" timestamp="2026-10-22T01:32:36.725503+00:00" hostname="2dd7d8cfea16"><testcase classname="test_governance.LedgerTests" name="test_missing_predecessor_quarantines_and_isolates_session" time="0.004"><failure message="AssertionError: 'verified' != 'quarantined'&#10;- verified&#10;+ quarantined">self = &lt;test_governance.LedgerTests testMethod=test_missing_predecessor_quarantines_and_isolates_session&gt;
+
+    async def test_missing_predecessor_quarantines_and_isolates_session(self):
+        bad = await self.commit(**self.frame(seq=1))
+&gt;       self.assertEqual(bad["status"], "quarantined")
+E       AssertionError: 'verified' != 'quarantined'
+E       - verified
+E       + quarantined
+
+test_governance.py:111: AssertionError</failure></testcase></testsuite></testsuites>

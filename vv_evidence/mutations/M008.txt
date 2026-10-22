@@ -1,0 +1,39 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ UpliftTests.test_mutating_handoff_during_verification_cannot_swap_tool_payload _
+
+self = <test_uplift.UpliftTests testMethod=test_mutating_handoff_during_verification_cannot_swap_tool_payload>
+
+    async def test_mutating_handoff_during_verification_cannot_swap_tool_payload(self):
+        sender = AgentGateway(self.engine, 's', 'sender')
+        receiver = AgentGateway(self.engine, 's', 'receiver')
+        envelope = await sender.wrap_output('safe', 'receiver')
+        started, release = asyncio.Event(), asyncio.Event()
+        original = self.engine.governance_verify_payload
+    
+        async def blocked(payload, expected_hash):
+            started.set()
+            await release.wait()
+            return await original(payload, expected_hash)
+    
+        self.engine.governance_verify_payload = blocked
+        calls = []
+        task = asyncio.create_task(receiver.execute_verified(envelope, calls.append))
+        await started.wait()
+        envelope['transaction']['payload'] = 'unverified swapped bytes'
+        release.set()
+        await task
+>       self.assertEqual(calls, ['safe'])
+E       AssertionError: Lists differ: ['unverified swapped bytes'] != ['safe']
+E       
+E       First differing element 0:
+E       'unverified swapped bytes'
+E       'safe'
+E       
+E       - ['unverified swapped bytes']
+E       + ['safe']
+
+test_uplift.py:72: AssertionError
+=========================== short test summary info ============================
+FAILED test_uplift.py::UpliftTests::test_mutating_handoff_during_verification_cannot_swap_tool_payload
+1 failed in 0.06s

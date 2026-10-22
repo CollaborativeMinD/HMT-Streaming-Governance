@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.057" timestamp="2026-10-22T01:32:39.682545+00:00" hostname="2dd7d8cfea16"><testcase classname="test_vv_regressions.BoundaryRegressionTests" name="test_unexpected_verifier_failure_holds_and_clears_context" time="0.009"><failure message="AssertionError: Lists differ: ['old context'] != []&#10;&#10;First list contains 1 additional elements.&#10;First extra element 0:&#10;'old context'&#10;&#10;- ['old context']&#10;+ []">self = &lt;test_vv_regressions.BoundaryRegressionTests testMethod=test_unexpected_verifier_failure_holds_and_clears_context&gt;
+
+    async def test_unexpected_verifier_failure_holds_and_clears_context(self):
+        engine, receiver, envelope = await self.setup_boundary()
+        receiver.context.append('old context')
+    
+        async def broken(*args):
+            raise RuntimeError('injected verifier fault')
+    
+        engine._compute = broken
+        effects = []
+        with self.assertRaises(HoldError):
+            await receiver.execute_verified(envelope, effects.append)
+        self.assertEqual(effects, [])
+&gt;       self.assertEqual(receiver.context, [])
+E       AssertionError: Lists differ: ['old context'] != []
+E       
+E       First list contains 1 additional elements.
+E       First extra element 0:
+E       'old context'
+E       
+E       - ['old context']
+E       + []
+
+test_vv_regressions.py:61: AssertionError</failure></testcase></testsuite></testsuites>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.057" timestamp="2026-10-22T01:32:41.405466+00:00" hostname="2dd7d8cfea16"><testcase classname="test_uplift.UpliftTests" name="test_expired_queue_item_never_commits" time="0.008"><failure message="AssertionError: 'verified' != 'held'&#10;- verified&#10;+ held">self = &lt;test_uplift.UpliftTests testMethod=test_expired_queue_item_never_commits&gt;
+
+    async def test_expired_queue_item_never_commits(self):
+        self.engine.transaction_timeout = 0.001
+        receipt = await self.engine.governance_commit_state(**frame())
+        # Hold the event loop until after the absolute admission deadline.
+        import time
+        time.sleep(0.003)
+        result = await self.engine.wait(receipt['tracking_token'])
+&gt;       self.assertEqual(result['status'], 'held')
+E       AssertionError: 'verified' != 'held'
+E       - verified
+E       + held
+
+test_uplift.py:140: AssertionError</failure></testcase></testsuite></testsuites>

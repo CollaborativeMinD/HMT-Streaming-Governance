@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.038" timestamp="2026-10-22T01:32:45.882456+00:00" hostname="2dd7d8cfea16"><testcase classname="test_stream.StreamTests" name="test_sink_failure_cancels_source_without_retry" time="0.008"><failure message="AssertionError: Lists differ: [] != [True]&#10;&#10;Second list contains 1 additional elements.&#10;First extra element 0:&#10;True&#10;&#10;- []&#10;+ [True]">self = &lt;test_stream.StreamTests testMethod=test_sink_failure_cancels_source_without_retry&gt;
+
+    async def test_sink_failure_cancels_source_without_retry(self):
+        entered, closed = [], []
+    
+        async def packets():
+            try:
+                while True:
+                    yield bytes(range(256)) * 16
+            finally:
+                closed.append(True)
+    
+        def fail(envelope):
+            entered.append(envelope['ledger_hash'])
+            raise RuntimeError('Sink failed; do not replay effects')
+    
+        engine = await GovernanceLedgerEngine().start()
+        try:
+            with self.assertRaises(ExceptionGroup):
+                await stream_to_ledger(packets(), engine, 'stream', fail, staging_size=1)
+            self.assertEqual(len(entered), 1)
+&gt;           self.assertEqual(closed, [True])
+E           AssertionError: Lists differ: [] != [True]
+E           
+E           Second list contains 1 additional elements.
+E           First extra element 0:
+E           True
+E           
+E           - []
+E           + [True]
+
+test_stream.py:58: AssertionError</failure></testcase></testsuite></testsuites>

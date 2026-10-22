@@ -1,0 +1,15 @@
+id,description
+CDC-01,"Byte-exact, deterministic packet-independent polynomial chunking."
+GOV-01,Only the exact next sequence and verified predecessor may commit.
+GOV-02,Verify committed content and intended routing before every effect.
+GOV-03,"Integrity failures quarantine, clear context, and prevent effects."
+GOV-04,"Bound queue, payload bytes, session count, and immutable record admission."
+GOV-05,Availability failure yields HOLD without granting trust or alleging tampering.
+GOV-06,Diagnostic eviction never removes committed verification identities.
+GOV-07,Capture immutable verified inputs before any suspension.
+GOV-08,Apply bounded stream backpressure and own source cleanup without effect retries.
+VV-01,Shutdown and cancellation have one cleanup owner and settle resources.
+VV-02,Enforce explicit structural and semantic branch complexity budgets.
+VV-03,Validate the actual MCP wire contract without numeric coercion.
+VV-04,Measure speed and memory under declared environment-scoped budgets.
+VV-05,"Retain reproducible assertions, failures, and requirement-preserving supersession."

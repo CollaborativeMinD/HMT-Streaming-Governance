@@ -1,0 +1,17 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+____ LedgerTests.test_missing_predecessor_quarantines_and_isolates_session _____
+
+self = <test_governance.LedgerTests testMethod=test_missing_predecessor_quarantines_and_isolates_session>
+
+    async def test_missing_predecessor_quarantines_and_isolates_session(self):
+        bad = await self.commit(**self.frame(seq=1))
+>       self.assertEqual(bad["status"], "quarantined")
+E       AssertionError: 'verified' != 'quarantined'
+E       - verified
+E       + quarantined
+
+test_governance.py:111: AssertionError
+=========================== short test summary info ============================
+FAILED test_governance.py::LedgerTests::test_missing_predecessor_quarantines_and_isolates_session
+1 failed in 0.04s

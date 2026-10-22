@@ -1,0 +1,16 @@
+{
+  "tools": 5,
+  "strict_rejections": [
+    true,
+    true,
+    true
+  ],
+  "missing_rejected": true,
+  "commit": "verified",
+  "valid": true,
+  "bad": false,
+  "bad_action": "SYSTEM_QUARANTINE",
+  "unknown": "unknown",
+  "unregistered": false,
+  "payload_oracle": true
+}

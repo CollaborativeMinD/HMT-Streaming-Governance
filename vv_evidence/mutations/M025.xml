@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.041" timestamp="2026-10-22T01:32:46.965611+00:00" hostname="2dd7d8cfea16"><testcase classname="test_governance.LedgerTests" name="test_payload_assertion_and_malformed" time="0.005"><failure message="AssertionError: 'pending' != 'rejected'&#10;- pending&#10;+ rejected">self = &lt;test_governance.LedgerTests testMethod=test_payload_assertion_and_malformed&gt;
+
+    async def test_payload_assertion_and_malformed(self):
+        result = await self.commit(**self.frame(), expected_hash=sha256_text("other"))
+        self.assertEqual(result["status"], "quarantined")
+        for changes in (dict(sequence_number=True), dict(payload=42),
+                        dict(previous_hash="bad"), dict(session_id="")):
+            frame = self.frame(session="malformed") | changes
+&gt;           self.assertEqual((await self.engine.governance_commit_state(**frame))["status"], "rejected")
+E           AssertionError: 'pending' != 'rejected'
+E           - pending
+E           + rejected
+
+test_governance.py:133: AssertionError</failure></testcase></testsuite></testsuites>

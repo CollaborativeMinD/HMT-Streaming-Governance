@@ -1,0 +1,14 @@
+id,phase,description
+G01,scanner,"Rolling polynomial, min/max boundary and byte-carving gate."
+G02,worker,"Strict sequence, parent, payload assertion and append gate."
+G03,boundary,Registered payload and metadata verification immediately before invocation.
+G04,admission,"Queue-count, pending-byte and immutable-ledger reservation gate."
+G05,availability,Verifier availability checked both before and after hash work.
+G06,retention,Bounded receipt/event observations separate from immutable records.
+G07,snapshot,Immutable incoming snapshot before verification await.
+G08,lifecycle,Shared shielded shutdown task and cancellation cleanup.
+G09,deadline,Absolute transaction deadline checked before and after hashing.
+G10,pipeline,"Bounded staging, structured sibling cancellation and source close."
+G11,schema,Strict scalar parsing in core and real MCP stdio.
+G12,quality,"Executable structural, local speed and memory budgets."
+G13,evidence,"Relational completeness, foreign keys and production source provenance gate."

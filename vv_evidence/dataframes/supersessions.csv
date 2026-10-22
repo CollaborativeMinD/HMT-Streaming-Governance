@@ -1,0 +1,7 @@
+failed_run_id,failed_assertion_id,satisfying_run_id,satisfying_assertion_id,requirement_id,explanation
+pre-boundary,REG-01,current-unit,REG-01,GOV-05,"Cancel verification: clear context and hold session before cancellation propagates. The same assertion is retained unchanged; the passing run supersedes the failing run, not the requirement."
+pre-boundary,REG-02,current-unit,REG-02,GOV-05,"Reject verification when the owning engine is closed. The same assertion is retained unchanged; the passing run supersedes the failing run, not the requirement."
+pre-boundary,REG-03,current-unit,REG-03,VV-01,"One shielded shutdown task owns cleanup for all close callers. The same assertion is retained unchanged; the passing run supersedes the failing run, not the requirement."
+pre-boundary,REG-04,current-unit,REG-04,GOV-05,"Recheck availability after the hashing await before returning trust. The same assertion is retained unchanged; the passing run supersedes the failing run, not the requirement."
+pre-boundary,REG-05,current-unit,REG-05,GOV-05,"Classify unexpected verifier exceptions as HOLD and clear receiving context. The same assertion is retained unchanged; the passing run supersedes the failing run, not the requirement."
+pre-api,REG-06,current-unit,REG-06,VV-03,"StrictInt prevents MCP numeric coercion before the strict core parser. The same assertion is retained unchanged; the passing run supersedes the failing run, not the requirement."

@@ -1,0 +1,23 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________________________ test_refute_finding[C022] ___________________________
+
+obligation = {'id': 'C022', 'case_name': 'retention', 'invariant_id': 'I09', 'failure_id': 'F22', ...}
+
+    @pytest.mark.parametrize('obligation', OBLIGATIONS, ids=[o['id'] for o in OBLIGATIONS])
+    def test_refute_finding(obligation):
+        observed = asyncio.run(probe(obligation['case_name']))
+        expected = json.loads(obligation['expected_json'])
+        for field, value in expected.items():
+            assert field in observed, f"{obligation['id']}: missing observation {field}"
+>           assert observed[field] == value, f"{obligation['id']} {field}: {observed}; {obligation['rationale']}"
+E           AssertionError: C022 outcome: {'outcome': 'verified', 'records': 2, 'receipts': 1, 'events': 2, 'registered': True}; Completed receipt evicted from bounded cache. Unknown/evicted receipt grants no trust; ledger identities remain available. Owner: Bounded receipt/event observations separate from immutable records.
+E           assert 'verified' == 'unknown'
+E             
+E             - unknown
+E             + verified
+
+vv_crossjoin_pytest.py:20: AssertionError
+=========================== short test summary info ============================
+FAILED vv_crossjoin_pytest.py::test_refute_finding[C022] - AssertionError: C0...
+1 failed in 0.05s

@@ -1,0 +1,255 @@
+requirement_id,assertion_id,obligation_id,test_selector,framework,categories,run_id,status,detail,historical,source_seal,evidence_path
+CDC-01,PY-C001,C001,vv_crossjoin_pytest.py::test_refute_finding[C001],pytest,"unit,boundary,semantic",current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+CDC-01,UT-C001,C001,vv_crossjoin_unittest.CartesianRefutationTests.test_C001_scanner,unittest,"unit,boundary,semantic",current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+CDC-01,PY-C002,C002,vv_crossjoin_pytest.py::test_refute_finding[C002],pytest,"behavioral,semantic",current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+CDC-01,UT-C002,C002,vv_crossjoin_unittest.CartesianRefutationTests.test_C002_scanner,unittest,"behavioral,semantic",current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+GOV-02,PY-C003,C003,vv_crossjoin_pytest.py::test_refute_finding[C003],pytest,"integration,behavioral",current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+GOV-02,UT-C003,C003,vv_crossjoin_unittest.CartesianRefutationTests.test_C003_nominal,unittest,"integration,behavioral",current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+GOV-01,PY-C004,C004,vv_crossjoin_pytest.py::test_refute_finding[C004],pytest,negative,current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+GOV-01,UT-C004,C004,vv_crossjoin_unittest.CartesianRefutationTests.test_C004_parent,unittest,negative,current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+GOV-01,PY-C005,C005,vv_crossjoin_pytest.py::test_refute_finding[C005],pytest,"negative,boundary",current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+GOV-01,UT-C005,C005,vv_crossjoin_unittest.CartesianRefutationTests.test_C005_sequence,unittest,"negative,boundary",current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+GOV-01,PY-C006,C006,vv_crossjoin_pytest.py::test_refute_finding[C006],pytest,"negative,behavioral",current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+GOV-01,UT-C006,C006,vv_crossjoin_unittest.CartesianRefutationTests.test_C006_replay,unittest,"negative,behavioral",current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+GOV-03,PY-C007,C007,vv_crossjoin_pytest.py::test_refute_finding[C007],pytest,negative,current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+GOV-03,UT-C007,C007,vv_crossjoin_unittest.CartesianRefutationTests.test_C007_payload_assertion,unittest,negative,current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+GOV-03,PY-C008,C008,vv_crossjoin_pytest.py::test_refute_finding[C008],pytest,"negative,integration",current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+GOV-03,UT-C008,C008,vv_crossjoin_unittest.CartesianRefutationTests.test_C008_payload,unittest,"negative,integration",current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+GOV-02,PY-C009,C009,vv_crossjoin_pytest.py::test_refute_finding[C009],pytest,"negative,semantic",current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+GOV-02,UT-C009,C009,vv_crossjoin_unittest.CartesianRefutationTests.test_C009_metadata,unittest,"negative,semantic",current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+GOV-02,PY-C010,C010,vv_crossjoin_pytest.py::test_refute_finding[C010],pytest,negative,current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+GOV-02,UT-C010,C010,vv_crossjoin_unittest.CartesianRefutationTests.test_C010_recipient,unittest,negative,current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+GOV-02,PY-C011,C011,vv_crossjoin_pytest.py::test_refute_finding[C011],pytest,negative,current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+GOV-02,UT-C011,C011,vv_crossjoin_unittest.CartesianRefutationTests.test_C011_cross_session,unittest,negative,current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+GOV-02,PY-C012,C012,vv_crossjoin_pytest.py::test_refute_finding[C012],pytest,negative,current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+GOV-02,UT-C012,C012,vv_crossjoin_unittest.CartesianRefutationTests.test_C012_block_hash,unittest,negative,current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+GOV-02,PY-C013,C013,vv_crossjoin_pytest.py::test_refute_finding[C013],pytest,negative,current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+GOV-02,UT-C013,C013,vv_crossjoin_unittest.CartesianRefutationTests.test_C013_unregistered,unittest,negative,current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+GOV-05,PY-C014,C014,vv_crossjoin_pytest.py::test_refute_finding[C014],pytest,"boundary,behavioral",current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+GOV-05,UT-C014,C014,vv_crossjoin_unittest.CartesianRefutationTests.test_C014_closed,unittest,"boundary,behavioral",current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+GOV-05,PY-C015,C015,vv_crossjoin_pytest.py::test_refute_finding[C015],pytest,"negative,behavioral",current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+GOV-05,UT-C015,C015,vv_crossjoin_unittest.CartesianRefutationTests.test_C015_hold_race,unittest,"negative,behavioral",current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+GOV-05,PY-C016,C016,vv_crossjoin_pytest.py::test_refute_finding[C016],pytest,negative,current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+GOV-05,UT-C016,C016,vv_crossjoin_unittest.CartesianRefutationTests.test_C016_verifier_fault,unittest,negative,current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+GOV-05,PY-C017,C017,vv_crossjoin_pytest.py::test_refute_finding[C017],pytest,boundary,current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+GOV-05,UT-C017,C017,vv_crossjoin_unittest.CartesianRefutationTests.test_C017_verification_capacity,unittest,boundary,current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+GOV-05,PY-C018,C018,vv_crossjoin_pytest.py::test_refute_finding[C018],pytest,"negative,behavioral",current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+GOV-05,UT-C018,C018,vv_crossjoin_unittest.CartesianRefutationTests.test_C018_cancel_verification,unittest,"negative,behavioral",current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+GOV-04,PY-C019,C019,vv_crossjoin_pytest.py::test_refute_finding[C019],pytest,boundary,current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+GOV-04,UT-C019,C019,vv_crossjoin_unittest.CartesianRefutationTests.test_C019_queue,unittest,boundary,current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+GOV-04,PY-C020,C020,vv_crossjoin_pytest.py::test_refute_finding[C020],pytest,boundary,current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+GOV-04,UT-C020,C020,vv_crossjoin_unittest.CartesianRefutationTests.test_C020_pending_bytes,unittest,boundary,current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+GOV-04,PY-C021,C021,vv_crossjoin_pytest.py::test_refute_finding[C021],pytest,boundary,current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+GOV-04,UT-C021,C021,vv_crossjoin_unittest.CartesianRefutationTests.test_C021_ledger,unittest,boundary,current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+GOV-06,PY-C022,C022,vv_crossjoin_pytest.py::test_refute_finding[C022],pytest,"boundary,behavioral",current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+GOV-06,UT-C022,C022,vv_crossjoin_unittest.CartesianRefutationTests.test_C022_retention,unittest,"boundary,behavioral",current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+GOV-07,PY-C023,C023,vv_crossjoin_pytest.py::test_refute_finding[C023],pytest,"negative,behavioral",current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+GOV-07,UT-C023,C023,vv_crossjoin_unittest.CartesianRefutationTests.test_C023_snapshot,unittest,"negative,behavioral",current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+VV-01,PY-C024,C024,vv_crossjoin_pytest.py::test_refute_finding[C024],pytest,"integration,boundary",current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+VV-01,UT-C024,C024,vv_crossjoin_unittest.CartesianRefutationTests.test_C024_concurrent_close,unittest,"integration,boundary",current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+GOV-05,PY-C025,C025,vv_crossjoin_pytest.py::test_refute_finding[C025],pytest,"negative,boundary",current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+GOV-05,UT-C025,C025,vv_crossjoin_unittest.CartesianRefutationTests.test_C025_deadline,unittest,"negative,boundary",current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+GOV-08,PY-C026,C026,vv_crossjoin_pytest.py::test_refute_finding[C026],pytest,"integration,e2e",current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+GOV-08,UT-C026,C026,vv_crossjoin_unittest.CartesianRefutationTests.test_C026_stream,unittest,"integration,e2e",current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+GOV-08,PY-C027,C027,vv_crossjoin_pytest.py::test_refute_finding[C027],pytest,"negative,e2e",current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+GOV-08,UT-C027,C027,vv_crossjoin_unittest.CartesianRefutationTests.test_C027_sink_failure,unittest,"negative,e2e",current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+VV-03,PY-C028,C028,vv_crossjoin_pytest.py::test_refute_finding[C028],pytest,"unit,negative,boundary",current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+VV-03,UT-C028,C028,vv_crossjoin_unittest.CartesianRefutationTests.test_C028_schema,unittest,"unit,negative,boundary",current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+VV-03,PY-C029,C029,vv_crossjoin_pytest.py::test_refute_finding[C029],pytest,"api,e2e",current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+VV-03,UT-C029,C029,vv_crossjoin_unittest.CartesianRefutationTests.test_C029_api,unittest,"api,e2e",current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+VV-02,PY-C030,C030,vv_crossjoin_pytest.py::test_refute_finding[C030],pytest,"structural,semantic",current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+VV-02,UT-C030,C030,vv_crossjoin_unittest.CartesianRefutationTests.test_C030_structure,unittest,"structural,semantic",current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+VV-04,PY-C031,C031,vv_crossjoin_pytest.py::test_refute_finding[C031],pytest,"speed,boundary",current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+VV-04,UT-C031,C031,vv_crossjoin_unittest.CartesianRefutationTests.test_C031_performance,unittest,"speed,boundary",current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+VV-05,PY-C032,C032,vv_crossjoin_pytest.py::test_refute_finding[C032],pytest,"semantic,structural",current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+VV-05,UT-C032,C032,vv_crossjoin_unittest.CartesianRefutationTests.test_C032_evidence,unittest,"semantic,structural",current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+GOV-05,REG-01,,test_vv_regressions.BoundaryRegressionTests.test_cancelled_verification_clears_context_and_holds_session,pytest,"negative,regression",current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-05,REG-01,,test_vv_regressions.BoundaryRegressionTests.test_cancelled_verification_clears_context_and_holds_session,pytest,"negative,regression",pre-boundary,FAIL,"self = <test_vv_regressions.BoundaryRegressionTests testMethod=test_cancelled_verification_clears_context_and_holds_session>
+
+    async def test_cancelled_verification_clears_context_and_holds_session(self):
+        engine, receiver, envelope = await self.setup_boundary()
+        receiver.context.append('old context')
+        entered = asyncio.Event()
+    
+        async def blocked(*args):
+            entered.set()
+            await asyncio.Event().wait()
+    
+        engine._compute = blocked
+        effects = []
+        task = asyncio.create_task(receiver.execute_verified(envelope, effects.append))
+        await entered.wait()
+        task.cancel()
+        with self.assertRaises(asyncio.CancelledError):
+            await task
+        self.assertEqual(effects, [])
+>       self.assertEqual(receiver.context, [])
+E       AssertionError: Lists differ: ['old context'] != []
+E       
+E       First list contains 1 additional elements.
+E       First extra element 0:
+E       'old context'
+E       
+E       - ['old context']
+E       + []
+
+test_vv_regressions.py:82: AssertionError",1,7a1ba819dfa03bd60ed626a087919aa29d7a691d32f0d50b9695dbc3caf095c5,vv_baseline_failures.xml
+GOV-05,REG-02,,test_vv_regressions.BoundaryRegressionTests.test_closed_engine_denies_previously_verified_handoff,pytest,"negative,regression",current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-05,REG-02,,test_vv_regressions.BoundaryRegressionTests.test_closed_engine_denies_previously_verified_handoff,pytest,"negative,regression",pre-boundary,FAIL,"self = <test_vv_regressions.BoundaryRegressionTests testMethod=test_closed_engine_denies_previously_verified_handoff>
+
+    async def test_closed_engine_denies_previously_verified_handoff(self):
+        engine, receiver, envelope = await self.setup_boundary()
+        receiver.context.append('old context')
+        await engine.close()
+        effects = []
+>       with self.assertRaises(HoldError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: HoldError not raised
+
+test_vv_regressions.py:22: AssertionError",1,7a1ba819dfa03bd60ed626a087919aa29d7a691d32f0d50b9695dbc3caf095c5,vv_baseline_failures.xml
+VV-01,REG-03,,test_vv_regressions.BoundaryRegressionTests.test_concurrent_close_has_one_shutdown_owner,pytest,"negative,regression",current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+VV-01,REG-03,,test_vv_regressions.BoundaryRegressionTests.test_concurrent_close_has_one_shutdown_owner,pytest,"negative,regression",pre-boundary,FAIL,"self = <test_vv_regressions.BoundaryRegressionTests testMethod=test_concurrent_close_has_one_shutdown_owner>
+
+    async def test_concurrent_close_has_one_shutdown_owner(self):
+        engine, _, _ = await self.setup_boundary()
+        results = await asyncio.gather(*(engine.close() for _ in range(8)), return_exceptions=True)
+>       self.assertEqual(results, [None] * 8)
+E       AssertionError: Lists differ: [None, AttributeError(""'NoneType' object has no [415 chars]d'"")] != [None, None, None, None, None, None, None, None]
+E       
+E       First differing element 1:
+E       AttributeError(""'NoneType' object has no attribute 'cancelled'"")
+E       None
+E       
+E       + [None, None, None, None, None, None, None, None]
+E       - [None,
+E       -  AttributeError(""'NoneType' object has no attribute 'cancelled'""),
+E       -  AttributeError(""'NoneType' object has no attribute 'cancelled'""),
+E       -  AttributeError(""'NoneType' object has no attribute 'cancelled'""),
+E       -  AttributeError(""'NoneType' object has no attribute 'cancelled'""),
+E       -  AttributeError(""'NoneType' object has no attribute 'cancelled'""),
+E       -  AttributeError(""'NoneType' object has no attribute 'cancelled'""),
+E       -  AttributeError(""'NoneType' object has no attribute 'cancelled'"")]
+
+test_vv_regressions.py:45: AssertionError",1,7a1ba819dfa03bd60ed626a087919aa29d7a691d32f0d50b9695dbc3caf095c5,vv_baseline_failures.xml
+GOV-05,REG-04,,test_vv_regressions.BoundaryRegressionTests.test_hold_during_standalone_hash_cannot_return_verified,pytest,"negative,regression",current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-05,REG-04,,test_vv_regressions.BoundaryRegressionTests.test_hold_during_standalone_hash_cannot_return_verified,pytest,"negative,regression",pre-boundary,FAIL,"self = <test_vv_regressions.BoundaryRegressionTests testMethod=test_hold_during_standalone_hash_cannot_return_verified>
+
+    async def test_hold_during_standalone_hash_cannot_return_verified(self):
+        engine, _, envelope = await self.setup_boundary()
+        original = engine._compute
+    
+        async def interrupted(function, encoded, *prefix):
+            result = await original(function, encoded, *prefix)
+            engine._hold('INJECTED_UNAVAILABLE')
+            return result
+    
+        engine._compute = interrupted
+        result = await engine.governance_verify_payload('verified bytes', envelope['payload_hash'])
+>       self.assertFalse(result['verified'])
+E       AssertionError: True is not false
+
+test_vv_regressions.py:39: AssertionError",1,7a1ba819dfa03bd60ed626a087919aa29d7a691d32f0d50b9695dbc3caf095c5,vv_baseline_failures.xml
+GOV-05,REG-05,,test_vv_regressions.BoundaryRegressionTests.test_unexpected_verifier_failure_holds_and_clears_context,pytest,"negative,regression",current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-05,REG-05,,test_vv_regressions.BoundaryRegressionTests.test_unexpected_verifier_failure_holds_and_clears_context,pytest,"negative,regression",pre-boundary,FAIL,"self = <test_vv_regressions.BoundaryRegressionTests testMethod=test_unexpected_verifier_failure_holds_and_clears_context>
+
+    async def test_unexpected_verifier_failure_holds_and_clears_context(self):
+        engine, receiver, envelope = await self.setup_boundary()
+        receiver.context.append('old context')
+    
+        async def broken(*args):
+            raise RuntimeError('injected verifier fault')
+    
+        engine._compute = broken
+        effects = []
+        with self.assertRaises(HoldError):
+>           await receiver.execute_verified(envelope, effects.append)
+
+test_vv_regressions.py:59: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+governance_gateway.py:52: in execute_verified
+    await self.engine.verify_envelope(snapshot)
+governance_verification.py:48: in verify_envelope
+    result = await self.governance_verify_payload(tx.payload, envelope.get(""payload_hash"", """"))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+governance_verification.py:23: in governance_verify_payload
+    actual = await self._compute(lambda data: hashlib.sha256(data).hexdigest(), encoded)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    async def broken(*args):
+>       raise RuntimeError('injected verifier fault')
+E       RuntimeError: injected verifier fault
+
+test_vv_regressions.py:54: RuntimeError",1,7a1ba819dfa03bd60ed626a087919aa29d7a691d32f0d50b9695dbc3caf095c5,vv_baseline_failures.xml
+VV-03,REG-06,,test_vv_api.APIContractTests.test_strict_schema_and_real_stdio_handoff,pytest,"negative,regression",current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+VV-03,REG-06,,test_vv_api.APIContractTests.test_strict_schema_and_real_stdio_handoff,pytest,"negative,regression",pre-api,FAIL,"self = <test_vv_api.APIContractTests testMethod=test_strict_schema_and_real_stdio_handoff>
+
+    async def test_strict_schema_and_real_stdio_handoff(self):
+        observed = await api_probe()
+>       self.assertEqual(observed['strict_rejections'], [True, True, True])
+E       AssertionError: Lists differ: [False, False, False] != [True, True, True]
+E       
+E       First differing element 0:
+E       False
+E       True
+E       
+E       - [False, False, False]
+E       + [True, True, True]
+
+test_vv_api.py:10: AssertionError",1,f7f7eaeff656e0c8235be16f8d425c26834ea86ee43ee53c6cee7693f0edd4d7,vv_api_baseline_failures.xml
+VV-05,SCOPE-PY,,vv_crossjoin_pytest.test_complete_cartesian_and_traceability,pytest,"structural,semantic",current-cross-pytest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_pytest_results.xml
+VV-05,SCOPE-UT,,__main__.CartesianRefutationTests.test_cartesian_set_and_links,unittest,"structural,semantic",current-cross-unittest,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/crossjoin_unittest_results.json
+GOV-04,pytest:test_fault_controls.FaultControlTests.test_byte_budget_checks_unicode_and_malformed_expected_hash,,test_fault_controls.FaultControlTests.test_byte_budget_checks_unicode_and_malformed_expected_hash,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-04,pytest:test_fault_controls.FaultControlTests.test_configuration_rejects_bool_negative_and_nonfinite_limits,,test_fault_controls.FaultControlTests.test_configuration_rejects_bool_negative_and_nonfinite_limits,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-05,pytest:test_fault_controls.FaultControlTests.test_deadline_is_rechecked_after_verification,,test_fault_controls.FaultControlTests.test_deadline_is_rechecked_after_verification,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-05,pytest:test_fault_controls.FaultControlTests.test_gateway_receipt_timeout_holds_session_and_releases_lock,,test_fault_controls.FaultControlTests.test_gateway_receipt_timeout_holds_session_and_releases_lock,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-05,pytest:test_fault_controls.FaultControlTests.test_gateway_rejects_quarantined_outbound_and_verifier_byte_exhaustion,,test_fault_controls.FaultControlTests.test_gateway_rejects_quarantined_outbound_and_verifier_byte_exhaustion,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+VV-04,pytest:test_fault_controls.FaultControlTests.test_inline_worker_yields_during_a_full_queue,,test_fault_controls.FaultControlTests.test_inline_worker_yields_during_a_full_queue,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-05,pytest:test_fault_controls.FaultControlTests.test_outbound_cancellation_holds_the_session,,test_fault_controls.FaultControlTests.test_outbound_cancellation_holds_the_session,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-04,pytest:test_fault_controls.FaultControlTests.test_session_capacity_and_unknown_receipts_do_not_grant_trust,,test_fault_controls.FaultControlTests.test_session_capacity_and_unknown_receipts_do_not_grant_trust,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+VV-01,pytest:test_fault_controls.FaultControlTests.test_shutdown_timeout_cancels_active_worker_and_settles_receipt,,test_fault_controls.FaultControlTests.test_shutdown_timeout_cancels_active_worker_and_settles_receipt,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-05,pytest:test_fault_controls.FaultControlTests.test_worker_error_holds_all_queued_work_without_quarantine,,test_fault_controls.FaultControlTests.test_worker_error_holds_all_queued_work_without_quarantine,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+CDC-01,pytest:test_governance.ScannerTests.test_empty_short_unicode_and_forced_max,,test_governance.ScannerTests.test_empty_short_unicode_and_forced_max,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+CDC-01,pytest:test_governance.ScannerTests.test_fingerprint_matches_full_polynomial,,test_governance.ScannerTests.test_fingerprint_matches_full_polynomial,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+CDC-01,pytest:test_governance.ScannerTests.test_finish_and_configuration,,test_governance.ScannerTests.test_finish_and_configuration,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+CDC-01,pytest:test_governance.ScannerTests.test_lossless_and_packet_independent,,test_governance.ScannerTests.test_lossless_and_packet_independent,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-04,pytest:test_governance.LedgerTests.test_bounded_queue_rejects_without_dropping_or_hanging,,test_governance.LedgerTests.test_bounded_queue_rejects_without_dropping_or_hanging,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-01,pytest:test_governance.LedgerTests.test_broken_parent_and_duplicate_never_overwrite,,test_governance.LedgerTests.test_broken_parent_and_duplicate_never_overwrite,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-03,pytest:test_governance.LedgerTests.test_gate_never_calls_tool_and_clears_context,,test_governance.LedgerTests.test_gate_never_calls_tool_and_clears_context,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-02,pytest:test_governance.LedgerTests.test_metadata_rewrite_blocked_with_identical_payload,,test_governance.LedgerTests.test_metadata_rewrite_blocked_with_identical_payload,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-01,pytest:test_governance.LedgerTests.test_missing_predecessor_quarantines_and_isolates_session,,test_governance.LedgerTests.test_missing_predecessor_quarantines_and_isolates_session,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-03,pytest:test_governance.LedgerTests.test_payload_assertion_and_malformed,,test_governance.LedgerTests.test_payload_assertion_and_malformed,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-02,pytest:test_governance.LedgerTests.test_pending_then_verified_and_immutable,,test_governance.LedgerTests.test_pending_then_verified_and_immutable,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-03,pytest:test_governance.LedgerTests.test_quarantine_during_hashing_never_commits,,test_governance.LedgerTests.test_quarantine_during_hashing_never_commits,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-02,pytest:test_governance.LedgerTests.test_two_blocks_and_registered_hash_only,,test_governance.LedgerTests.test_two_blocks_and_registered_hash_only,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-02,pytest:test_governance.LedgerTests.test_wrong_recipient_and_cross_session_blocked,,test_governance.LedgerTests.test_wrong_recipient_and_cross_session_blocked,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-08,pytest:test_stream.StreamTests.test_oversized_packet_and_deadline_close_the_source,,test_stream.StreamTests.test_oversized_packet_and_deadline_close_the_source,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-08,pytest:test_stream.StreamTests.test_sink_failure_cancels_source_without_retry,,test_stream.StreamTests.test_sink_failure_cancels_source_without_retry,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-08,pytest:test_stream.StreamTests.test_stream_pipeline_preserves_bytes_bounds_staging_and_closes_source,,test_stream.StreamTests.test_stream_pipeline_preserves_bytes_bounds_staging_and_closes_source,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-06,pytest:test_uplift.UpliftTests.test_bounded_caches_do_not_evict_ledger,,test_uplift.UpliftTests.test_bounded_caches_do_not_evict_ledger,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-04,pytest:test_uplift.UpliftTests.test_byte_and_record_capacity_refuse_without_advancing_head,,test_uplift.UpliftTests.test_byte_and_record_capacity_refuse_without_advancing_head,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-05,pytest:test_uplift.UpliftTests.test_expired_queue_item_never_commits,,test_uplift.UpliftTests.test_expired_queue_item_never_commits,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-05,pytest:test_uplift.UpliftTests.test_hash_timeout_is_hold_and_never_invokes_tool,,test_uplift.UpliftTests.test_hash_timeout_is_hold_and_never_invokes_tool,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-07,pytest:test_uplift.UpliftTests.test_mutating_handoff_during_verification_cannot_swap_tool_payload,,test_uplift.UpliftTests.test_mutating_handoff_during_verification_cannot_swap_tool_payload,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-05,pytest:test_uplift.UpliftTests.test_receipt_timeout_preserves_pending_result,,test_uplift.UpliftTests.test_receipt_timeout_preserves_pending_result,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-01,pytest:test_uplift.UpliftTests.test_shared_session_lock_serializes_concurrent_senders,,test_uplift.UpliftTests.test_shared_session_lock_serializes_concurrent_senders,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+VV-04,pytest:test_uplift.UpliftTests.test_small_hashes_avoid_thread_jobs_and_large_hashes_offload,,test_uplift.UpliftTests.test_small_hashes_avoid_thread_jobs_and_large_hashes_offload,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-05,pytest:test_uplift.UpliftTests.test_verification_overload_is_hold_without_quarantine,,test_uplift.UpliftTests.test_verification_overload_is_hold_without_quarantine,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+VV-01,pytest:test_uplift.UpliftTests.test_wait_is_per_receipt_and_cancellation_does_not_cancel_commit,,test_uplift.UpliftTests.test_wait_is_per_receipt_and_cancellation_does_not_cancel_commit,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+VV-01,pytest:test_uplift.UpliftTests.test_worker_cancellation_settles_pending_and_drains_queue,,test_uplift.UpliftTests.test_worker_cancellation_settles_pending_and_drains_queue,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+CDC-01,pytest:test_uplift.ScannerUpliftTests.test_non_power_of_two_modulus_and_abandoned_generator,,test_uplift.ScannerUpliftTests.test_non_power_of_two_modulus_and_abandoned_generator,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+VV-05,pytest:test_vv_evidence.EvidenceSemanticsTests.test_failure_has_precedence_over_other_passing_assertions,,test_vv_evidence.EvidenceSemanticsTests.test_failure_has_precedence_over_other_passing_assertions,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+VV-05,pytest:test_vv_evidence.EvidenceSemanticsTests.test_historical_pass_cannot_satisfy_current_release,,test_vv_evidence.EvidenceSemanticsTests.test_historical_pass_cannot_satisfy_current_release,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+VV-05,pytest:test_vv_evidence.EvidenceSemanticsTests.test_missing_or_one_framework_evidence_leaves_finding_open,,test_vv_evidence.EvidenceSemanticsTests.test_missing_or_one_framework_evidence_leaves_finding_open,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+VV-05,pytest:test_vv_evidence.EvidenceSemanticsTests.test_stale_source_evidence_cannot_satisfy,,test_vv_evidence.EvidenceSemanticsTests.test_stale_source_evidence_cannot_satisfy,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+VV-05,pytest:test_vv_evidence.EvidenceSemanticsTests.test_two_current_independent_frameworks_satisfy,,test_vv_evidence.EvidenceSemanticsTests.test_two_current_independent_frameworks_satisfy,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+VV-05,pytest:test_vv_evidence.EvidenceSemanticsTests.test_unknown_requirement_and_dangling_result_are_rejected,,test_vv_evidence.EvidenceSemanticsTests.test_unknown_requirement_and_dangling_result_are_rejected,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+VV-02,pytest:test_vv_model.FunctionalModelTests.test_model_boolean_calculations_and_operational_gate,,test_vv_model.FunctionalModelTests.test_model_boolean_calculations_and_operational_gate,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+VV-02,pytest:test_vv_model.FunctionalModelTests.test_model_boundary_calculation_edges,,test_vv_model.FunctionalModelTests.test_model_boundary_calculation_edges,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+VV-05,pytest:test_vv_model.FunctionalModelTests.test_sysml_requirements_match_sql_catalog,,test_vv_model.FunctionalModelTests.test_sysml_requirements_match_sql_catalog,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-02,pytest:test_vv_semantics.OracleUnitTests.test_canonical_json_known_answer_and_key_order,,test_vv_semantics.OracleUnitTests.test_canonical_json_known_answer_and_key_order,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+CDC-01,pytest:test_vv_semantics.OracleUnitTests.test_generated_polynomial_and_boundary_oracle,,test_vv_semantics.OracleUnitTests.test_generated_polynomial_and_boundary_oracle,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+CDC-01,pytest:test_vv_semantics.OracleUnitTests.test_scanner_invalid_configuration_types_and_edges,,test_vv_semantics.OracleUnitTests.test_scanner_invalid_configuration_types_and_edges,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+VV-01,pytest:test_vv_semantics.StateModelTests.test_cancelled_close_caller_does_not_abandon_shared_cleanup,,test_vv_semantics.StateModelTests.test_cancelled_close_caller_does_not_abandon_shared_cleanup,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-01,pytest:test_vv_semantics.StateModelTests.test_generated_traces_match_abstract_chain_model,,test_vv_semantics.StateModelTests.test_generated_traces_match_abstract_chain_model,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
+GOV-04,pytest:test_vv_semantics.StateModelTests.test_utf8_exact_limit_and_limit_plus_one,,test_vv_semantics.StateModelTests.test_utf8_exact_limit_and_limit_plus_one,pytest,inventory,current-unit,PASS,,0,5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f,vv_evidence/unit_results.xml
