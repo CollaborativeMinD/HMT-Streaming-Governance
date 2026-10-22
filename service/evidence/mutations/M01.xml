@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="6" time="0.162" timestamp="2026-10-22T04:25:36.462723+00:00" hostname="2dd7d8cfea16"><testcase classname="tests.test_boundaries" name="test_sequence_boundaries_reject_before_storage[-1]" time="0.001" /><testcase classname="tests.test_boundaries" name="test_sequence_boundaries_reject_before_storage[True]" time="0.001"><failure message="Failed: DID NOT RAISE Rejected">sequence = True
+
+    @pytest.mark.parametrize('sequence',[-1,True,1.0,2**53,'0',None])
+    def test_sequence_boundaries_reject_before_storage(sequence):
+        value=dict(session_id='s',sequence_number=sequence,source_agent='a',target_entity='b',payload='',previous_hash=GENESIS)
+&gt;       with pytest.raises(Rejected,match='INVALID_SEQUENCE'):frame(value)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE Rejected
+
+tests/test_boundaries.py:37: Failed</failure></testcase><testcase classname="tests.test_boundaries" name="test_sequence_boundaries_reject_before_storage[1.0]" time="0.000" /><testcase classname="tests.test_boundaries" name="test_sequence_boundaries_reject_before_storage[9007199254740992]" time="0.000" /><testcase classname="tests.test_boundaries" name="test_sequence_boundaries_reject_before_storage[0]" time="0.000" /><testcase classname="tests.test_boundaries" name="test_sequence_boundaries_reject_before_storage[None]" time="0.000" /></testsuite></testsuites>

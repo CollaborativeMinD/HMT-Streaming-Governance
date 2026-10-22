@@ -1,0 +1,152 @@
+[
+  {
+    "old": "PREPARED",
+    "new": "PREPARED",
+    "model": true,
+    "postgres": true
+  },
+  {
+    "old": "PREPARED",
+    "new": "DISPATCHING",
+    "model": true,
+    "postgres": true
+  },
+  {
+    "old": "PREPARED",
+    "new": "UNKNOWN",
+    "model": false,
+    "postgres": false
+  },
+  {
+    "old": "PREPARED",
+    "new": "COMPLETED",
+    "model": false,
+    "postgres": false
+  },
+  {
+    "old": "PREPARED",
+    "new": "FAILED_NO_EFFECT",
+    "model": false,
+    "postgres": false
+  },
+  {
+    "old": "DISPATCHING",
+    "new": "PREPARED",
+    "model": false,
+    "postgres": false
+  },
+  {
+    "old": "DISPATCHING",
+    "new": "DISPATCHING",
+    "model": true,
+    "postgres": true
+  },
+  {
+    "old": "DISPATCHING",
+    "new": "UNKNOWN",
+    "model": true,
+    "postgres": true
+  },
+  {
+    "old": "DISPATCHING",
+    "new": "COMPLETED",
+    "model": true,
+    "postgres": true
+  },
+  {
+    "old": "DISPATCHING",
+    "new": "FAILED_NO_EFFECT",
+    "model": true,
+    "postgres": true
+  },
+  {
+    "old": "UNKNOWN",
+    "new": "PREPARED",
+    "model": false,
+    "postgres": false
+  },
+  {
+    "old": "UNKNOWN",
+    "new": "DISPATCHING",
+    "model": false,
+    "postgres": false
+  },
+  {
+    "old": "UNKNOWN",
+    "new": "UNKNOWN",
+    "model": true,
+    "postgres": true
+  },
+  {
+    "old": "UNKNOWN",
+    "new": "COMPLETED",
+    "model": true,
+    "postgres": true
+  },
+  {
+    "old": "UNKNOWN",
+    "new": "FAILED_NO_EFFECT",
+    "model": true,
+    "postgres": true
+  },
+  {
+    "old": "COMPLETED",
+    "new": "PREPARED",
+    "model": false,
+    "postgres": false
+  },
+  {
+    "old": "COMPLETED",
+    "new": "DISPATCHING",
+    "model": false,
+    "postgres": false
+  },
+  {
+    "old": "COMPLETED",
+    "new": "UNKNOWN",
+    "model": false,
+    "postgres": false
+  },
+  {
+    "old": "COMPLETED",
+    "new": "COMPLETED",
+    "model": true,
+    "postgres": true
+  },
+  {
+    "old": "COMPLETED",
+    "new": "FAILED_NO_EFFECT",
+    "model": false,
+    "postgres": false
+  },
+  {
+    "old": "FAILED_NO_EFFECT",
+    "new": "PREPARED",
+    "model": false,
+    "postgres": false
+  },
+  {
+    "old": "FAILED_NO_EFFECT",
+    "new": "DISPATCHING",
+    "model": false,
+    "postgres": false
+  },
+  {
+    "old": "FAILED_NO_EFFECT",
+    "new": "UNKNOWN",
+    "model": false,
+    "postgres": false
+  },
+  {
+    "old": "FAILED_NO_EFFECT",
+    "new": "COMPLETED",
+    "model": false,
+    "postgres": false
+  },
+  {
+    "old": "FAILED_NO_EFFECT",
+    "new": "FAILED_NO_EFFECT",
+    "model": true,
+    "postgres": true
+  }
+]

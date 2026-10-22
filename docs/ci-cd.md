@@ -70,3 +70,9 @@ git push origin v0.1.0
 The tag starts the complete lane again. Release write permission exists only in the final job; it consumes the already smoke-tested artifact and verifies its checksum. A blocked tag creates no release. The workflow never replaces an existing release asset silently; create a new reviewed version for a change. Actions artifacts retain run evidence for 30 days; GitHub Release assets provide versioned delivery beyond that window.
 
 Visibility stays as configured by the owner. This setup does not make a private repository public. Release assets inherit repository visibility; changing visibility and choosing a project license are owner decisions.
+
+## Durable successor lane
+
+The `durable` job now participates in Admission alongside the three-version reference campaign and tooling job. It builds the pinned Go bridge, runs native Go checks and an explicit govulncheck JSON call-graph gate, creates a disposable TLS PostgreSQL/Redis/OpenBao/Headscale lab, executes the full durable pytest/unittest/mutation/SQL/model campaign, audits locked Python dependencies and checks publication bytes against its actual lab-secret inventory. Cleanup runs even on failure; credentials are never uploaded.
+
+Packaging restores the durable lane's current evidence, verifies its source manifest, and replays both profiles from a manifest-verified extraction. Deployment HOLDs remain explicit in the durable report and do not become runtime passes. Native tests fail if the bridge or lab is missing; there is no qualification skip path. The Forgejo-compatible entrypoint is `service/run_vv.py`; the deployment runbook explains runner and secret boundaries.

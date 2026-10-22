@@ -1,0 +1,108 @@
+{
+  "scope": "Ten selected Python semantic mutants; not exhaustive mutation coverage; SQL guards and upstream dependencies are not mutated",
+  "positive_control": "PASS",
+  "mutants": [
+    {
+      "id": "M01",
+      "file": "contracts.py",
+      "mutation": "type(value[\"sequence_number\"]) is not int -> not isinstance(value[\"sequence_number\"], int)",
+      "test": "service/tests/test_boundaries.py::test_sequence_boundaries_reject_before_storage",
+      "result": "KILLED",
+      "failure_count": 1,
+      "error_count": 0,
+      "exit_code": 1
+    },
+    {
+      "id": "M02",
+      "file": "contracts.py",
+      "mutation": "< 2**53 -> <= 2**53",
+      "test": "service/tests/test_boundaries.py::test_sequence_boundaries_reject_before_storage",
+      "result": "KILLED",
+      "failure_count": 1,
+      "error_count": 0,
+      "exit_code": 1
+    },
+    {
+      "id": "M03",
+      "file": "contracts.py",
+      "mutation": "len(value[\"payload\"].encode()) > max_payload -> False",
+      "test": "service/tests/test_boundaries.py::test_utf8_payload_byte_boundary_and_no_surrogate",
+      "result": "KILLED",
+      "failure_count": 1,
+      "error_count": 0,
+      "exit_code": 1
+    },
+    {
+      "id": "M04",
+      "file": "contracts.py",
+      "mutation": "if depth > 32: -> if depth > 33:",
+      "test": "service/tests/test_boundaries.py::test_json_exact_size_depth_and_quoted_braces",
+      "result": "KILLED",
+      "failure_count": 1,
+      "error_count": 0,
+      "exit_code": 1
+    },
+    {
+      "id": "M05",
+      "file": "contracts.py",
+      "mutation": "if key in result: -> if False:",
+      "test": "service/tests/test_boundaries.py::test_json_invalid_cases",
+      "result": "KILLED",
+      "failure_count": 1,
+      "error_count": 0,
+      "exit_code": 1
+    },
+    {
+      "id": "M06",
+      "file": "contracts.py",
+      "mutation": "if len(raw) > limit: -> if len(raw) >= limit:",
+      "test": "service/tests/test_boundaries.py::test_json_exact_size_depth_and_quoted_braces",
+      "result": "SURVIVED_OR_INVALID",
+      "failure_count": 1,
+      "error_count": 0,
+      "exit_code": 1
+    },
+    {
+      "id": "M07",
+      "file": "records.py",
+      "mutation": "or row[\"payload_hash\"] != expected[\"payload_hash\"] -> or False",
+      "test": "service/tests/test_boundaries.py::test_authenticated_cache_metadata_mismatch_falls_back_to_postgres",
+      "result": "KILLED",
+      "failure_count": 1,
+      "error_count": 0,
+      "exit_code": 1
+    },
+    {
+      "id": "M08",
+      "file": "authority.py",
+      "mutation": "role not in row[\"roles\"] -> False",
+      "test": "service/tests/test_ledger.py::test_ungranted_route_and_missing_sender_role_are_denied",
+      "result": "KILLED",
+      "failure_count": 1,
+      "error_count": 0,
+      "exit_code": 1
+    },
+    {
+      "id": "M09",
+      "file": "effects.py",
+      "mutation": "if actor[\"agent_id\"] != session[\"target_agent\"]: -> if False:",
+      "test": "service/tests/test_effects.py::test_forged_external_witness_cannot_commit_success",
+      "result": "KILLED",
+      "failure_count": 1,
+      "error_count": 0,
+      "exit_code": 1
+    },
+    {
+      "id": "M10",
+      "file": "runner.py",
+      "mutation": "or witness.get(\"block_hash\") != operation[\"block_hash\"] -> or False",
+      "test": "service/tests/test_effects.py::test_forged_external_witness_cannot_commit_success",
+      "result": "SURVIVED_OR_INVALID",
+      "failure_count": 0,
+      "error_count": 0,
+      "exit_code": 0
+    }
+  ],
+  "killed": 8,
+  "total": 10
+}

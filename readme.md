@@ -10,13 +10,19 @@
 
 **Trace streamed agent data into a bounded integrity ledger, then verify the handoff before a tool receives it.**
 
-A byte-preserving content-defined chunker feeds an asynchronous SHA-256 worker. The ledger binds payload identity, session sequence, predecessor and routing metadata; the gateway distinguishes verified delivery, integrity quarantine and availability HOLD. A marimo notebook makes those transitions inspectable, while a local MCP server exposes the same verification boundary.
+**Durable successor profile:** PostgreSQL ledger and inbox, encrypted Redis acceleration, authenticated native Tailcat handoffs, a separate Headscale management mesh, and OpenBao transit keys. [Build and run](service/README.md) · [Current V&V evidence](service/evidence/REPORT.md) · [Private deployment/recovery](deployment/README.md) · [Durable SysML v2](service/model/durable-governance.sysml).
 
-**Scope: an in-memory engineering reference.** Restart loses the ledger. Hash consistency is not authenticated identity, durable custody, truth or exactly-once execution. No automatic effectful failover is performed.
+[![Durable profile](https://img.shields.io/badge/profile-PostgreSQL%20%2B%20Tailcat-blue)](service/README.md)
+[![Finite Cartesian catalog](https://img.shields.io/badge/local%20catalog-28%20executable%20%7C%204%20HOLD-amber)](service/evidence/cross/summary.json)
+[![Selected mutations](https://img.shields.io/badge/durable%20selected%20mutants-10%2F10-green)](service/evidence/mutations/summary.json)
 
-[Run the notebook](#run-locally) · [Runtime contract](docs/runtime-contract.md) · [V&V report](VV_report.md) · [CI/CD and operator runbook](docs/ci-cd.md) · [Functional model](governance.sysml)
+These are scoped evidence badges. The durable lane participates in CI Admission; deployment to an on-premises host still requires the recorded network, bootstrap and rollback-anchor qualifications. Rapid one-shot reconnect remains an availability HOLD; persistent native sessions pass the isolated-container handoff flow. No lab credentials are included. The badges above this paragraph describe the original reference campaign.
 
-The CI badge is live. Other badges link to the supplied/replayed evidence snapshot; they are not live health indicators or certifications. Each successor commit requires its own CI witnesses.
+## Notebook and in-memory reference
+
+A byte-preserving content-defined chunker feeds an asynchronous SHA-256 worker. The reference ledger binds payload identity, sequence, predecessor and routing metadata, while the marimo notebook makes verification, quarantine and HOLD inspectable. The root runtime remains an **in-memory engineering reference**: restart loses its ledger, and hash consistency alone establishes neither authenticated identity nor exactly-once execution.
+
+[Run the notebook](#run-locally) · [Reference runtime contract](docs/runtime-contract.md) · [Reference V&V report](VV_report.md) · [CI/CD runbook](docs/ci-cd.md) · [Reference functional model](governance.sysml)
 
 ## Lifecycle
 

@@ -11,3 +11,9 @@ dist/
 .env
 .env.*
 !.env.example
+service/.lab/
+service/.secrets/
+*.key
+!**/fixtures/*.public.key
+
+.build/

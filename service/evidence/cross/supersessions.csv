@@ -1,0 +1,6 @@
+id,failed_evidence,satisfied_by,reason,disposition
+S01,evidence/initial-ledger.xml,I03,Duplicate quarantine event fixed: insert event only on ACTIVE-to-QUARANTINED transition. Pre-fix source retained.,RUNTIME_FIXED
+S02,evidence/initial-ledger.xml,A04,Receipt observer used a revoked sender; changed observer to the still-authorized receiver without weakening authorization.,FIXTURE_AMENDED
+S04,evidence/failures/headscale-readiness.xml,N01,Enrollment completed before the data path was ready; bounded positive echo readiness probes precede the unchanged denial challenge.,FIXTURE_READINESS_FIXED
+S05,evidence/failures/mutations-initial.json,B04/E03,Added assertion witnesses for exact-size valid JSON and direct external witness binding; SQL defense remains in place.,ASSERTIONS_STRENGTHENED
+S03,evidence/failures/native-reconnect.xml,H04,Persistent sessions satisfy N02; the original repeated one-shot reconnect availability claim remains on HOLD.,NOT_NULLIFIED

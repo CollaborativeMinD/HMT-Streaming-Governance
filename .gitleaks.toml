@@ -14,6 +14,27 @@ description = "SHA-256 source identity entries whose filename includes api"
 regexTarget = "match"
 regexes = ['''(?:test_vv_api\.py|vv_api\.py)["']\s*:\s*["'][0-9a-f]{64}["']''']
 
+[[rules.allowlists]]
+description = "WireGuard nodekey values are public identities, never private keys or endpoint PSKs"
+regexTarget = "match"
+regexes = ['''nodekey:[0-9a-f]{64}['"]?''']
+
+[[rules.allowlists]]
+description = "Verified SHA-256 source identities for these three key-related Python filenames"
+condition = "AND"
+regexTarget = "line"
+paths = ['''service/evidence/(source-manifest|run-start)\.json$''']
+regexes = ['''"service/(?:src/hmt_governance/keys|tests/test_keys|vv/secret_inventory)\.py": "[0-9a-f]{64}"''']
+
 [[allowlists]]
 description = "Dependency trees, Git internals and generated CI output are not project credential inputs"
 paths = ['''(^|/)node_modules/''', '''(^|/)\.git/''', '''(^|/)\.ci-output/''']
+
+[[rules]]
+id = "sourcegraph-access-token"
+[[rules.allowlists]]
+description = "Public fix commit hashes in retained Go vulnerability database records"
+condition = "AND"
+regexTarget = "line"
+paths = ['''service/evidence/(failures/)?go-vulnerability(-initial)?\.json$''']
+regexes = ['''"url": "https://(?:go\.googlesource\.com/(?:go|net|text)/\+/|github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+/(?:commit/|pull/[0-9]+/commits/))[0-9a-f]{40}"''']

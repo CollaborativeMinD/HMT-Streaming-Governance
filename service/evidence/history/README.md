@@ -1,0 +1,1 @@
+Historical intermediate runs, including failures, from development of the durable profile. These are not the current source-bound campaign. Use ../final-pytest.xml, ../unittest.xml and ../REPORT.md for current results. The explicitly linked original failures and supersession reasons are retained separately in ../failures and ../cross/supersessions.csv.

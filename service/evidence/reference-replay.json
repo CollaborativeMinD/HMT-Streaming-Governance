@@ -1,0 +1,11 @@
+{
+  "source_seal": "5be59e17d560baef976c2820086ba45f60857be63b10145f2bdfd1461d95563f",
+  "current_results": {
+    "PASS": 126
+  },
+  "counts": {
+    "OUT_OF_SCOPE": 7456,
+    "SATISFIED": 32
+  },
+  "total": 7488
+}

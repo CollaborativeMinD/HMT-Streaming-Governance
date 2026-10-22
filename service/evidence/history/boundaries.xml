@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="25" time="1.668" timestamp="2026-10-22T03:47:47.840538+00:00" hostname="2dd7d8cfea16"><testcase classname="tests.test_boundaries" name="test_json_invalid_cases[{&quot;x&quot;:1,&quot;x&quot;:2}]" time="0.001" /><testcase classname="tests.test_boundaries" name="test_json_invalid_cases[{&quot;x&quot;:NaN}]" time="0.000" /><testcase classname="tests.test_boundaries" name="test_json_invalid_cases[[]]" time="0.000" /><testcase classname="tests.test_boundaries" name="test_json_invalid_cases[null]" time="0.000" /><testcase classname="tests.test_boundaries" name="test_json_invalid_cases[{&quot;x&quot;:&quot;\ud800&quot;}]" time="0.000" /><testcase classname="tests.test_boundaries" name="test_json_invalid_cases[{]" time="0.000" /><testcase classname="tests.test_boundaries" name="test_json_exact_size_depth_and_quoted_braces" time="0.000" /><testcase classname="tests.test_boundaries" name="test_sequence_boundaries_reject_before_storage[-1]" time="0.000" /><testcase classname="tests.test_boundaries" name="test_sequence_boundaries_reject_before_storage[True]" time="0.000" /><testcase classname="tests.test_boundaries" name="test_sequence_boundaries_reject_before_storage[1.0]" time="0.000" /><testcase classname="tests.test_boundaries" name="test_sequence_boundaries_reject_before_storage[9007199254740992]" time="0.000" /><testcase classname="tests.test_boundaries" name="test_sequence_boundaries_reject_before_storage[0]" time="0.000" /><testcase classname="tests.test_boundaries" name="test_sequence_boundaries_reject_before_storage[None]" time="0.000" /><testcase classname="tests.test_boundaries" name="test_utf8_payload_byte_boundary_and_no_surrogate" time="0.000" /><testcase classname="tests.test_boundaries" name="test_host_settings_fail_closed[change0]" time="0.001" /><testcase classname="tests.test_boundaries" name="test_host_settings_fail_closed[change1]" time="0.000" /><testcase classname="tests.test_boundaries" name="test_host_settings_fail_closed[change2]" time="0.000" /><testcase classname="tests.test_boundaries" name="test_host_settings_fail_closed[change3]" time="0.001" /><testcase classname="tests.test_boundaries" name="test_host_settings_fail_closed[change4]" time="0.000" /><testcase classname="tests.test_boundaries" name="test_host_settings_fail_closed[change5]" time="0.000" /><testcase classname="tests.test_boundaries" name="test_cache_encrypted_poisoned_and_namespace_acl" time="0.031"><failure message="hmt_governance.contracts.Rejected: SCHEMA_FUNCTION_DRIFT">async def test_cache_encrypted_poisoned_and_namespace_acl():
+        import redis.exceptions
+&gt;       async with Host() as host:
+                   ^^^^^^
+
+service/tests/test_boundaries.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+service/tests/support.py:55: in __aenter__
+    self.engine = await Engine(self.settings).start()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+service/src/hmt_governance/engine.py:35: in start
+    await self.database.start()
+service/src/hmt_governance/database.py:38: in start
+    await self.check_schema(connection)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;hmt_governance.database.Database object at 0x7fa2d2da6c30&gt;
+connection = &lt;psycopg.AsyncConnection [IDLE] (host=172.30.245.2 user=gov_broker database=governance) at 0x7fa2d2dad130&gt;
+
+    async def check_schema(self, connection):
+        import re
+    
+        source = Path(__file__).with_name("schema.sql").read_text()
+        expected = dict(re.findall(r"CREATE FUNCTION governance\.(\w+)\(.*?AS \$\$(.*?)\$\$;", source, re.S))
+        rows = await (await connection.execute(
+            "SELECT p.proname,p.prosrc FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace WHERE n.nspname='governance'"
+        )).fetchall()
+        actual = {r['proname']:r['prosrc'] for r in rows}
+        if actual != expected:
+&gt;           raise Rejected("SCHEMA_FUNCTION_DRIFT", "HELD")
+E           hmt_governance.contracts.Rejected: SCHEMA_FUNCTION_DRIFT
+
+service/src/hmt_governance/database.py:51: Rejected</failure></testcase><testcase classname="tests.test_boundaries" name="test_authenticated_cache_metadata_mismatch_falls_back_to_postgres" time="0.023"><failure message="hmt_governance.contracts.Rejected: SCHEMA_FUNCTION_DRIFT">async def test_authenticated_cache_metadata_mismatch_falls_back_to_postgres():
+&gt;       async with Host() as host:
+                   ^^^^^^
+
+service/tests/test_boundaries.py:64: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+service/tests/support.py:55: in __aenter__
+    self.engine = await Engine(self.settings).start()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+service/src/hmt_governance/engine.py:35: in start
+    await self.database.start()
+service/src/hmt_governance/database.py:38: in start
+    await self.check_schema(connection)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;hmt_governance.database.Database object at 0x7fa2d2dae0f0&gt;
+connection = &lt;psycopg.AsyncConnection [IDLE] (host=172.30.245.2 user=gov_broker database=governance) at 0x7fa2d2dafe00&gt;
+
+    async def check_schema(self, connection):
+        import re
+    
+        source = Path(__file__).with_name("schema.sql").read_text()
+        expected = dict(re.findall(r"CREATE FUNCTION governance\.(\w+)\(.*?AS \$\$(.*?)\$\$;", source, re.S))
+        rows = await (await connection.execute(
+            "SELECT p.proname,p.prosrc FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace WHERE n.nspname='governance'"
+        )).fetchall()
+        actual = {r['proname']:r['prosrc'] for r in rows}
+        if actual != expected:
+&gt;           raise Rejected("SCHEMA_FUNCTION_DRIFT", "HELD")
+E           hmt_governance.contracts.Rejected: SCHEMA_FUNCTION_DRIFT
+
+service/src/hmt_governance/database.py:51: Rejected</failure></testcase><testcase classname="tests.test_boundaries" name="test_uds_api_schema_errors_no_remote_identity_override" time="0.023"><failure message="hmt_governance.contracts.Rejected: SCHEMA_FUNCTION_DRIFT">tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-2/test_uds_api_schema_errors_no_0')
+
+    async def test_uds_api_schema_errors_no_remote_identity_override(tmp_path):
+&gt;       async with Host() as host:
+                   ^^^^^^
+
+service/tests/test_boundaries.py:74: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+service/tests/support.py:55: in __aenter__
+    self.engine = await Engine(self.settings).start()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+service/src/hmt_governance/engine.py:35: in start
+    await self.database.start()
+service/src/hmt_governance/database.py:38: in start
+    await self.check_schema(connection)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;hmt_governance.database.Database object at 0x7fa2d2de7860&gt;
+connection = &lt;psycopg.AsyncConnection [IDLE] (host=172.30.245.2 user=gov_broker database=governance) at 0x7fa2d1eb0e00&gt;
+
+    async def check_schema(self, connection):
+        import re
+    
+        source = Path(__file__).with_name("schema.sql").read_text()
+        expected = dict(re.findall(r"CREATE FUNCTION governance\.(\w+)\(.*?AS \$\$(.*?)\$\$;", source, re.S))
+        rows = await (await connection.execute(
+            "SELECT p.proname,p.prosrc FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace WHERE n.nspname='governance'"
+        )).fetchall()
+        actual = {r['proname']:r['prosrc'] for r in rows}
+        if actual != expected:
+&gt;           raise Rejected("SCHEMA_FUNCTION_DRIFT", "HELD")
+E           hmt_governance.contracts.Rejected: SCHEMA_FUNCTION_DRIFT
+
+service/src/hmt_governance/database.py:51: Rejected</failure></testcase><testcase classname="tests.test_boundaries" name="test_request_capacity_and_close_owned_jobs" time="0.022"><failure message="hmt_governance.contracts.Rejected: SCHEMA_FUNCTION_DRIFT">async def test_request_capacity_and_close_owned_jobs():
+&gt;       async with Host() as host:
+                   ^^^^^^
+
+service/tests/test_boundaries.py:92: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+service/tests/support.py:55: in __aenter__
+    self.engine = await Engine(self.settings).start()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+service/src/hmt_governance/engine.py:35: in start
+    await self.database.start()
+service/src/hmt_governance/database.py:38: in start
+    await self.check_schema(connection)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;hmt_governance.database.Database object at 0x7fa2d1eb17f0&gt;
+connection = &lt;psycopg.AsyncConnection [IDLE] (host=172.30.245.2 user=gov_broker database=governance) at 0x7fa2d1eb34d0&gt;
+
+    async def check_schema(self, connection):
+        import re
+    
+        source = Path(__file__).with_name("schema.sql").read_text()
+        expected = dict(re.findall(r"CREATE FUNCTION governance\.(\w+)\(.*?AS \$\$(.*?)\$\$;", source, re.S))
+        rows = await (await connection.execute(
+            "SELECT p.proname,p.prosrc FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace WHERE n.nspname='governance'"
+        )).fetchall()
+        actual = {r['proname']:r['prosrc'] for r in rows}
+        if actual != expected:
+&gt;           raise Rejected("SCHEMA_FUNCTION_DRIFT", "HELD")
+E           hmt_governance.contracts.Rejected: SCHEMA_FUNCTION_DRIFT
+
+service/src/hmt_governance/database.py:51: Rejected</failure></testcase><testcase classname="tests.test_boundaries" name="test_container_transport_network_cannot_reach_data_or_write_root" time="1.366" /></testsuite></testsuites>

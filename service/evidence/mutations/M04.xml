@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.155" timestamp="2026-10-22T04:25:37.735893+00:00" hostname="2dd7d8cfea16"><testcase classname="tests.test_boundaries" name="test_json_exact_size_depth_and_quoted_braces" time="0.001"><failure message="Failed: DID NOT RAISE Rejected">def test_json_exact_size_depth_and_quoted_braces():
+        try:
+            result = strict_json(b'{}',2)
+        except Rejected:
+            assert False, 'An exact-size valid JSON body must be accepted'
+        assert result == {}
+        with pytest.raises(Rejected,match='BODY_CAPACITY'):strict_json(b'{}',1)
+        assert strict_json(b'{"x":"'+b'{'*64+b'"}')['x']=='{'*64
+        assert strict_json(b'{"x":'+b'['*31+b'0'+b']'*31+b'}')['x']
+&gt;       with pytest.raises(Rejected,match='JSON_DEPTH_CAPACITY'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE Rejected
+
+tests/test_boundaries.py:30: Failed</failure></testcase></testsuite></testsuites>

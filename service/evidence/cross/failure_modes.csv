@@ -1,0 +1,33 @@
+id,requirement_id,description
+process_loss,D01,Durable pending work survives process loss
+ack_loss,D02,Verified identity and acknowledgement survive restart
+concurrent_duplicates,D03,Concurrent idempotent admissions create one record
+conflicting_retry,D04,An idempotency key cannot change payload
+metadata_corruption,I01,Version-one Unicode hashes bind metadata and payload atomically
+wrong_parent_sequence_digest,I02,Wrong lineage is quarantined without record insertion
+handoff_tampering,I03,Wrong recipient and tampered handoffs cannot execute
+source_spoofing,A01,Sender identity is derived from the authenticated peer
+missing_grant,A02,Roles and routes are checked before admission
+warm_cache_revocation,A03,Fresh authority overrides a warm cache
+inflight_revocation,A04,Revocation between enqueue and commit blocks trust
+expired_pending,A05,Expired receipts cannot become verified
+database_privilege_abuse,D05,Broker cannot rewrite append-only records or provision identities
+record_capacity,B01,Capacity holds without evicting accepted records
+cache_poison,C01,Poisoned Redis falls back to registered PostgreSQL data
+cache_metadata_corruption,C02,Cached metadata is checked against durable hashes
+duplicate_effect,E01,A durable record permits one bound host-adapter dispatch
+ambiguous_external_effect,E02,Lost acknowledgement never authorizes automatic retry
+forged_effect_witness,E03,Unbound external witnesses cannot report completion
+checkpoint_tamper,K01,Independent verification binds context and supports signer rotation
+key_privilege_escalation,K02,Runtime key policy cannot administer the key service
+key_service_seal_revoke,K03,Seal and revocation stop key service access
+forbidden_network_port,N01,Native Headscale enforces distinct agent and management ports
+unknown_transport_peer,N02,Native isolated Tailcat containers enforce peer identity and revocation
+container_escape_surface,N03,Agent container has no direct data-plane route or elevated host access
+malformed_rpc,B02,RPC schemas cannot override transport identity or select arbitrary execution
+request_overload,B03,Request capacity and lifecycle remain bounded
+parser_depth_capacity,B04,JSON depth and exact byte limits reject before decoding
+owner_snapshot_rollback,H01,Hostile database-owner rollback requires an independent monotonic checkpoint anchor
+target_network_failure,H02,"On-prem WAN/NAT, partitions and reboot fencing need target-host qualification"
+production_key_bootstrap,H03,"Production PKI, multi-share unseal and workload-token enrollment need operator bootstrap"
+one_shot_reconnect,H04,Rapid repeated one-shot Tailcat reconnection is not yet reliable in the local fixture; use persistent sessions

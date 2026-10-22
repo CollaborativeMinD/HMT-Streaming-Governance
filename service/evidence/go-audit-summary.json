@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "reached_advisories": [],
+  "module_only_advisories": [
+    "GO-2026-5932"
+  ],
+  "scope": "Pinned Go 1.27.3 native Linux source/call graph; no promise about other builds or unknown vulnerabilities"
+}

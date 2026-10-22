@@ -35,6 +35,9 @@ def build(root=ROOT):
     from ci.verify_evidence import main
 
     main()
+    if (root / "service/evidence/summary.json").exists():
+        subprocess.run(["uv","run","--locked","--project","service","python","-m","vv.verify"],
+                       cwd=root,env=__import__('os').environ | {"PYTHONPATH":str(root/"service")},check=True)
     tracked = (
         subprocess.check_output(["git", "ls-files", "-z"], cwd=root)
         .decode()
@@ -63,7 +66,7 @@ def build(root=ROOT):
                     "GITHUB_REPOSITORY", "CollaborativeMinD/HMT-Streaming-Governance"
                 ),
                 workflow_run=os.environ.get("GITHUB_RUN_ID"),
-                profile="in-memory reference / finite declared V&V catalog",
+                profile="in-memory reference plus durable PostgreSQL/Tailcat local qualification; target deployment HOLDs retained",
                 activation="No service activation; no agent-host registration",
             ),
             indent=2,

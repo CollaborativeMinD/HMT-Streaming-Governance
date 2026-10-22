@@ -1,0 +1,3 @@
+
+# Preserve generated pytest tracebacks exactly, including source-line whitespace.
+service/evidence/**/*.xml -whitespace

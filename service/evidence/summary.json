@@ -1,0 +1,212 @@
+{
+  "requirements": [
+    {
+      "requirement": "D01",
+      "status": "SATISFIED_LOCAL",
+      "pytest": "tests.test_cross_findings.test_nullify_executable_finding[D01]",
+      "unittest": "tests.unittest_cross.CrossFindings.test_D01"
+    },
+    {
+      "requirement": "D02",
+      "status": "SATISFIED_LOCAL",
+      "pytest": "tests.test_cross_findings.test_nullify_executable_finding[D02]",
+      "unittest": "tests.unittest_cross.CrossFindings.test_D02"
+    },
+    {
+      "requirement": "D03",
+      "status": "SATISFIED_LOCAL",
+      "pytest": "tests.test_cross_findings.test_nullify_executable_finding[D03]",
+      "unittest": "tests.unittest_cross.CrossFindings.test_D03"
+    },
+    {
+      "requirement": "D04",
+      "status": "SATISFIED_LOCAL",
+      "pytest": "tests.test_cross_findings.test_nullify_executable_finding[D04]",
+      "unittest": "tests.unittest_cross.CrossFindings.test_D04"
+    },
+    {
+      "requirement": "I01",
+      "status": "SATISFIED_LOCAL",
+      "pytest": "tests.test_cross_findings.test_nullify_executable_finding[I01]",
+      "unittest": "tests.unittest_cross.CrossFindings.test_I01"
+    },
+    {
+      "requirement": "I02",
+      "status": "SATISFIED_LOCAL",
+      "pytest": "tests.test_cross_findings.test_nullify_executable_finding[I02]",
+      "unittest": "tests.unittest_cross.CrossFindings.test_I02"
+    },
+    {
+      "requirement": "I03",
+      "status": "SATISFIED_LOCAL",
+      "pytest": "tests.test_cross_findings.test_nullify_executable_finding[I03]",
+      "unittest": "tests.unittest_cross.CrossFindings.test_I03"
+    },
+    {
+      "requirement": "A01",
+      "status": "SATISFIED_LOCAL",
+      "pytest": "tests.test_cross_findings.test_nullify_executable_finding[A01]",
+      "unittest": "tests.unittest_cross.CrossFindings.test_A01"
+    },
+    {
+      "requirement": "A02",
+      "status": "SATISFIED_LOCAL",
+      "pytest": "tests.test_cross_findings.test_nullify_executable_finding[A02]",
+      "unittest": "tests.unittest_cross.CrossFindings.test_A02"
+    },
+    {
+      "requirement": "A03",
+      "status": "SATISFIED_LOCAL",
+      "pytest": "tests.test_cross_findings.test_nullify_executable_finding[A03]",
+      "unittest": "tests.unittest_cross.CrossFindings.test_A03"
+    },
+    {
+      "requirement": "A04",
+      "status": "SATISFIED_LOCAL",
+      "pytest": "tests.test_cross_findings.test_nullify_executable_finding[A04]",
+      "unittest": "tests.unittest_cross.CrossFindings.test_A04"
+    },
+    {
+      "requirement": "A05",
+      "status": "SATISFIED_LOCAL",
+      "pytest": "tests.test_cross_findings.test_nullify_executable_finding[A05]",
+      "unittest": "tests.unittest_cross.CrossFindings.test_A05"
+    },
+    {
+      "requirement": "D05",
+      "status": "SATISFIED_LOCAL",
+      "pytest": "tests.test_cross_findings.test_nullify_executable_finding[D05]",
+      "unittest": "tests.unittest_cross.CrossFindings.test_D05"
+    },
+    {
+      "requirement": "B01",
+      "status": "SATISFIED_LOCAL",
+      "pytest": "tests.test_cross_findings.test_nullify_executable_finding[B01]",
+      "unittest": "tests.unittest_cross.CrossFindings.test_B01"
+    },
+    {
+      "requirement": "C01",
+      "status": "SATISFIED_LOCAL",
+      "pytest": "tests.test_cross_findings.test_nullify_executable_finding[C01]",
+      "unittest": "tests.unittest_cross.CrossFindings.test_C01"
+    },
+    {
+      "requirement": "C02",
+      "status": "SATISFIED_LOCAL",
+      "pytest": "tests.test_cross_findings.test_nullify_executable_finding[C02]",
+      "unittest": "tests.unittest_cross.CrossFindings.test_C02"
+    },
+    {
+      "requirement": "E01",
+      "status": "SATISFIED_LOCAL",
+      "pytest": "tests.test_cross_findings.test_nullify_executable_finding[E01]",
+      "unittest": "tests.unittest_cross.CrossFindings.test_E01"
+    },
+    {
+      "requirement": "E02",
+      "status": "SATISFIED_LOCAL",
+      "pytest": "tests.test_cross_findings.test_nullify_executable_finding[E02]",
+      "unittest": "tests.unittest_cross.CrossFindings.test_E02"
+    },
+    {
+      "requirement": "E03",
+      "status": "SATISFIED_LOCAL",
+      "pytest": "tests.test_cross_findings.test_nullify_executable_finding[E03]",
+      "unittest": "tests.unittest_cross.CrossFindings.test_E03"
+    },
+    {
+      "requirement": "K01",
+      "status": "SATISFIED_LOCAL",
+      "pytest": "tests.test_cross_findings.test_nullify_executable_finding[K01]",
+      "unittest": "tests.unittest_cross.CrossFindings.test_K01"
+    },
+    {
+      "requirement": "K02",
+      "status": "SATISFIED_LOCAL",
+      "pytest": "tests.test_cross_findings.test_nullify_executable_finding[K02]",
+      "unittest": "tests.unittest_cross.CrossFindings.test_K02"
+    },
+    {
+      "requirement": "K03",
+      "status": "SATISFIED_LOCAL",
+      "pytest": "tests.test_cross_findings.test_nullify_executable_finding[K03]",
+      "unittest": "tests.unittest_cross.CrossFindings.test_K03"
+    },
+    {
+      "requirement": "N01",
+      "status": "SATISFIED_LOCAL",
+      "pytest": "tests.test_cross_findings.test_nullify_executable_finding[N01]",
+      "unittest": "tests.unittest_cross.CrossFindings.test_N01"
+    },
+    {
+      "requirement": "N02",
+      "status": "SATISFIED_LOCAL",
+      "pytest": "tests.test_cross_findings.test_nullify_executable_finding[N02]",
+      "unittest": "tests.unittest_cross.CrossFindings.test_N02"
+    },
+    {
+      "requirement": "N03",
+      "status": "SATISFIED_LOCAL",
+      "pytest": "tests.test_cross_findings.test_nullify_executable_finding[N03]",
+      "unittest": "tests.unittest_cross.CrossFindings.test_N03"
+    },
+    {
+      "requirement": "B02",
+      "status": "SATISFIED_LOCAL",
+      "pytest": "tests.test_cross_findings.test_nullify_executable_finding[B02]",
+      "unittest": "tests.unittest_cross.CrossFindings.test_B02"
+    },
+    {
+      "requirement": "B03",
+      "status": "SATISFIED_LOCAL",
+      "pytest": "tests.test_cross_findings.test_nullify_executable_finding[B03]",
+      "unittest": "tests.unittest_cross.CrossFindings.test_B03"
+    },
+    {
+      "requirement": "B04",
+      "status": "SATISFIED_LOCAL",
+      "pytest": "tests.test_cross_findings.test_nullify_executable_finding[B04]",
+      "unittest": "tests.unittest_cross.CrossFindings.test_B04"
+    },
+    {
+      "requirement": "H01",
+      "status": "HOLD",
+      "pytest": null,
+      "unittest": null,
+      "reason": "Hostile database-owner rollback requires an independent monotonic checkpoint anchor"
+    },
+    {
+      "requirement": "H02",
+      "status": "HOLD",
+      "pytest": null,
+      "unittest": null,
+      "reason": "On-prem WAN/NAT, partitions and reboot fencing need target-host qualification"
+    },
+    {
+      "requirement": "H03",
+      "status": "HOLD",
+      "pytest": null,
+      "unittest": null,
+      "reason": "Production PKI, multi-share unseal and workload-token enrollment need operator bootstrap"
+    },
+    {
+      "requirement": "H04",
+      "status": "HOLD",
+      "pytest": null,
+      "unittest": null,
+      "reason": "Rapid repeated one-shot Tailcat reconnection is not yet reliable in the local fixture; use persistent sessions"
+    }
+  ],
+  "failure_modes": 32,
+  "gates": 9,
+  "cartesian_rows": 9216,
+  "executable": 28,
+  "holds": 4,
+  "out_of_scope": 9184,
+  "scope": "Declared finite catalog only; out-of-scope combinations are not nullified threats",
+  "pytest_executions": 86,
+  "unittest_executions": 29,
+  "selected_mutants_killed": 10,
+  "source_seal": "69aeaa8dfce296a4f647bd753b1a400378078778432a1a7a95ebd643f073838b",
+  "profile": "v0.2 durable local qualification; deployment HOLDs are not waivers"
+}

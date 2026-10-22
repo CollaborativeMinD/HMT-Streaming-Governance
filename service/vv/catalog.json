@@ -1,0 +1,290 @@
+[
+  {
+    "requirement": "D01",
+    "invariant": "Durable pending work survives process loss",
+    "failure": "process_loss",
+    "gate": "DURABILITY",
+    "module": "test_ledger",
+    "test": "test_pending_inbox_survives_restart_before_worker_runs",
+    "status": "EXECUTABLE"
+  },
+  {
+    "requirement": "D02",
+    "invariant": "Verified identity and acknowledgement survive restart",
+    "failure": "ack_loss",
+    "gate": "DURABILITY",
+    "module": "test_ledger",
+    "test": "test_verified_state_and_idempotent_ack_survive_new_engine",
+    "status": "EXECUTABLE"
+  },
+  {
+    "requirement": "D03",
+    "invariant": "Concurrent idempotent admissions create one record",
+    "failure": "concurrent_duplicates",
+    "gate": "DURABILITY",
+    "module": "test_ledger",
+    "test": "test_parallel_duplicate_submission_creates_one_record",
+    "status": "EXECUTABLE"
+  },
+  {
+    "requirement": "D04",
+    "invariant": "An idempotency key cannot change payload",
+    "failure": "conflicting_retry",
+    "gate": "INTEGRITY",
+    "module": "test_ledger",
+    "test": "test_same_idempotency_key_cannot_change_payload",
+    "status": "EXECUTABLE"
+  },
+  {
+    "requirement": "I01",
+    "invariant": "Version-one Unicode hashes bind metadata and payload atomically",
+    "failure": "metadata_corruption",
+    "gate": "INTEGRITY",
+    "module": "test_ledger",
+    "test": "test_atomic_receipt_chain_and_unicode_roundtrip",
+    "status": "EXECUTABLE"
+  },
+  {
+    "requirement": "I02",
+    "invariant": "Wrong lineage is quarantined without record insertion",
+    "failure": "wrong_parent_sequence_digest",
+    "gate": "INTEGRITY",
+    "module": "test_ledger",
+    "test": "test_wrong_parent_and_sequence_quarantine_persistently",
+    "status": "EXECUTABLE"
+  },
+  {
+    "requirement": "I03",
+    "invariant": "Wrong recipient and tampered handoffs cannot execute",
+    "failure": "handoff_tampering",
+    "gate": "IDENTITY",
+    "module": "test_ledger",
+    "test": "test_recipient_and_metadata_tampering_halt_and_quarantine",
+    "status": "EXECUTABLE"
+  },
+  {
+    "requirement": "A01",
+    "invariant": "Sender identity is derived from the authenticated peer",
+    "failure": "source_spoofing",
+    "gate": "IDENTITY",
+    "module": "test_ledger",
+    "test": "test_sender_spoofing_and_unknown_peer_do_not_create_sessions",
+    "status": "EXECUTABLE"
+  },
+  {
+    "requirement": "A02",
+    "invariant": "Roles and routes are checked before admission",
+    "failure": "missing_grant",
+    "gate": "IDENTITY",
+    "module": "test_ledger",
+    "test": "test_ungranted_route_and_missing_sender_role_are_denied",
+    "status": "EXECUTABLE"
+  },
+  {
+    "requirement": "A03",
+    "invariant": "Fresh authority overrides a warm cache",
+    "failure": "warm_cache_revocation",
+    "gate": "CACHE",
+    "module": "test_ledger",
+    "test": "test_fresh_authority_and_route_override_warm_cache",
+    "status": "EXECUTABLE"
+  },
+  {
+    "requirement": "A04",
+    "invariant": "Revocation between enqueue and commit blocks trust",
+    "failure": "inflight_revocation",
+    "gate": "IDENTITY",
+    "module": "test_ledger",
+    "test": "test_revocation_after_enqueue_prevents_commit",
+    "status": "EXECUTABLE"
+  },
+  {
+    "requirement": "A05",
+    "invariant": "Expired receipts cannot become verified",
+    "failure": "expired_pending",
+    "gate": "DURABILITY",
+    "module": "test_ledger",
+    "test": "test_expired_pending_receipt_cannot_commit",
+    "status": "EXECUTABLE"
+  },
+  {
+    "requirement": "D05",
+    "invariant": "Broker cannot rewrite append-only records or provision identities",
+    "failure": "database_privilege_abuse",
+    "gate": "DURABILITY",
+    "module": "test_ledger",
+    "test": "test_actual_database_append_only_and_role_boundaries",
+    "status": "EXECUTABLE"
+  },
+  {
+    "requirement": "B01",
+    "invariant": "Capacity holds without evicting accepted records",
+    "failure": "record_capacity",
+    "gate": "BOUNDARY",
+    "module": "test_ledger",
+    "test": "test_record_capacity_holds_without_eviction",
+    "status": "EXECUTABLE"
+  },
+  {
+    "requirement": "C01",
+    "invariant": "Poisoned Redis falls back to registered PostgreSQL data",
+    "failure": "cache_poison",
+    "gate": "CACHE",
+    "module": "test_boundaries",
+    "test": "test_cache_encrypted_poisoned_and_namespace_acl",
+    "status": "EXECUTABLE"
+  },
+  {
+    "requirement": "C02",
+    "invariant": "Cached metadata is checked against durable hashes",
+    "failure": "cache_metadata_corruption",
+    "gate": "CACHE",
+    "module": "test_boundaries",
+    "test": "test_authenticated_cache_metadata_mismatch_falls_back_to_postgres",
+    "status": "EXECUTABLE"
+  },
+  {
+    "requirement": "E01",
+    "invariant": "A durable record permits one bound host-adapter dispatch",
+    "failure": "duplicate_effect",
+    "gate": "EFFECT",
+    "module": "test_effects",
+    "test": "test_mtls_dispatch_concurrent_one_shot_and_no_remote_outcome",
+    "status": "EXECUTABLE"
+  },
+  {
+    "requirement": "E02",
+    "invariant": "Lost acknowledgement never authorizes automatic retry",
+    "failure": "ambiguous_external_effect",
+    "gate": "EFFECT",
+    "module": "test_effects",
+    "test": "test_lost_ack_restart_never_replays_and_lookup_reconciles",
+    "status": "EXECUTABLE"
+  },
+  {
+    "requirement": "E03",
+    "invariant": "Unbound external witnesses cannot report completion",
+    "failure": "forged_effect_witness",
+    "gate": "EFFECT",
+    "module": "test_effects",
+    "test": "test_forged_external_witness_cannot_commit_success",
+    "status": "EXECUTABLE"
+  },
+  {
+    "requirement": "K01",
+    "invariant": "Independent verification binds context and supports signer rotation",
+    "failure": "checkpoint_tamper",
+    "gate": "KEYS",
+    "module": "test_keys",
+    "test": "test_transit_independent_verification_context_tamper_and_rotation",
+    "status": "EXECUTABLE"
+  },
+  {
+    "requirement": "K02",
+    "invariant": "Runtime key policy cannot administer the key service",
+    "failure": "key_privilege_escalation",
+    "gate": "KEYS",
+    "module": "test_keys",
+    "test": "test_runtime_acl_cannot_read_root_rotate_or_mint_tokens",
+    "status": "EXECUTABLE"
+  },
+  {
+    "requirement": "K03",
+    "invariant": "Seal and revocation stop key service access",
+    "failure": "key_service_seal_revoke",
+    "gate": "KEYS",
+    "module": "test_keys",
+    "test": "test_seal_and_revoked_token_never_return_keys_or_signatures",
+    "status": "EXECUTABLE"
+  },
+  {
+    "requirement": "N01",
+    "invariant": "Native Headscale enforces distinct agent and management ports",
+    "failure": "forbidden_network_port",
+    "gate": "NETWORK",
+    "module": "test_native",
+    "test": "test_headscale_native_acl_allow_and_deny",
+    "status": "EXECUTABLE"
+  },
+  {
+    "requirement": "N02",
+    "invariant": "Native isolated Tailcat containers enforce peer identity and revocation",
+    "failure": "unknown_transport_peer",
+    "gate": "NETWORK",
+    "module": "test_native",
+    "test": "test_tailcat_native_peer_handoff_revocation_and_fencing",
+    "status": "EXECUTABLE"
+  },
+  {
+    "requirement": "N03",
+    "invariant": "Agent container has no direct data-plane route or elevated host access",
+    "failure": "container_escape_surface",
+    "gate": "NETWORK",
+    "module": "test_boundaries",
+    "test": "test_container_transport_network_cannot_reach_data_or_write_root",
+    "status": "EXECUTABLE"
+  },
+  {
+    "requirement": "B02",
+    "invariant": "RPC schemas cannot override transport identity or select arbitrary execution",
+    "failure": "malformed_rpc",
+    "gate": "BOUNDARY",
+    "module": "test_boundaries",
+    "test": "test_uds_api_schema_errors_no_remote_identity_override",
+    "status": "EXECUTABLE"
+  },
+  {
+    "requirement": "B03",
+    "invariant": "Request capacity and lifecycle remain bounded",
+    "failure": "request_overload",
+    "gate": "BOUNDARY",
+    "module": "test_boundaries",
+    "test": "test_request_capacity_and_close_owned_jobs",
+    "status": "EXECUTABLE"
+  },
+  {
+    "requirement": "B04",
+    "invariant": "JSON depth and exact byte limits reject before decoding",
+    "failure": "parser_depth_capacity",
+    "gate": "BOUNDARY",
+    "module": "test_boundaries",
+    "test": "test_json_exact_size_depth_and_quoted_braces",
+    "status": "EXECUTABLE"
+  },
+  {
+    "requirement": "H01",
+    "invariant": "Hostile database-owner rollback requires an independent monotonic checkpoint anchor",
+    "failure": "owner_snapshot_rollback",
+    "gate": "DEPLOYMENT",
+    "module": null,
+    "test": null,
+    "status": "HOLD"
+  },
+  {
+    "requirement": "H02",
+    "invariant": "On-prem WAN/NAT, partitions and reboot fencing need target-host qualification",
+    "failure": "target_network_failure",
+    "gate": "DEPLOYMENT",
+    "module": null,
+    "test": null,
+    "status": "HOLD"
+  },
+  {
+    "requirement": "H03",
+    "invariant": "Production PKI, multi-share unseal and workload-token enrollment need operator bootstrap",
+    "failure": "production_key_bootstrap",
+    "gate": "DEPLOYMENT",
+    "module": null,
+    "test": null,
+    "status": "HOLD"
+  },
+  {
+    "requirement": "H04",
+    "invariant": "Rapid repeated one-shot Tailcat reconnection is not yet reliable in the local fixture; use persistent sessions",
+    "failure": "one_shot_reconnect",
+    "gate": "DEPLOYMENT",
+    "module": null,
+    "test": null,
+    "status": "HOLD"
+  }
+]

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.546" timestamp="2026-10-22T04:25:40.211593+00:00" hostname="2dd7d8cfea16"><testcase classname="tests.test_effects" name="test_forged_external_witness_cannot_commit_success" time="0.332"><failure message="Failed: DID NOT RAISE Rejected">tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-25/test_forged_external_witness_c0')
+
+    async def test_forged_external_witness_cannot_commit_success(tmp_path):
+        sink=Sink(tmp_path,'forged');adapter=await sink.start()
+        try:
+            async with Host() as host:
+                host.engine.adapters=MappingProxyType({host.receiver:adapter})
+                effect,_=await intent(host)
+                result=await host.request('dispatch',dict(effect_id=effect['effect_id']),who=host.receiver)
+                assert result['state']=='UNKNOWN' and sink.posts==1
+&gt;               with pytest.raises(Rejected,match='WRONG_RECIPIENT'):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               Failed: DID NOT RAISE Rejected
+
+tests/test_effects.py:134: Failed</failure></testcase></testsuite></testsuites>

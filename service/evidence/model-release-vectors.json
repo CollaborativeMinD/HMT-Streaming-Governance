@@ -1,0 +1,1282 @@
+[
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": false,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": false,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": false,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": false,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": false,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": false,
+    "hashesMatch": true,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": false,
+    "release": false
+  },
+  {
+    "postgresAvailable": true,
+    "peerCurrent": true,
+    "routeCurrent": true,
+    "sessionActive": true,
+    "recipientMatches": true,
+    "recordRegistered": true,
+    "hashesMatch": true,
+    "release": true
+  }
+]

@@ -1,0 +1,33 @@
+id,invariant,status
+D01,Durable pending work survives process loss,EXECUTABLE
+D02,Verified identity and acknowledgement survive restart,EXECUTABLE
+D03,Concurrent idempotent admissions create one record,EXECUTABLE
+D04,An idempotency key cannot change payload,EXECUTABLE
+I01,Version-one Unicode hashes bind metadata and payload atomically,EXECUTABLE
+I02,Wrong lineage is quarantined without record insertion,EXECUTABLE
+I03,Wrong recipient and tampered handoffs cannot execute,EXECUTABLE
+A01,Sender identity is derived from the authenticated peer,EXECUTABLE
+A02,Roles and routes are checked before admission,EXECUTABLE
+A03,Fresh authority overrides a warm cache,EXECUTABLE
+A04,Revocation between enqueue and commit blocks trust,EXECUTABLE
+A05,Expired receipts cannot become verified,EXECUTABLE
+D05,Broker cannot rewrite append-only records or provision identities,EXECUTABLE
+B01,Capacity holds without evicting accepted records,EXECUTABLE
+C01,Poisoned Redis falls back to registered PostgreSQL data,EXECUTABLE
+C02,Cached metadata is checked against durable hashes,EXECUTABLE
+E01,A durable record permits one bound host-adapter dispatch,EXECUTABLE
+E02,Lost acknowledgement never authorizes automatic retry,EXECUTABLE
+E03,Unbound external witnesses cannot report completion,EXECUTABLE
+K01,Independent verification binds context and supports signer rotation,EXECUTABLE
+K02,Runtime key policy cannot administer the key service,EXECUTABLE
+K03,Seal and revocation stop key service access,EXECUTABLE
+N01,Native Headscale enforces distinct agent and management ports,EXECUTABLE
+N02,Native isolated Tailcat containers enforce peer identity and revocation,EXECUTABLE
+N03,Agent container has no direct data-plane route or elevated host access,EXECUTABLE
+B02,RPC schemas cannot override transport identity or select arbitrary execution,EXECUTABLE
+B03,Request capacity and lifecycle remain bounded,EXECUTABLE
+B04,JSON depth and exact byte limits reject before decoding,EXECUTABLE
+H01,Hostile database-owner rollback requires an independent monotonic checkpoint anchor,HOLD
+H02,"On-prem WAN/NAT, partitions and reboot fencing need target-host qualification",HOLD
+H03,"Production PKI, multi-share unseal and workload-token enrollment need operator bootstrap",HOLD
+H04,Rapid repeated one-shot Tailcat reconnection is not yet reliable in the local fixture; use persistent sessions,HOLD

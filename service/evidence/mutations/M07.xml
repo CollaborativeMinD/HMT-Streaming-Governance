@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.248" timestamp="2026-10-22T04:25:39.180478+00:00" hostname="2dd7d8cfea16"><testcase classname="tests.test_boundaries" name="test_authenticated_cache_metadata_mismatch_falls_back_to_postgres" time="0.076"><failure message="assert 0 &gt;= 1&#10; +  where 0 = &lt;hmt_governance.cache.Cache object at 0x7f831de99310&gt;.errors">async def test_authenticated_cache_metadata_mismatch_falls_back_to_postgres():
+        async with Host() as host:
+            envelope=await host.verified();await host.verify(envelope)
+            cache=host.engine.cache
+            value=await cache.get(envelope['ledger_hash']);value['payload_hash']='a'*64
+            await cache.put(value)
+            assert (await host.verify(envelope))['ledger_hash']==envelope['ledger_hash']
+&gt;           assert cache.errors&gt;=1
+E           assert 0 &gt;= 1
+E            +  where 0 = &lt;hmt_governance.cache.Cache object at 0x7f831de99310&gt;.errors
+
+tests/test_boundaries.py:74: AssertionError</failure></testcase></testsuite></testsuites>

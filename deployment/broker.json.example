@@ -1,0 +1,7 @@
+{
+  "dsn": "host=postgres dbname=governance user=gov_broker password=REPLACE_OUTSIDE_GIT sslmode=verify-full sslrootcert=/tls/ca.crt connect_timeout=2",
+  "redis_url": "rediss://cache:REPLACE_OUTSIDE_GIT@redis:6379/0?ssl_ca_certs=%2Ftls%2Fca.crt&ssl_check_hostname=true",
+  "openbao_file": "/config/bao-runtime.json",
+  "socket": "/socket/broker.sock",
+  "sinks": {}
+}

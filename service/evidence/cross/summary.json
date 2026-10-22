@@ -1,0 +1,10 @@
+{
+  "requirements": 32,
+  "failure_modes": 32,
+  "gates": 9,
+  "cartesian_rows": 9216,
+  "executable": 28,
+  "holds": 4,
+  "out_of_scope": 9184,
+  "scope": "Declared finite catalog only; out-of-scope combinations are not nullified threats"
+}

@@ -1,0 +1,434 @@
+[
+  {
+    "file": "admission.py",
+    "function": "enqueue",
+    "lines": 59,
+    "structural_branch_complexity": 8
+  },
+  {
+    "file": "admission.py",
+    "function": "create_session",
+    "lines": 46,
+    "structural_branch_complexity": 3
+  },
+  {
+    "file": "admission.py",
+    "function": "receipt",
+    "lines": 28,
+    "structural_branch_complexity": 4
+  },
+  {
+    "file": "admission.py",
+    "function": "head",
+    "lines": 13,
+    "structural_branch_complexity": 2
+  },
+  {
+    "file": "authority.py",
+    "function": "principal",
+    "lines": 29,
+    "structural_branch_complexity": 10
+  },
+  {
+    "file": "authority.py",
+    "function": "session_authority",
+    "lines": 39,
+    "structural_branch_complexity": 12
+  },
+  {
+    "file": "cache.py",
+    "function": "__init__",
+    "lines": 14,
+    "structural_branch_complexity": 4
+  },
+  {
+    "file": "cache.py",
+    "function": "key",
+    "lines": 2,
+    "structural_branch_complexity": 1
+  },
+  {
+    "file": "cache.py",
+    "function": "get",
+    "lines": 18,
+    "structural_branch_complexity": 5
+  },
+  {
+    "file": "cache.py",
+    "function": "put",
+    "lines": 14,
+    "structural_branch_complexity": 4
+  },
+  {
+    "file": "cache.py",
+    "function": "close",
+    "lines": 3,
+    "structural_branch_complexity": 2
+  },
+  {
+    "file": "client.py",
+    "function": "__init__",
+    "lines": 4,
+    "structural_branch_complexity": 1
+  },
+  {
+    "file": "client.py",
+    "function": "start",
+    "lines": 7,
+    "structural_branch_complexity": 2
+  },
+  {
+    "file": "client.py",
+    "function": "request",
+    "lines": 18,
+    "structural_branch_complexity": 6
+  },
+  {
+    "file": "client.py",
+    "function": "governance_commit_state",
+    "lines": 2,
+    "structural_branch_complexity": 1
+  },
+  {
+    "file": "client.py",
+    "function": "governance_verify_payload",
+    "lines": 2,
+    "structural_branch_complexity": 1
+  },
+  {
+    "file": "client.py",
+    "function": "close",
+    "lines": 8,
+    "structural_branch_complexity": 4
+  },
+  {
+    "file": "contracts.py",
+    "function": "canonical",
+    "lines": 8,
+    "structural_branch_complexity": 1
+  },
+  {
+    "file": "contracts.py",
+    "function": "digest",
+    "lines": 2,
+    "structural_branch_complexity": 1
+  },
+  {
+    "file": "contracts.py",
+    "function": "identity",
+    "lines": 4,
+    "structural_branch_complexity": 3
+  },
+  {
+    "file": "contracts.py",
+    "function": "strict_json",
+    "lines": 43,
+    "structural_branch_complexity": 15
+  },
+  {
+    "file": "contracts.py",
+    "function": "frame",
+    "lines": 40,
+    "structural_branch_complexity": 16
+  },
+  {
+    "file": "contracts.py",
+    "function": "block",
+    "lines": 12,
+    "structural_branch_complexity": 1
+  },
+  {
+    "file": "contracts.py",
+    "function": "__init__",
+    "lines": 3,
+    "structural_branch_complexity": 1
+  },
+  {
+    "file": "contracts.py",
+    "function": "pairs",
+    "lines": 7,
+    "structural_branch_complexity": 3
+  },
+  {
+    "file": "contracts.py",
+    "function": "__post_init__",
+    "lines": 29,
+    "structural_branch_complexity": 16
+  },
+  {
+    "file": "database.py",
+    "function": "migrate",
+    "lines": 6,
+    "structural_branch_complexity": 1
+  },
+  {
+    "file": "database.py",
+    "function": "__init__",
+    "lines": 15,
+    "structural_branch_complexity": 1
+  },
+  {
+    "file": "database.py",
+    "function": "start",
+    "lines": 14,
+    "structural_branch_complexity": 3
+  },
+  {
+    "file": "database.py",
+    "function": "check_schema",
+    "lines": 17,
+    "structural_branch_complexity": 3
+  },
+  {
+    "file": "database.py",
+    "function": "close",
+    "lines": 2,
+    "structural_branch_complexity": 1
+  },
+  {
+    "file": "database.py",
+    "function": "connection",
+    "lines": 7,
+    "structural_branch_complexity": 2
+  },
+  {
+    "file": "effects.py",
+    "function": "view",
+    "lines": 6,
+    "structural_branch_complexity": 2
+  },
+  {
+    "file": "effects.py",
+    "function": "prepare",
+    "lines": 32,
+    "structural_branch_complexity": 3
+  },
+  {
+    "file": "effects.py",
+    "function": "access",
+    "lines": 20,
+    "structural_branch_complexity": 3
+  },
+  {
+    "file": "effects.py",
+    "function": "claim",
+    "lines": 11,
+    "structural_branch_complexity": 2
+  },
+  {
+    "file": "effects.py",
+    "function": "outcome",
+    "lines": 15,
+    "structural_branch_complexity": 5
+  },
+  {
+    "file": "effects.py",
+    "function": "reconcile",
+    "lines": 21,
+    "structural_branch_complexity": 6
+  },
+  {
+    "file": "engine.py",
+    "function": "__init__",
+    "lines": 16,
+    "structural_branch_complexity": 3
+  },
+  {
+    "file": "engine.py",
+    "function": "start",
+    "lines": 11,
+    "structural_branch_complexity": 4
+  },
+  {
+    "file": "engine.py",
+    "function": "_loop",
+    "lines": 15,
+    "structural_branch_complexity": 7
+  },
+  {
+    "file": "engine.py",
+    "function": "close",
+    "lines": 5,
+    "structural_branch_complexity": 2
+  },
+  {
+    "file": "engine.py",
+    "function": "_close",
+    "lines": 13,
+    "structural_branch_complexity": 5
+  },
+  {
+    "file": "engine.py",
+    "function": "request",
+    "lines": 24,
+    "structural_branch_complexity": 9
+  },
+  {
+    "file": "engine.py",
+    "function": "_dispatch",
+    "lines": 31,
+    "structural_branch_complexity": 11
+  },
+  {
+    "file": "keys.py",
+    "function": "verify_checkpoint",
+    "lines": 15,
+    "structural_branch_complexity": 5
+  },
+  {
+    "file": "keys.py",
+    "function": "__init__",
+    "lines": 13,
+    "structural_branch_complexity": 2
+  },
+  {
+    "file": "keys.py",
+    "function": "_call",
+    "lines": 9,
+    "structural_branch_complexity": 3
+  },
+  {
+    "file": "keys.py",
+    "function": "cache_key",
+    "lines": 6,
+    "structural_branch_complexity": 2
+  },
+  {
+    "file": "keys.py",
+    "function": "sign",
+    "lines": 7,
+    "structural_branch_complexity": 1
+  },
+  {
+    "file": "keys.py",
+    "function": "public_keys",
+    "lines": 2,
+    "structural_branch_complexity": 1
+  },
+  {
+    "file": "keys.py",
+    "function": "close",
+    "lines": 2,
+    "structural_branch_complexity": 1
+  },
+  {
+    "file": "records.py",
+    "function": "portable",
+    "lines": 11,
+    "structural_branch_complexity": 1
+  },
+  {
+    "file": "records.py",
+    "function": "check_record",
+    "lines": 22,
+    "structural_branch_complexity": 5
+  },
+  {
+    "file": "records.py",
+    "function": "verified",
+    "lines": 67,
+    "structural_branch_complexity": 15
+  },
+  {
+    "file": "records.py",
+    "function": "verify",
+    "lines": 25,
+    "structural_branch_complexity": 6
+  },
+  {
+    "file": "runner.py",
+    "function": "operation",
+    "lines": 25,
+    "structural_branch_complexity": 4
+  },
+  {
+    "file": "runner.py",
+    "function": "execute",
+    "lines": 29,
+    "structural_branch_complexity": 6
+  },
+  {
+    "file": "runner.py",
+    "function": "mark_unknown",
+    "lines": 12,
+    "structural_branch_complexity": 2
+  },
+  {
+    "file": "runner.py",
+    "function": "validate",
+    "lines": 8,
+    "structural_branch_complexity": 5
+  },
+  {
+    "file": "runner.py",
+    "function": "reconcile",
+    "lines": 7,
+    "structural_branch_complexity": 2
+  },
+  {
+    "file": "server.py",
+    "function": "serve",
+    "lines": 42,
+    "structural_branch_complexity": 9
+  },
+  {
+    "file": "server.py",
+    "function": "main",
+    "lines": 33,
+    "structural_branch_complexity": 9
+  },
+  {
+    "file": "server.py",
+    "function": "handle",
+    "lines": 31,
+    "structural_branch_complexity": 8
+  },
+  {
+    "file": "sink.py",
+    "function": "__init__",
+    "lines": 13,
+    "structural_branch_complexity": 5
+  },
+  {
+    "file": "sink.py",
+    "function": "dispatch",
+    "lines": 5,
+    "structural_branch_complexity": 1
+  },
+  {
+    "file": "sink.py",
+    "function": "lookup",
+    "lines": 9,
+    "structural_branch_complexity": 2
+  },
+  {
+    "file": "sink.py",
+    "function": "_read",
+    "lines": 8,
+    "structural_branch_complexity": 3
+  },
+  {
+    "file": "sink.py",
+    "function": "close",
+    "lines": 2,
+    "structural_branch_complexity": 1
+  },
+  {
+    "file": "worker.py",
+    "function": "process_one",
+    "lines": 87,
+    "structural_branch_complexity": 10
+  },
+  {
+    "file": "worker.py",
+    "function": "finish",
+    "lines": 9,
+    "structural_branch_complexity": 1
+  },
+  {
+    "file": "worker.py",
+    "function": "failed",
+    "lines": 7,
+    "structural_branch_complexity": 2
+  }
+]

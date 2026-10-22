@@ -1,0 +1,14 @@
+{
+  "scope": "64 sequential durable 4096-byte commits with fresh-authority receiver verification; same local host",
+  "records": 64,
+  "elapsed_seconds": 3.6116191699984483,
+  "records_per_second": 17.720583756904663,
+  "p50_seconds": 0.054509754999344295,
+  "p95_seconds": 0.07368474300164962,
+  "warm_verification_p50_seconds": 0.002088197999910335,
+  "cache_hits": 24,
+  "python_retained_bytes": 452996,
+  "python_peak_bytes": 755569,
+  "indexed_lookup": true,
+  "excludes": "database/Redis/container memory and WAN/NAT; no in-memory speedup comparison"
+}

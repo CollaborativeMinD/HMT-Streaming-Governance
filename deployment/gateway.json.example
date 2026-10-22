@@ -1,0 +1,10 @@
+{
+  "key_file": "/keys/gateway.key",
+  "socket": "/socket/broker.sock",
+  "endpoint_file": "/endpoint/private",
+  "allowed": ["REPLACE_WITH_REGISTERED_NODE_PUBLIC_KEY"],
+  "region": {
+    "RegionID": 997, "RegionCode": "private", "RegionName": "Lab Tailcat",
+    "Nodes": [{"Name":"lab","RegionID":997,"HostName":"REPLACE_WITH_RELAY_TLS_NAME","DERPPort":8443,"STUNPort":-1}]
+  }
+}

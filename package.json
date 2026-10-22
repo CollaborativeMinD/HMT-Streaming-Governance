@@ -3,7 +3,14 @@
   "private": true,
   "version": "0.1.0",
   "description": "Pinned SysML v2 validation tooling; no browser application or runtime service",
-  "engines": {"node": ">=20"},
-  "devDependencies": {"sysml-validate": "0.50.0"},
-  "scripts": {"check:model": "sysml-validate governance.sysml --strict --format json --out .ci-output/sysml-validation.json"}
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "sysml-validate": "0.50.0"
+  },
+  "scripts": {
+    "check:model": "sysml-validate governance.sysml --strict --format json --out .ci-output/sysml-validation.json",
+    "check:durable-model": "sysml-validate service/model/durable-governance.sysml --strict --format json --out service/evidence/sysml-validation.json"
+  }
 }

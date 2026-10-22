@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.164" timestamp="2026-10-22T04:25:41.059392+00:00" hostname="2dd7d8cfea16"><testcase classname="tests.test_boundaries" name="test_bound_external_witness_contract" time="0.002"><failure message="Failed: DID NOT RAISE Rejected">def test_bound_external_witness_contract():
+        from hmt_governance.runner import validate
+        operation=dict(effect_id='example',block_hash='a'*64)
+        valid=operation|dict(state='COMPLETED')
+        validate(valid,operation)
+        for witness in (valid|dict(effect_id='another'),valid|dict(block_hash='b'*64),valid|dict(state='PREPARED')):
+&gt;           with pytest.raises(Rejected,match='EXTERNAL_WITNESS_MISMATCH'):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE Rejected
+
+tests/test_boundaries.py:130: Failed</failure></testcase></testsuite></testsuites>

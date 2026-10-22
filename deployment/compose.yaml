@@ -1,0 +1,109 @@
+name: hmt-governance
+x-sandbox: &sandbox
+  restart: "no"
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  pids_limit: 128
+  mem_limit: 512m
+  tmpfs: [/tmp:rw,noexec,nosuid,size=64m]
+services:
+  postgres:
+    image: postgres:18@sha256:edb0c08dc33befd0262ab3b5cf1c4f3f8cfd8b09e88c05b45adee29d6761ddb6
+    restart: "no"
+    read_only: true
+    security_opt: [no-new-privileges:true]
+    pids_limit: 128
+    mem_limit: 1g
+    # Official entrypoint initializes ownership then drops to postgres UID 999.
+    cap_drop: [ALL]
+    cap_add: [CHOWN,SETUID,SETGID,DAC_OVERRIDE,FOWNER]
+    networks: [data]
+    environment:
+      POSTGRES_DB: governance
+      POSTGRES_PASSWORD_FILE: /secrets/postgres-bootstrap-password
+    volumes:
+      - ${HMT_PRIVATE:?set private configuration directory}/postgres-bootstrap-password:/secrets/postgres-bootstrap-password:ro
+      - ${HMT_STATE:?set persistent state directory}/postgres:/var/lib/postgresql
+      - ${HMT_PRIVATE}/postgres.crt:/tls/postgres.crt:ro
+      - ${HMT_PRIVATE}/postgres.key:/tls/postgres.key:ro
+    tmpfs: [/tmp:rw,nosuid,size=64m, /var/run/postgresql:rw,size=4m]
+    command: [postgres,-c,ssl=on,-c,ssl_cert_file=/tls/postgres.crt,-c,ssl_key_file=/tls/postgres.key,-c,listen_addresses=*]
+  redis:
+    <<: *sandbox
+    image: redis:8.2@sha256:e5f23377739f95a2f530b9c99f93accb4f634577f09d00a7d8e0638f2fdf69e0
+    user: "1000:1000"
+    networks: [data]
+    volumes:
+      - ${HMT_PRIVATE}/redis.acl:/tls/redis.acl:ro
+      - ${HMT_PRIVATE}/redis.crt:/tls/redis.crt:ro
+      - ${HMT_PRIVATE}/redis.key:/tls/redis.key:ro
+      - ${HMT_PRIVATE}/ca.crt:/tls/ca.crt:ro
+    command: [redis-server,--port,"0",--tls-port,"6379",--tls-cert-file,/tls/redis.crt,--tls-key-file,/tls/redis.key,--tls-ca-cert-file,/tls/ca.crt,--tls-auth-clients,"no",--aclfile,/tls/redis.acl,--maxmemory,128mb,--maxmemory-policy,allkeys-lru,--save,"",--appendonly,"no"]
+  openbao:
+    <<: *sandbox
+    image: quay.io/openbao/openbao:2.7.1@sha256:6d2b93856e3fcf7b18ad855a0b51eaba474dc8b79cf554379ea32034797d2acf
+    user: "1000:1000"
+    networks: [data]
+    command: [server,-config=/config/bao.hcl]
+    volumes:
+      - ${HMT_PRIVATE}/bao.hcl:/config/bao.hcl:ro
+      - ${HMT_PRIVATE}/bao.crt:/tls/bao.crt:ro
+      - ${HMT_PRIVATE}/bao.key:/tls/bao.key:ro
+      - ${HMT_STATE}/bao:/state
+  broker:
+    <<: *sandbox
+    image: local/hmt-governance:0.2.0
+    user: "1000:1000"
+    networks: [data,effects]
+    environment: {GOVERNANCE_CONFIG: /config/broker.json}
+    volumes:
+      - ${HMT_PRIVATE}/broker.json:/config/broker.json:ro
+      - ${HMT_PRIVATE}/bao-runtime.json:/config/bao-runtime.json:ro
+      - ${HMT_PRIVATE}/ca.crt:/tls/ca.crt:ro
+      - ${HMT_PRIVATE}/effect-client.crt:/tls/effect-client.crt:ro
+      - ${HMT_PRIVATE}/effect-client.key:/tls/effect-client.key:ro
+      - ${HMT_SOCKET:?set private shared socket directory}:/socket
+  tailcat:
+    <<: *sandbox
+    image: local/hmt-tailcat:0.2.0
+    user: "1000:1000"
+    networks: [transport]
+    command: [serve,/config/gateway.json]
+    volumes:
+      - ${HMT_PRIVATE}/gateway.json:/config/gateway.json:ro
+      - ${HMT_PRIVATE}/gateway.key:/keys/gateway.key:ro
+      - ${HMT_PRIVATE}/ca.crt:/tls/ca.crt:ro
+      - ${HMT_SOCKET}:/socket:ro
+      - ${HMT_ENDPOINT:?set private endpoint output directory}:/endpoint
+    environment: {SSL_CERT_FILE: /tls/ca.crt}
+  tailcat-relay:
+    <<: *sandbox
+    image: local/hmt-tailcat:0.2.0
+    user: "1000:1000"
+    networks: [transport]
+    command: [relay,/config/relay.json]
+    volumes:
+      - ${HMT_PRIVATE}/relay.json:/config/relay.json:ro
+      - ${HMT_PRIVATE}/relay.crt:/tls/relay.crt:ro
+      - ${HMT_PRIVATE}/relay.key:/tls/relay.key:ro
+    # Publish only to the explicitly chosen lab/mesh bind address; never 0.0.0.0 by default.
+    ports: ["${HMT_MESH_BIND:?set a private mesh bind address}:8443:8443"]
+  headscale:
+    <<: *sandbox
+    image: ghcr.io/juanfont/headscale:0.29.5@sha256:780ed2f9e85719a2211277433f2c8afb45105d0d25031949a6848a485f9e216d
+    user: "1000:1000"
+    networks: [management]
+    command: [serve,--config,/config/headscale.yaml]
+    volumes:
+      - ${HMT_PRIVATE}/headscale.yaml:/config/headscale.yaml:ro
+      - ${HMT_PRIVATE}/policy.hujson:/config/policy.hujson:ro
+      - ${HMT_PRIVATE}/headscale.crt:/tls/headscale.crt:ro
+      - ${HMT_PRIVATE}/headscale.key:/tls/headscale.key:ro
+      - ${HMT_STATE}/headscale:/state
+    ports: ["${HMT_MESH_BIND}:8444:8443"]
+networks:
+  data: {internal: true}
+  transport: {internal: true}
+  management: {internal: true}
+  effects: {internal: true}

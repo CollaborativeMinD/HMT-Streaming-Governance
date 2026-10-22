@@ -1,0 +1,1 @@
+{"capabilities_dropped":true,"docker_socket_absent":true,"nonroot":true,"postgres_unreachable":true,"redis_unreachable":true,"root_readonly":true,"status":"PASS"}

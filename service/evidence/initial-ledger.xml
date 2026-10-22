@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="15" time="2.220" timestamp="2026-10-22T03:26:07.915575+00:00" hostname="2dd7d8cfea16"><testcase classname="tests.test_ledger" name="test_atomic_receipt_chain_and_unicode_roundtrip" time="0.142" /><testcase classname="tests.test_ledger" name="test_pending_inbox_survives_restart_before_worker_runs" time="0.063" /><testcase classname="tests.test_ledger" name="test_verified_state_and_idempotent_ack_survive_new_engine" time="0.154" /><testcase classname="tests.test_ledger" name="test_same_idempotency_key_cannot_change_payload" time="0.057" /><testcase classname="tests.test_ledger" name="test_parallel_duplicate_submission_creates_one_record" time="0.111" /><testcase classname="tests.test_ledger" name="test_wrong_parent_and_sequence_quarantine_persistently" time="0.343" /><testcase classname="tests.test_ledger" name="test_sender_spoofing_and_unknown_peer_do_not_create_sessions" time="0.040" /><testcase classname="tests.test_ledger" name="test_ungranted_route_and_missing_sender_role_are_denied" time="0.043" /><testcase classname="tests.test_ledger" name="test_recipient_and_metadata_tampering_halt_and_quarantine" time="0.139"><failure message="AssertionError: assert 2 == 1&#10; +  where 2 = len([{'event_id': 12, 'session_id': 'session-b8bc8d9d13ed', 'kind': 'SYSTEM_QUARANTINE', 'detail': 'HANDOFF_MISMATCH', ...}, {'event_id': 13, 'session_id': 'session-b8bc8d9d13ed', 'kind': 'SYSTEM_QUARANTINE', 'detail': 'HANDOFF_MISMATCH', ...}])">async def test_recipient_and_metadata_tampering_halt_and_quarantine():
+        async with Host() as host:
+            envelope = await host.verified()
+            with pytest.raises(Rejected, match="WRONG_RECIPIENT"):
+                await host.verify(envelope, host.intruder)
+            assert (await host.verify(envelope))["verified"] is True
+            changed = copy.deepcopy(envelope)
+            changed["transaction"]["payload"] = "tampered"
+            with pytest.raises(Rejected, match="HANDOFF_MISMATCH"):
+                await host.verify(changed)
+            with pytest.raises(Rejected):
+                await host.verify(envelope)
+            rows = await host.sql(
+                "SELECT * FROM governance.events WHERE session_id=%s AND kind='SYSTEM_QUARANTINE'",
+                (host.frame()["session_id"],),
+            )
+&gt;           assert len(rows) == 1
+E           AssertionError: assert 2 == 1
+E            +  where 2 = len([{'event_id': 12, 'session_id': 'session-b8bc8d9d13ed', 'kind': 'SYSTEM_QUARANTINE', 'detail': 'HANDOFF_MISMATCH', ...}, {'event_id': 13, 'session_id': 'session-b8bc8d9d13ed', 'kind': 'SYSTEM_QUARANTINE', 'detail': 'HANDOFF_MISMATCH', ...}])
+
+service/tests/test_ledger.py:168: AssertionError</failure></testcase><testcase classname="tests.test_ledger" name="test_fresh_authority_and_route_override_warm_cache" time="0.460" /><testcase classname="tests.test_ledger" name="test_revocation_after_enqueue_prevents_commit" time="0.072"><failure message="hmt_governance.contracts.Rejected: UNAUTHORIZED">async def test_revocation_after_enqueue_prevents_commit():
+        async with Host() as host:
+            await host.engine.close()
+            from hmt_governance.database import Database
+    
+            db = await Database(host.settings).start()
+            pending = await admission.enqueue(
+                db, host.peers[host.sender], host.frame(), "revoked-pending"
+            )
+            await host.revoke()
+            await worker.process_one(db)
+            await db.close()
+            host.engine = await Engine(host.settings).start()
+&gt;           result = await host.settled(pending)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+service/tests/test_ledger.py:212: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+service/tests/support.py:97: in settled
+    result = await self.request(
+service/tests/support.py:86: in request
+    return await self.engine.request(
+service/src/hmt_governance/engine.py:88: in request
+    return await self._dispatch(peer, operation, arguments)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+service/src/hmt_governance/engine.py:109: in _dispatch
+    return await admission.receipt(self.database, peer, **args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+service/src/hmt_governance/admission.py:126: in receipt
+    actor = await principal(connection, peer, "read")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+connection = &lt;psycopg.AsyncConnection [BAD] at 0x7f684d1bee10&gt;
+peer = 'nodekey:c45e87453a4aa353e7d1ebe2a9592c52de3954a948f58692cfa8636ef00a45ba'
+role = 'read'
+
+    async def principal(connection, peer, role):
+        if type(peer) is not str or not KEY.fullmatch(peer):
+            raise Rejected("UNAUTHENTICATED")
+        found = await (
+            await connection.execute(
+                "SELECT agent_id FROM governance.agents WHERE peer_key=%s", (peer,)
+            )
+        ).fetchone()
+        row = (
+            None
+            if found is None
+            else await (
+                await connection.execute(
+                    "SELECT * FROM governance.lock_agents(%s)", ([found["agent_id"]],)
+                )
+            ).fetchone()
+        )
+        if row and row["peer_key"] != peer:
+            raise Rejected("AUTHORITY_CHANGED", "HELD")
+        if row is None or not row["active"] or role not in row["roles"]:
+&gt;           raise Rejected("UNAUTHORIZED")
+E           hmt_governance.contracts.Rejected: UNAUTHORIZED
+
+service/src/hmt_governance/authority.py:26: Rejected</failure></testcase><testcase classname="tests.test_ledger" name="test_expired_pending_receipt_cannot_commit" time="0.100" /><testcase classname="tests.test_ledger" name="test_actual_database_append_only_and_role_boundaries" time="0.128" /><testcase classname="tests.test_ledger" name="test_record_capacity_holds_without_eviction" time="0.187" /><testcase classname="tests.test_ledger" name="test_strict_boundaries_and_independent_version_one_identity" time="0.001" /></testsuite></testsuites>

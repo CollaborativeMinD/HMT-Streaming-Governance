@@ -1,0 +1,33 @@
+# Private deployment profile
+
+This is an operator-configured on-premises profile. The qualification harness creates disposable equivalents; it does not activate this Compose stack or install anything on your Forgejo server. Read the four HOLD items in [the report](../service/evidence/REPORT.md) before claiming target qualification.
+
+Build the host-configured broker and native bridge from their locks:
+
+```bash
+uv sync --locked --project service
+mkdir -p service/.build tailcat-gateway/.build
+uv export --locked --project service --no-dev --no-emit-project -o service/.build/requirements.txt
+uv build --project service --wheel --out-dir service/.build
+CGO_ENABLED=0 go -C tailcat-gateway build -trimpath -o .build/tailcat-bridge .
+docker build -t local/hmt-governance:0.2.0 service
+docker build -t local/hmt-tailcat:0.2.0 tailcat-gateway
+```
+
+Use the Go version in `tailcat-gateway/go.mod`; retain the wheel/image digests with your deployment record. Set `HMT_PRIVATE`, `HMT_STATE`, `HMT_SOCKET`, `HMT_ENDPOINT` and `HMT_MESH_BIND` to private, operator-owned locations. Configuration examples are deliberately incomplete. Generate credentials outside the repository. A host-owned bridge and broker share UID 1000 and a socket directory mode 0700; the socket and Tailcat endpoint are 0600. Each agent gets only its own key and the private endpoint, never another agent key, broker socket or database credential. Keep agent containers on the transport network with the same nonroot/read-only/capability restrictions as the native test fixture.
+
+Issue separate TLS leaves with the actual DNS/IP SANs for PostgreSQL, Redis, OpenBao, the two distinct DERP services and registered effect sinks. The PostgreSQL leaf key must be readable only by PostgreSQL UID 999 (0600); its bootstrap password is mounted separately. Broker/gateway/OpenBao files belong to their configured UID. State volumes need the corresponding service UID. No test CA, unseal share or lab token belongs in production. The images require no privileged containers, TUN device or host networking. PostgreSQL's official entrypoint starts with narrowly listed ownership/UID capabilities and drops to UID 999.
+
+Initialize PostgreSQL as an operator with [schema.sql](../service/src/hmt_governance/schema.sql), then [provision.sql](provision.sql). The broker cannot provision/revoke agents, change routes, disable triggers or rewrite committed records/events. Startup compares stored function bodies and enabled trigger names to the shipped schema. Use separate owner/migrator, policy-operator, backup and broker credentials. Register public peer keys, roles, route grants, finite expiry and epoch as an operator. Revoke the PostgreSQL agent first; then revoke Headscale enrollment and relay access. Existing sessions remain bound to the original epochs.
+
+Start OpenBao **sealed**, with persistent Raft state and verified HTTPS. Initialize with an operator-selected multi-share recovery policy or an independently deployed OSS auto-unseal service; keep recovery shares offline. Never use dev mode, a root token, the disposable fixture's 1-of-1 unseal, or a persisted plaintext cache DEK in the broker. Create non-exportable transit keys `ledger-cache` (aes256-gcm96) and `ledger-checkpoints` (ed25519), and load [the runtime policy](bao-runtime.hcl). Supply a short-lived workload token using a mounted 0600 token configuration; a supervisor must renew or replace it. The broker obtains one ephemeral cache DEK at startup and closes the OpenBao client. Token or signer outages block new key/signing requests; an already-issued process DEK remains valid until restart. Revoking the issuer does not erase keys already delivered to memory. Restarting generates a new cache namespace, so previous ciphertext expires without being trusted.
+
+Use OpenBao's Kubernetes/JWT or cert auth when that platform exists; do not invent an agent-controlled login endpoint. Rotation and seal/revocation are tested. Checkpoint signatures can be verified independently, but detecting a hostile database-owner rollback also needs a separately administered, monotonic anchor and backup/recovery ceremony. That obligation remains HOLD; a signature alone cannot establish the newest head.
+
+Headscale owns the **management** mesh, finite enrollment and port ACLs. Use `service/headscale_lab.py` as a runnable configuration example: private control URL, no public DERP map, embedded DERP with `verify_clients: true`, separate agent/admin tags, and no update checks. Replace the fixture's operator/user and TLS names. Tailcat bypasses this control plane: its distinct private TLS DERP requires an explicit exact-key allowlist. Its gateway also requires a nonempty allowlist and queries current PostgreSQL identity through the Unix broker. It closes the entire transport on a revocation or failed authority probe. No default public Tailcat relay or Tailscale SaaS login is required.
+
+The management and transport networks are intentionally separate. Attach a fixed HTTPS/mTLS effect sink to the dedicated effects network, and register its URL/certificate/key in the host-owned broker `sinks` mapping. Messages cannot select URLs or executables. The default empty mapping authorizes no external adapter. Never bridge agents onto the data/effects network. The private bind address must be reachable through your explicitly controlled lab/mesh boundary; qualify published-port/NAT behavior on that host before rollout. Docker's host administrator and socket writer remain trusted.
+
+Start stores/control first, unseal OpenBao, apply schema and policy, then start the broker, relay and gateway. Do not use restart-always loops to hide transport HOLDs. On a crash, leave durable `DISPATCHING`/`UNKNOWN` effects intact; use the registered adapter's read-only lookup. A 404 is UNKNOWN, not proof that no effect occurred. A new request key cannot authorize another effect for the same record. Restore PostgreSQL WAL/backups under operator custody and reconcile external effects before resuming a mission. Never reopen a quarantined session by editing its state.
+
+Only after filling private configuration and readiness checks should an operator run `docker compose -f deployment/compose.yaml config` and `up`. No public service is activated by CI. For Forgejo, run the same `service/run_vv.py`, Go tests, strict model command and secret/dependency scans on an isolated runner with Docker access; agent containers never receive the runner's Docker socket. GitHub's Admission job includes this durable lane. Forgejo runner registration, on-premises credentials and URL are intentionally operator supplied.

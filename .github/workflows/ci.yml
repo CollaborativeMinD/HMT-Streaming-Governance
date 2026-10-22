@@ -91,22 +91,74 @@ jobs:
           include-hidden-files: true
           if-no-files-found: error
           retention-days: 30
+  durable:
+    name: Durable PostgreSQL, Tailcat and Headscale qualification
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@94527f2e458b27549849d47d273a16bec83a01e9 # v7
+        with:
+          version: '0.12.23'
+          python-version: '3.12'
+      - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6
+        with:
+          go-version-file: tailcat-gateway/go.mod
+          cache-dependency-path: tailcat-gateway/go.sum
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Build locked native bridge and validate functional model
+        run: |
+          npm ci --ignore-scripts
+          npm run check:durable-model
+          go -C tailcat-gateway test ./...
+          CGO_ENABLED=0 go -C tailcat-gateway build -trimpath -o "$RUNNER_TEMP/tailcat-bridge" .
+          uv sync --locked --project service
+          go -C tailcat-gateway run golang.org/x/vuln/cmd/govulncheck@v1.9.0 -json ./... > service/evidence/go-vulnerability.json
+          uv run --locked --project service python service/vv/go_audit.py
+      - name: Native isolated local qualification and both Cartesian replays
+        env:
+          HMT_BRIDGE: ${{ runner.temp }}/tailcat-bridge
+        run: |
+          uv run --locked --project service python service/lab.py start
+          uv run --locked --project service python service/headscale_lab.py
+          uv run --locked --project service python service/run_vv.py
+          uv run --locked --project service python service/vv/secret_inventory.py
+      - name: Hash-locked durable Python dependency audit
+        run: |
+          uv export --locked --project service --no-dev --no-emit-project -o /tmp/durable-requirements.txt
+          uvx --from pip-audit==2.10.1 pip-audit --disable-pip --require-hashes -r /tmp/durable-requirements.txt -f json -o service/evidence/dependency-audit.json
+      - name: Remove only this job's disposable services and bootstrap secrets
+        if: always()
+        run: |
+          if test -f service/.lab/manifest.json; then uv run --locked --project service python service/lab.py stop; fi
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: durable-evidence
+          path: service/evidence/
+          if-no-files-found: error
+          retention-days: 30
   admission:
     name: Admission
     if: always()
-    needs: [verification, tooling]
+    needs: [verification, tooling, durable]
     runs-on: ubuntu-24.04
     timeout-minutes: 2
     steps:
       - name: Require every declared lane (failure, cancellation or skip blocks delivery)
         env:
           NEEDS: ${{ toJSON(needs) }}
-        run: echo "$NEEDS" | jq -e 'length == 2 and all(.[]; .result == "success")'
+        run: echo "$NEEDS" | jq -e 'length == 3 and all(.[]; .result == "success")'
   package:
     name: Verified archive and clean replay
     needs: admission
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
@@ -123,10 +175,24 @@ jobs:
         with:
           name: tooling-evidence
           path: .ci-output/tooling
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: durable-evidence
+          path: service/evidence
+      - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6
+        with:
+          go-version-file: tailcat-gateway/go.mod
+          cache-dependency-path: tailcat-gateway/go.sum
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts
       - name: Package tested source and evidence; replay the extracted archive
         run: |
           python -m ci.package_release
           python -m ci.smoke_release
+          python -m ci.smoke_durable
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: always()
         with:
@@ -135,6 +201,7 @@ jobs:
           path: |
             dist/
             .ci-output/package-smoke.*
+            .ci-output/durable-clean-replay.*
           if-no-files-found: error
           retention-days: 30
   delivery:
@@ -162,4 +229,4 @@ jobs:
           archive="${archives[0]}"
           checksum="$archive.sha256"
           (cd "$(dirname "$archive")" && sha256sum --check "$(basename "$checksum")")
-          gh release create "$RELEASE_TAG" "$archive" "$checksum" --repo "$SOURCE_REPO" --verify-tag --title "Streaming Governance $RELEASE_TAG" --notes 'In-memory reference release. Includes source-bound finite-catalog V&V evidence and a clean-extraction replay. No service activation or agent-host registration.'
+          gh release create "$RELEASE_TAG" "$archive" "$checksum" --repo "$SOURCE_REPO" --verify-tag --title "Streaming Governance $RELEASE_TAG" --notes 'Source-bound reference and durable-profile local qualification. Deployment HOLDs are retained in service/evidence/REPORT.md. No service activation or agent-host registration.'
